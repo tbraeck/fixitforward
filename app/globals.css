@@ -19,10 +19,32 @@
 body {
   color: rgb(var(--foreground-rgb));
   background: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.header {
+  background-color: #636961;
+  padding: 10px 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer {
+  background-color: #636961;
+  padding: 10px 20px;
+  color: white;
+  height: 70px;
+
+  margin-top: auto;
 }
