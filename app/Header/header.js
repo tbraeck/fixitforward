@@ -1,9 +1,9 @@
-
+import Image from "next/image"
 
 function HeaderComponent() {    
   return (        
     <header className="header">
-    <img src="G.gif" width='100px' alt="Company Logo" className="logo" />
+    <Image src="/FixItForward-icon.png" width='60' height='60' alt="Company Logo" className="logo" />
     <nav>
         <ul>
             <li><a href="/">Home</a></li>

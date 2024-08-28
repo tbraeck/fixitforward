@@ -22,29 +22,25 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
 }
 
 .header {
-  background-color: #636961;
+  background-color: #fafafa;
   padding: 10px 20px;
-  color: white;
+  color: rgb(68, 63, 63);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.main-content {
+  flex: 1; /* This ensures that the main content area grows to fill available space */
+}
+
 .footer {
-  background-color: #636961;
+  background-color: #fafafa;
   padding: 10px 20px;
   color: white;
   height: 70px;
-
   margin-top: auto;
 }

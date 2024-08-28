@@ -6,7 +6,7 @@ export default function Home() {
     <div>
 <HeaderComponent/>
 <br></br>
-<div>
+<div className="main-content">
   Hello world!
 </div>
 <br></br>
