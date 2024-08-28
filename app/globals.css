@@ -22,6 +22,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  margin: 0; /* Remove default body margin */
 }
 
 .header {
@@ -34,7 +35,7 @@ body {
 }
 
 .main-content {
-  flex: 1; /* This ensures that the main content area grows to fill available space */
+  flex: 1; /* Ensures the main content grows to fill available space */
 }
 
 .footer {
@@ -42,5 +43,5 @@ body {
   padding: 10px 20px;
   color: rgb(68, 63, 63);
   height: 70px;
-  margin-top: auto;
+  margin-top: auto; /* Pushes footer to bottom */
 }

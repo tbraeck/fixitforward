@@ -3,14 +3,12 @@ import HeaderComponent from "./Header/header";
 
 export default function Home() {
   return (
-    <div>
-<HeaderComponent/>
-<br></br>
-<div className="main-content">
-  Hello world!
-</div>
-<br></br>
-<FooterComponent/>
+    <div className="flex flex-col min-h-screen">
+      <HeaderComponent />
+      <div className="main-content flex-grow">
+        Hello world!
+      </div>
+      <FooterComponent />
     </div>
   );
 }
