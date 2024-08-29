@@ -1,6 +1,6 @@
 import Link from "next/link";
-import FooterComponent from "./Footer/footer";
-import HeaderComponent from "./Header/header";
+import FooterComponent from "./footer/footer";
+import HeaderComponent from "./header/header";
 
 export default function Home() {
   return (
@@ -8,7 +8,7 @@ export default function Home() {
       <HeaderComponent />
       <div className="main-content flex-grow">
         <div className="flex justify-center items-center bg-gray">
-          <Link href='/fix-it-forward'><button>Fix It Forward</button></Link>
+          <Link href='/form'><button>Fix It Forward</button></Link>
         </div>
       </div>
       <FooterComponent />

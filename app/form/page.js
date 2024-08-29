@@ -1,4 +1,6 @@
+'use client'
 import { useState } from 'react';
+import BackButton from '../components/backButton';
 
 const FormComponent = () => {
     const [firstName, setFirstName] = useState("");
@@ -26,10 +28,16 @@ const handleReset = () => {
 
 
   return (
+    <div className='form-page'>
+        <div className='back-button'>
+            <BackButton/>
+        </div>
+   
     <div className="App">
+       
     <h1>Form in React</h1>
     <fieldset>
-        <form action="#" method="get">
+        <form action="#" method="get" className='fixitform'>
             <label for="firstname">
                 First Name*
             </label>
@@ -120,6 +128,7 @@ const handleReset = () => {
             </button>
         </form>
     </fieldset>
+</div>
 </div>
   )
 }
