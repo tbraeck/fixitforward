@@ -1,13 +1,13 @@
-import Link from "next/link"
+import Link from "next/link";
 
 const BackButton = () => {
   return (
-      <Link>
-        <button>
-            BACK BUTTON
-        </button>
-      </Link>
-  )
-}
+    <Link href="/home">
+      <button>
+        BACKKKK
+      </button>
+    </Link>
+  );
+};
 
-export default BackButton
+export default BackButton;

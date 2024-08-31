@@ -1,8 +1,8 @@
 'use client'
+import Link from 'next/link';
 import { useState } from 'react';
-import BackButton from '../components/backButton';
 
-const FormComponent = () => {
+const DonateFormComponent = () => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
@@ -29,13 +29,17 @@ const handleReset = () => {
 
   return (
     <div className='form-page'>
-        <div className='back-button'>
-            <BackButton/>
+        <div >
+        <Link href="/">
+      <button className='back-button'>
+        BACK
+      </button>
+        </Link>
         </div>
    
     <div className="App">
        
-    <h1>Form in React</h1>
+    <h1>FIX IT FORWARD</h1>
     <fieldset>
         <form action="#" method="get" className='fixitform'>
             <label for="firstname">
@@ -76,7 +80,7 @@ const handleReset = () => {
                 placeholder="Enter email"
                 required
             />
-            <label for="phoneNumber">Enter Email* </label>
+            <label for="phoneNumber">Phone Number* </label>
             <input
                 type="phoneNumber"
                 name="phoneNumber"
@@ -88,7 +92,7 @@ const handleReset = () => {
                 placeholder="Enter phone number"
                 required
             />
-            <label for="product">Enter Email* </label>
+            <label for="product">Product Name* </label>
             <input
                 type="product"
                 name="product"
@@ -100,7 +104,7 @@ const handleReset = () => {
                 placeholder="Enter product name"
                 required
             />
-            <label for="description">Enter Email* </label>
+            <label for="description">Product Description* </label>
             <input
                 type="description"
                 name="description"
@@ -109,22 +113,23 @@ const handleReset = () => {
                 onChange={(e) =>
                     setDescription(e.target.value)
                 }
-                placeholder="Enter product description"
+                placeholder="Enter product description / what's broken?"
                 required
             />
+            
             <button
                 type="reset"
                 value="reset"
                 onClick={() => handleReset()}
             >
-                Reset
+                RESET
             </button>
             <button
                 type="submit"
                 value="Submit"
                 onClick={(e) => handleSubmit(e)}
             >
-                Submit
+                SUBMIT
             </button>
         </form>
     </fieldset>
@@ -133,4 +138,4 @@ const handleReset = () => {
   )
 }
 
-export default FormComponent
+export default DonateFormComponent
