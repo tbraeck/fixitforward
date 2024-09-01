@@ -18,8 +18,10 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: #ffffff;
-  min-height: 100vh;
+  /* background: #ffffff; */
+
+  background-repeat: no-repeat;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   margin: 0; /* Remove default body margin */
@@ -61,6 +63,12 @@ body {
 
 h1 {
   font-size: x-large;
+  text-align: center;
+  color: #2b47e5;
+}
+
+h2 {
+  font-size: large;
   text-align: center;
   color: #2b47e5;
 }
@@ -108,13 +116,18 @@ label {
 button {
   padding: 15px;
   border-radius: 10px;
-  margin: 15px;
+  margin: 40px;
   border: none;
   color: white;
   cursor: pointer;
   background-color: #4caf50;
   width: 40%;
   font-size: 16px;
+}
+
+button:hover {
+  transform: scale(1.5);
+  background-color: #76c078;
 }
 textarea {
   resize: none;

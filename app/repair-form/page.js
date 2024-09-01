@@ -7,8 +7,8 @@ const RepairFormComponent = () => {
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
-    const [product, setProduct] = useState("");
-    const [description, setDescription] = useState("");
+    const [companyName, setCompanyName] = useState("");
+    const [typeOfRepair, setTypeOfRepair] = useState("");
 
 const handleSubmit = (e) => {
     e.preventdefault();
@@ -40,9 +40,10 @@ const handleReset = () => {
     <div className="App">
        
     <h1>FIX IT FORWARD</h1>
+    <h2>Repairs</h2>
     <fieldset>
         <form action="#" method="get" className='fixitform'>
-            <label for="firstname">
+            <label for="firstName">
                 First Name*
             </label>
             <input
@@ -92,28 +93,28 @@ const handleReset = () => {
                 placeholder="Enter phone number"
                 required
             />
-            <label for="product">Product Name* </label>
+            <label for="companyName">Company Name* </label>
             <input
-                type="product"
-                name="product"
-                id="product"
-                value={product}
+                type="companyName"
+                name="companyName"
+                id="companyName"
+                value={companyName}
                 onChange={(e) =>
-                    setProduct(e.target.value)
+                    setCompanyName(e.target.value)
                 }
-                placeholder="Enter product name"
+                placeholder="Enter comapny name"
                 required
             />
-            <label for="description">Product Description* </label>
+            <label for="typeOfRepair">Type of Repair* </label>
             <input
-                type="description"
-                name="description"
-                id="description"
-                value={description}
+                type="typeOfRepair"
+                name="typeOfRepair"
+                id="typeOfRepair"
+                value={typeOfRepair}
                 onChange={(e) =>
-                    setDescription(e.target.value)
+                    setTypeOfRepair(e.target.value)
                 }
-                placeholder="Enter product description"
+                placeholder="Enter type of Repair"
                 required
             />
             <button

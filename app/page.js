@@ -9,15 +9,15 @@ export default function Home() {
       <div className="main-content flex-grow flex justify-center items-center">
         <div className="flex justify-center items-center bg-blue">
           <Link href='/donate-form'>
-            <button className="flex justify-center items-center w-48 text-xl">
+            <button className="flex justify-center items-center w-56 text-xl">
               I Want To Donate Something
             </button>
           </Link>
         </div>
         <div className="flex justify-center items-center bg-blue">
           <Link href='/repair-form'>
-            <button className="flex justify-center items-center w-48 text-xl">
-              I Repair Things
+            <button className="flex justify-center items-center w-56 text-xl">
+              I Want to Repair Things
             </button>
           </Link>
         </div>
