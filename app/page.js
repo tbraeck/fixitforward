@@ -1,6 +1,7 @@
 import Link from "next/link";
 import FooterComponent from "./footer/footer";
 import HeaderComponent from "./header/header";
+import InstructionsModal from "./instructions_modal/InstructionsModal";
 
 export default function Home() {
   return (
@@ -21,6 +22,9 @@ export default function Home() {
             </button>
           </Link>
         </div>
+        <div>
+              <InstructionsModal />
+            </div>
       </div>
       <FooterComponent />
     </div>

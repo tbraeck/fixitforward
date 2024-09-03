@@ -40,7 +40,7 @@ const handleReset = () => {
     <div className="App">
        
     <h1>FIX IT FORWARD</h1>
-    <h2>Repairs</h2>
+    <h2>☞ Repairs ☜</h2>
     <fieldset>
         <form action="#" method="get" className='fixitform'>
             <label for="firstName">
