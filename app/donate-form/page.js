@@ -14,6 +14,8 @@ const handleSubmit = (e) => {
     e.preventdefault();
 
     console.log(firstName, lastName, email,phoneNumber, product, description )
+   
+    
 }
 
 
@@ -43,7 +45,7 @@ const handleReset = () => {
     <h2>Donations</h2>
     <fieldset>
         <form action="#" method="get" className='fixitform'>
-            <label for="firstname">
+            <label htmlFor="firstname">
                 First Name*
             </label>
             <input
@@ -57,7 +59,7 @@ const handleReset = () => {
                 placeholder="Enter First Name"
                 required
             />
-            <label for="lastname">Last Name*</label>
+            <label htmlFor="lastname">Last Name*</label>
             <input
                 type="text"
                 name="lastName"
@@ -69,7 +71,7 @@ const handleReset = () => {
                 placeholder="Enter Last Name"
                 required
             />
-            <label for="email">Enter Email* </label>
+            <label htmlFor="email">Enter Email* </label>
             <input
                 type="email"
                 name="email"
@@ -81,7 +83,7 @@ const handleReset = () => {
                 placeholder="Enter email"
                 required
             />
-            <label for="phoneNumber">Phone Number* </label>
+            <label htmlFor="phoneNumber">Phone Number* </label>
             <input
                 type="phoneNumber"
                 name="phoneNumber"
@@ -93,7 +95,7 @@ const handleReset = () => {
                 placeholder="Enter phone number"
                 required
             />
-            <label for="product">Product Name* </label>
+            <label htmlFor="product">Product Name* </label>
             <input
                 type="product"
                 name="product"
@@ -105,7 +107,7 @@ const handleReset = () => {
                 placeholder="Enter product name"
                 required
             />
-            <label for="description">Product Description* </label>
+            <label htmlFor="description">Product Description* </label>
             <input
                 type="description"
                 name="description"
@@ -119,6 +121,7 @@ const handleReset = () => {
             />
             
             <button
+                className='reset-submit-button'
                 type="reset"
                 value="reset"
                 onClick={() => handleReset()}
@@ -126,6 +129,7 @@ const handleReset = () => {
                 RESET
             </button>
             <button
+                className='reset-submit-button'
                 type="submit"
                 value="Submit"
                 onClick={(e) => handleSubmit(e)}

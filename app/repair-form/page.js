@@ -8,7 +8,7 @@ const RepairFormComponent = () => {
     const [email, setEmail] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [companyName, setCompanyName] = useState("");
-    const [typeOfRepair, setTypeOfRepair] = useState("");
+    const [whatTypeOfRepair, setWhatTypeOfRepair] = useState("");
 
 const handleSubmit = (e) => {
     e.preventdefault();
@@ -22,8 +22,8 @@ const handleReset = () => {
  setLastName('');
  setEmail('');
  setPhoneNumber('');
- setProduct('');
- setDescription('');
+ setCompanyName('');
+ setWhatTypeOfRepair('');
 }
 
 
@@ -43,7 +43,7 @@ const handleReset = () => {
     <h2>☞ Repairs ☜</h2>
     <fieldset>
         <form action="#" method="get" className='fixitform'>
-            <label for="firstName">
+            <label htmlFor="firstName">
                 First Name*
             </label>
             <input
@@ -57,7 +57,7 @@ const handleReset = () => {
                 placeholder="Enter First Name"
                 required
             />
-            <label for="lastname">Last Name*</label>
+            <label htmlFor="lastname">Last Name*</label>
             <input
                 type="text"
                 name="lastName"
@@ -69,7 +69,7 @@ const handleReset = () => {
                 placeholder="Enter Last Name"
                 required
             />
-            <label for="email">Enter Email* </label>
+            <label htmlFor="email">Enter Email* </label>
             <input
                 type="email"
                 name="email"
@@ -81,7 +81,7 @@ const handleReset = () => {
                 placeholder="Enter email"
                 required
             />
-            <label for="phoneNumber">Phone Number* </label>
+            <label htmlFor="phoneNumber">Phone Number* </label>
             <input
                 type="phoneNumber"
                 name="phoneNumber"
@@ -93,7 +93,7 @@ const handleReset = () => {
                 placeholder="Enter phone number"
                 required
             />
-            <label for="companyName">Company Name* </label>
+            <label htmlFor="companyName">Company Name* </label>
             <input
                 type="companyName"
                 name="companyName"
@@ -102,22 +102,23 @@ const handleReset = () => {
                 onChange={(e) =>
                     setCompanyName(e.target.value)
                 }
-                placeholder="Enter comapny name"
+                placeholder="Enter company name"
                 required
             />
-            <label for="typeOfRepair">Type of Repair* </label>
+            <label htmlFor="whatTypeOfRepair">Type of Repair* </label>
             <input
-                type="typeOfRepair"
-                name="typeOfRepair"
-                id="typeOfRepair"
-                value={typeOfRepair}
+                type="whatTypeOfRepair"
+                name="whatTypeOfRepair"
+                id="whatTypeOfRepair"
+                value={whatTypeOfRepair}
                 onChange={(e) =>
-                    setTypeOfRepair(e.target.value)
+                    setWhatTypeOfRepair(e.target.value)
                 }
                 placeholder="Enter type of Repair"
                 required
             />
-            <button
+             <button
+                className='reset-submit-button'
                 type="reset"
                 value="reset"
                 onClick={() => handleReset()}
@@ -125,6 +126,7 @@ const handleReset = () => {
                 RESET
             </button>
             <button
+                className='reset-submit-button'
                 type="submit"
                 value="Submit"
                 onClick={(e) => handleSubmit(e)}
