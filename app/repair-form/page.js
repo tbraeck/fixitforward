@@ -112,7 +112,7 @@ const handleReset = () => {
                 id="whatTypeOfRepair"
                 value={whatTypeOfRepair}
                 onChange={(e) =>
-                    setWhatTypeOfRepair(e.target.value)
+                    setWhatTypeOfRepair (e.target.value)
                 }
                 placeholder="Enter type of Repair"
                 required
