@@ -1,264 +1,139 @@
-// 'use client'
+// import React, { useState } from 'react';
+// import { Link, useNavigate } from 'react-router-dom';
+// import { useLocalStorage } from '../hooks/useLocalStorage';
+// import { getCurrentLevel } from '../utils';
+// import ProgressIndicator from './ProgressIndicator';
+// import WordTurtle from './WordTurtle';
 
-// // import { useLocalStorage } from '../hooks/useLocalStorage';
-// // import { getCurrentLevel } from './Level';
-// // import ProgressIndicator from './ProgressIndicator';
-// // import WordTurtle from './WordTurtle';
-// import Link from "next/link";
-// import { useState } from "react";
+'use client'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Select from "react-select";
 
-// const Main = ({ setCurrentWindow }) => {
-//     const [firstName, setFirstName] = useState("");
-//     const [lastName, setLastName] = useState("");
-//     const [email, setEmail] = useState("");
-//     const [phoneNumber, setPhoneNumber] = useState("");
-//     const [product, setProduct] = useState("");
-//     const [description, setDescription] = useState("");
-
-// const handleSubmit = (e) => {
-//     e.preventdefault();
-
-//     console.log(firstName, lastName, email,phoneNumber, product, description )
-// }
+const MainMenu = ({ setCurrentWindow }) => {
+  const navigate = useNavigate();
 
 
-// const handleReset = () => {
-//  setFirstName('');
-//  setLastName('');
-//  setEmail('');
-//  setPhoneNumber('');
-//  setProduct('');
-//  setDescription('');
-// }
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' }
+  ]
 
+  return (
+    // <div className="relative h-cover bg-word-turtle flex justify-center items-center">
+    <div className="relative h-screen bg-word-turtle flex justify-center items-center">
+      <div className="flex flex-col items-center justify-center bg-white border-2 border-black rounded-xl w-1/3 h-3/5">
+        <h1 className="text-4xl text-center text-black underline underline-offset-1  font-montserrat mt-20">
+          PARENTAL SUPPORT
+        </h1>
+        <div>
+            <Select options={options} />
+        </div>
+        <button
+          className="w-4/5 h-auto py-3 mt-12 bg-blue-950 rounded flex flex-col items-center justify-center hover:opacity-30"
+          onClick={() => setCurrentWindow('HowToPlay')}
+        >
+          <h2 className="text-3xl text-center text-white cursor-pointer font-montserrat">
+            How to Play
+          </h2>
+        </button>
+        <button
+          className="w-4/5 h-auto py-4 my-5 bg-blue-950 rounded flex flex-col items-center justify-center hover:opacity-30"
+          onClick={() => setCurrentWindow('About21E')}
+        >
+         
+        </button>
+        <div className="flex justify-start w-full px-8 pb-8">
+          <p
+            className="text-8xl text-blue-950 cursor-pointer hover:opacity-30 "
+            onClick={() => navigate('/*')}
+          >
+            ←
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-//     //   const navigate = useNavigate();
-    
-       
-   
+// const HowToPlay = ({ setCurrentWindow, currentStep }) => {
 //   return (
-//     <div className='form-page'>
-//         <div >
-//         <Link href="/">
-//       <button className='back-button'>
-//         BACK
-//       </button>
-//         </Link>
-//         </div>
-   
-//     <div className="App">
-       
-//     <h1>FIX IT FORWARD</h1>
-//     <h2>Donations</h2>
-//     <fieldset>
-//         <form action="#" method="get" className='fixitform'>
-//             <label for="firstname">
-//                 First Name*
-//             </label>
-//             <input
-//                 type="text"
-//                 name="firstName"
-//                 id="firstName"
-//                 value={firstName}
-//                 onChange={(e) =>
-//                     setFirstName(e.target.value)
-//                 }
-//                 placeholder="Enter First Name"
-//                 required
-//             />
-//             <label for="lastname">Last Name*</label>
-//             <input
-//                 type="text"
-//                 name="lastName"
-//                 id="lastName"
-//                 value={lastName}
-//                 onChange={(e) =>
-//                     setLastName(e.target.value)
-//                 }
-//                 placeholder="Enter Last Name"
-//                 required
-//             />
-//             <label for="email">Enter Email* </label>
-//             <input
-//                 type="email"
-//                 name="email"
-//                 id="email"
-//                 value={email}
-//                 onChange={(e) =>
-//                     setEmail(e.target.value)
-//                 }
-//                 placeholder="Enter email"
-//                 required
-//             />
-//             <label for="phoneNumber">Phone Number* </label>
-//             <input
-//                 type="phoneNumber"
-//                 name="phoneNumber"
-//                 id="phoneNumber"
-//                 value={phoneNumber}
-//                 onChange={(e) =>
-//                     setPhoneNumber(e.target.value)
-//                 }
-//                 placeholder="Enter phone number"
-//                 required
-//             />
-//             <label for="product">Product Name* </label>
-//             <input
-//                 type="product"
-//                 name="product"
-//                 id="product"
-//                 value={product}
-//                 onChange={(e) =>
-//                     setProduct(e.target.value)
-//                 }
-//                 placeholder="Enter product name"
-//                 required
-//             />
-//             <label for="description">Product Description* </label>
-//             <input
-//                 type="description"
-//                 name="description"
-//                 id="description"
-//                 value={description}
-//                 onChange={(e) =>
-//                     setDescription(e.target.value)
-//                 }
-//                 placeholder="Enter product description / what's broken?"
-//                 required
-//             />
-            
-//             <button
-//                 type="reset"
-//                 value="reset"
-//                 onClick={() => handleReset()}
-//             >
-//                 RESET
-//             </button>
-//             <button
-//                 type="submit"
-//                 value="Submit"
-//                 onClick={(e) => handleSubmit(e)}
-//             >
-//                 SUBMIT
-//             </button>
-//         </form>
-//     </fieldset>
-// </div>
-// </div>
+//     <div className="h-screen bg-word-turtle flex flex-col justify-center items-center">
+//       {/* Centered progress indicator */}
+//       <div className="mb-4">
+//         <ProgressIndicator currentStep={currentStep} />
+//       </div>
 
-
-//       );
-//     };
-
-// // const Main = ({ setCurrentWindow }) => {
-// // //   const navigate = useNavigate();
-
-// //   return (
-// //     <div className="relative h-full bg-word-turtle flex justify-center items-center">
-// //       {/* <div className="flex flex-col items-center justify-center bg-none border-2 border-black rounded-xl w-1/3 h-3/5">
-// //         <h1 className="text-4xl text-center text-black underline underline-offset-1 font-montserrat mt-20">
-// //          Type of Product
-// //         </h1>
-// //         <button
-// //           className="w-4/5 h-auto py-3 mt-12 bg-blue-950 rounded flex flex-col items-center justify-center hover:opacity-30"
-// //           onClick={() => setCurrentWindow('TypeOfProduct')}
-// //         >
-// //           <h2 className="text-3xl text-center text-white cursor-pointer font-montserrat">
-// //             Type of Product
-// //           </h2>
-// //         </button>
-// //         <button
-// //           className="w-4/5 h-auto py-4 my-5 bg-blue-950 rounded flex flex-col items-center justify-center hover:opacity-30"
-// //           onClick={() => setCurrentWindow('About21E')}
-// //         >
-// //           <h2 className="text-3xl text-center text-white cursor-pointer font-montserrat">
-// //             ABOUT FUNetix/21E
-// //           </h2>
-// //         </button>
-// //         <div className="flex justify-start w-full px-8 pb-8">
-// //           <p
-// //             className="text-8xl text-blue-950 cursor-pointer hover:opacity-30 "
-// //             onClick={() => navigate('/*')}
-// //           >
-// //             ←
-// //           </p>
-// //           <div> */}
-// //           {/* <div> */}
-// //       <label>
-// //         <input type="radio" value="option1"   />
-// //         Option 1
-// //       </label>
-// //       <br />
-// //       <label>
-// //         <input type="radio" value="option2"  />
-// //         Option 2
-// //       </label>
-// //       <br />
-// //       <label>
-// //         <input type="radio" value="option3" />
-// //         Option 3
-// //       </label>
-// //     {/* </div> */}
-// //     {/* //   </div> */}
-// //     </div>
-// //   );
-// // };
-
-// const TypeOfProduct = ({ setCurrentWindow, currentStep }) => {
-//   return (
-//     <div className="relative h-[1300px] bg-word-turtle flex justify-center items-center">
-      
-//       <div className="w-[400px] h-[600px] flex flex-col items-center justify-center pt-5  bg-none border-2 border-black rounded-xl w-3/12 h-auto">
-//         <h1 className="text-3xl text-center text-black font-bold underline underline-offset-1 font-montserrat mt-0 pb-2 items-start">
+//       {/* Centered content box */}
+//       <div className="w-[400px] h-8/10 flex flex-col items-center justify-center pt-5 pb-2 bg-none border-2 border-black rounded-xl">
+//         <h1 className="text-3xl text-center text-black font-bold underline underline-offset-1 font-montserrat mt-0 pb-2">
 //           How to Play
 //         </h1>
 //         <p className="text-center text-black text-xs font-montserrat pb-3">
-//           Build your word out of sounds! Each symbol below
-//           <br /> represents a sound in the English language.
+//           Build your word out of sounds! Each symbol below <br></br>represents a
+//           sound in the English language.
 //         </p>
+
 //         <p className="text-center text-black text-xs mb-3 justify-start font-montserrat">
 //           For example,
 //           <span className="inline-flex items-center mt-0">
-//             <img className="w-5 h-auto m-3 mt-1 inline" src="./g.png" alt="g" />
-//             <img
-//               className="w-8 h-auto m-3 pb-4 ml-1 inline"
-//               src="./O.png"
-//               alt="o"
-//             />
+//             <span
+//               className="font-bold text-lg m-3 mt-1 inline"
+//               style={{ fontFamily: 'phonibet' }}
+//             >
+//               g
+//             </span>
+//             <span
+//               className="font-bold text-lg m-3 pb-4 ml-1 inline"
+//               style={{ fontFamily: 'phonibet' }}
+//             >
+//               O
+//             </span>
 //           </span>
 //           says “Go” <br />
 //           and
 //           <span className="inline-flex items-center mb-0">
-//             <img
-//               className="w-8 h-auto m-2 ml-2 mt-1 inline"
-//               src="./m.png"
-//               alt="m"
-//             />
-//             <img
-//               className="w-6 h-auto m-2 mt-1 inline"
-//               src="./ou.png"
-//               alt="owe"
-//             />
-//             <img className="w-5 h-auto m-2 mt-1 inline" src="./s.png" alt="s" />
+//             <span
+//               className="font-bold text-lg m-2 ml-2 mt-1 inline"
+//               style={{ fontFamily: 'phonibet' }}
+//             >
+//               m
+//             </span>
+//             <span
+//               className="font-bold text-lg m-2 mt-1 inline"
+//               style={{ fontFamily: 'phonibet' }}
+//             >
+//               M
+//             </span>
+//             <span
+//               className="font-bold text-lg m-2 mt-1 inline"
+//               style={{ fontFamily: 'phonibet' }}
+//             >
+//               s
+//             </span>
 //           </span>
 //           says “Mouse”
 //         </p>
+
 //         <div className="flex justify-center p-0">
 //           <img
 //             src="./Alphabet.png"
 //             alt="Alphabet"
-//             className="w-[200px] h-static"
+//             className="w-[200px] h-auto"
 //           />
 //         </div>
+
+//         {/* Navigation arrows */}
 //         <div className="flex justify-between w-full px-4 mt-2">
 //           <p
-//             className="text-7xl text-blue-950 cursor-pointer hover:opacity-30"
-//             onClick={() => setCurrentWindow('Main')}
+//             className="text-7xl text-blue-950 cursor-pointer hover:opacity-30 "
+//             onClick={() => setCurrentWindow('MainMenu')}
 //           >
 //             ←
 //           </p>
 //           <p
-//             className="text-7xl text-blue-950 cursor-pointer hover:opacity-30"
+//             className="text-7xl text-blue-950 cursor-pointer hover:opacity-30 "
 //             onClick={() => setCurrentWindow('HowToPlay2')}
 //           >
 //             →
@@ -276,25 +151,31 @@
 //         <ProgressIndicator currentStep={currentStep} />
 //       </div>
 //       <div className="flex flex-col items-center justify-start pt-10 bg-none border-2 border-black rounded-xl w-[782px] h-[474px]">
-//         <h1 className="text-4xl text-center text-black font-bold underline underline-offset-1 font-montserrat mt-0 pb-6 items-start">
+//         <h1 className="text-4xl text-center text-black font-bold underline underline-offset-1  font-montserrat mt-0 pb-6 items-start">
 //           How to Play
 //         </h1>
 //         <p className="text-center text-[24px] text-black font-montserrat pb-5">
-//           Let’s say the word you need to guess is “Ice”, but you<br></br> guess
-//           the word “Me”. The
+//           Let’s say the word you need to guess is “Ice”, but you
+//           <br /> guess the word “Me”. The
 //           <span className="inline-flex items-center">
-//             <img
-//               className="w-8 h-auto m-2 ml-2 mt-1 inline"
-//               src="./m.png"
-//               alt="m"
-//             />
+//             <span
+//               className="font-bold text-xl mx-2 ml-2 mt-1 inline"
+//               style={{ fontFamily: 'phonibet' }}
+//             >
+//               m
+//             </span>
 //           </span>
 //           and
 //           <span className="inline-flex items-center">
-//             <img className="w-8 h-auto m-3 mt-1 inline" src="./E.png" alt="e" />
+//             <span
+//               className="font-bold text-xl mx-3  inline"
+//               style={{ fontFamily: 'phonibet' }}
+//             >
+//               E
+//             </span>
 //           </span>
-//           boxes will turn<br></br>
-//           gray, meaning these symbols are not in the final word.
+//           boxes will turn
+//           <br /> gray, meaning these symbols are not in the final word.
 //         </p>
 //         <div className="flex justify-center w-full px-4 mb-[0px] mt-2 space-x-4">
 //           <img src="/m-sound.png" alt="m" className="w-28 h-auto" />
@@ -302,13 +183,13 @@
 //         </div>
 //         <div className="flex justify-between w-full px-4 mb-[0px]">
 //           <p
-//             className="flex text-8xl text-blue-950 cursor-pointer hover:opacity-30"
+//             className="flex text-8xl text-blue-950 cursor-pointer hover:opacity-30  "
 //             onClick={() => setCurrentWindow('HowToPlay')}
 //           >
 //             ←
 //           </p>
 //           <p
-//             className="flex text-8xl text-blue-950 cursor-pointer hover:opacity-30"
+//             className="flex text-8xl text-blue-950 cursor-pointer hover:opacity-30  "
 //             onClick={() => setCurrentWindow('HowToPlay3')}
 //           >
 //             →
@@ -325,39 +206,67 @@
 //       <div className="mb-[20px]">
 //         <ProgressIndicator currentStep={currentStep} />
 //       </div>
-//       <div className="flex flex-col items-center justify-start pb-6 pt-6 bg-none border-2 border-black rounded-xl w-[682px] h-5/6">
+
+//       <div className="flex flex-col items-center justify-start pb-8 pt-6 pr-8 pl-8 bg-none border-2 border-black rounded-xl w-7/8 h-5/6">
 //         <h1 className="text-4xl text-center text-black font-bold underline underline-offset-1 font-montserrat mt-0 pb-6 items-start">
 //           How to Play
 //         </h1>
+
 //         <p className="text-center text-[24px] text-black font-montserrat pb-5">
-//           You’re getting closer! and makes the word
+//           You’re getting closer!
+//           <span className="inline-flex items-center">
+//             <span
+//               className="font-bold text-xl mx-2 ml-2 mt-1 inline"
+//               style={{ fontFamily: 'phonibet' }}
+//             >
+//               mm
+//             </span>
+//           </span>
+//           and
+//           <span className="inline-flex items-center">
+//             <span
+//               className="font-bold text-xl mx-3 inline"
+//               style={{ fontFamily: 'phonibet' }}
+//             >
+//               E
+//             </span>
+//           </span>
+//           and makes the word
 //           <br />
 //           “My”. The box is yellow here, meaning it is in the
 //           <br /> final word, but in the wrong spot. Let’s try again!
 //         </p>
+
 //         <div className="flex justify-center w-full px-4 mb-[0px] mt-2 space-x-4">
 //           <img src="/m-sound.png" alt="m" className="w-28 h-auto" />
 //           <img src="/e-sound.png" alt="e" className="w-28 h-auto" />
 //         </div>
+
 //         <div className="flex justify-center w-full px-4 mb-[0px] mt-2 space-x-4">
 //           <img src="/m-sound.png" alt="m" className="w-28 h-auto" />
-//           <img src="/i-sound.png" alt="e" className="w-28 h-auto" />
+//           <img src="/i-sound.png" alt="i" className="w-28 h-auto" />
 //         </div>
-//         <div className="flex justify-between w-full px-4 mb-10 ">
+
+//         {/* Adjusted arrow positioning */}
+//         <div className="flex justify-between w-full px-4 mb-10">
 //           <p
-//             className="flex text-8xl text-blue-950 cursor-pointer hover:opacity-30"
+//             className="flex text-8xl text-blue-950 cursor-pointer hover:opacity-30 -ml-8"
 //             onClick={() => setCurrentWindow('HowToPlay2')}
 //           >
 //             ←
 //           </p>
 //           <p
-//             className="flex text-8xl text-blue-950 cursor-pointer hover:opacity-30"
+//             className="flex text-8xl text-blue-950 cursor-pointer hover:opacity-30 -mr-8"
 //             onClick={() => setCurrentWindow('HowToPlay4')}
 //           >
 //             →
 //           </p>
 //         </div>
 //       </div>
+
+//       <h1 className="text-center text-white underline underline-offset-1 font-montserrat">
+//         Settings
+//       </h1>
 //     </div>
 //   );
 // };
@@ -369,15 +278,33 @@
 //         <ProgressIndicator currentStep={currentStep} />
 //       </div>
 //       <div className="flex flex-col items-center justify-start mt-10 bg-none border-2 border-black rounded-xl w-[600px] h-5/6">
-//         <h1 className="text-4xl text-center text-black font-bold underline underline-offset-1 font-montserrat mt-2 pb-6 items-start">
+//         <h1 className="text-4xl text-center text-black font-bold underline underline-offset-1  font-montserrat mt-2 pb-6 items-start">
 //           How to Play
 //         </h1>
-//         <p className="text-center text-black font-montserrat pb-5">
-//           You did it! The and the symbols are now green, meaning<br></br> they
-//           are in the correct spot in the puzzle. Together, they<br></br> make
-//           the word “Ice”, which is the answer for this puzzle!
+//         <p className="text-center text-black  font-montserrat pb-5">
+//           You did it! The
+//           <span className="inline-flex items-center">
+//             <span
+//               className="font-bold text-xl mx-2 ml-2 mt-1 inline"
+//               style={{ fontFamily: 'phonibet' }}
+//             >
+//               I
+//             </span>
+//           </span>
+//           and the
+//           <span className="inline-flex items-center">
+//             <span
+//               className="font-bold text-xl mx-3 inline"
+//               style={{ fontFamily: 'phonibet' }}
+//             >
+//               s
+//             </span>
+//           </span>
+//           symbols are now green, meaning<br></br> they are in the correct spot
+//           in the puzzle. Together, they<br></br> make the word “Ice”, which is
+//           the answer for this puzzle!
 //         </p>
-//         <div className="images-and-arrows flex flex-col items-center w-full px-4 mt-2 relative">
+//         <div className="images-and-arrows flex flex-col items-center w-full px-4 mb-2 relative">
 //           <div className="flex justify-center w-full space-x-4">
 //             <img src="/m-sound.png" alt="m" className="w-1/6 h-auto" />
 //             <img src="/e-sound.png" alt="e" className="w-1/6 h-auto" />
@@ -390,7 +317,7 @@
 //             <img src="/i-sound.png" alt="i" className="w-1/6 h-auto" />
 //             <img src="/i-sound.png" alt="i" className="w-1/6 h-auto" />
 //           </div>
-//           <div className="flex justify-between w-full  mb-20 ">
+//           <div className="flex justify-between w-full  mb-24 pb-4 ">
 //             <p
 //               className="flex text-8xl text-blue-950 cursor-pointer hover:opacity-30"
 //               onClick={() => setCurrentWindow('HowToPlay2')}
@@ -422,10 +349,10 @@
 //         <ProgressIndicator currentStep={currentStep} />
 //       </div>
 //       <div className="flex flex-col items-center justify-start mt-10 bg-none border-8 border-[#EBBC72] rounded-xl w-2/5 h-5/8">
-//         <h1 className="text-4xl text-center text-black font-bold underline underline-offset-1 font-montserrat mt-4 pb-2 items-start">
+//         <h1 className="text-4xl text-center text-black font-bold underline underline-offset-1  font-montserrat mt-4 pb-2 items-start">
 //           Hints
 //         </h1>
-//         <h2 className="text-center text-xl text-black font-montserrat pb-2">
+//         <h2 className="text-center text-xl text-black  font-montserrat pb-2">
 //           If you need some help, <br></br> we've given you two hints.
 //         </h2>
 //         <div className="flex justify-center">
@@ -433,7 +360,7 @@
 //             Eliminate 3 wrong symbols
 //           </button>
 //         </div>
-//         <p className="text-center text-black mb-3 font-montserrat">
+//         <p className="text-center text-black mb-3  font-montserrat">
 //           This hint will eliminate 3 symbols<br></br> that are not in the word.
 //         </p>
 //         <div className="flex justify-center  border-[#FCF443] rounded-[25px]">
@@ -442,20 +369,20 @@
 //           </button>
 //         </div>
 
-//         <p className="text-center text-black  font-montserrat">
+//         <p className="text-center text-black   font-montserrat">
 //           This hint gives you a symbol<br></br> that is in the word, and puts
 //           <br></br> in the correct spot.{' '}
 //         </p>
 //         <div className="flex justify-between w-full  ">
 //           <p
-//             className="flex text-7xl text-[#02396B] cursor-pointer hover:opacity-30 pl-4"
+//             className="flex text-7xl text-[#02396B] cursor-pointer hover:opacity-30 pl-4  "
 //             onClick={() => setCurrentWindow('HowToPlay4')}
 //           >
 //             ←
 //           </p>
 //           <Link
 //             to={`/level/${currentLevel}` || '/level/1'}
-//             className="flex text-4xl text-[#02396B] cursor-pointer hover:opacity-30 font-montserrat pr-4 justify-end align-center pt-4"
+//             className="flex text-4xl text-[#02396B] cursor-pointer hover:opacity-30  font-montserrat pr-4 justify-end align-center pt-4"
 //           >
 //             Play
 //           </Link>
@@ -471,7 +398,7 @@
 //       <div className="absolute inset-0 flex flex-col items-center justify-center">
 //         <div className="z-10">
 //           <div className="flex flex-col items-center">
-//             <div className="flex items-left z-10 pt-6 text-5xl font-montserrat font-bold text-[#1E3057]">
+//             <div className="flex items-left z-10 pt-6 text-5xl  font-montserrat font-bold text-[#1E3057]">
 //               <h1>ABOUT 21E®</h1>
 //             </div>
 //             {/* <div className="flex flex-row items-end mb-8">
@@ -500,8 +427,8 @@
 //             </div>
 //             <div className="flex flex-row justify-center align-center mb-8">
 //               <div className="text-center">
-//                 {/* <h2 className="text-2xl text-black font-bold mb-2 font-montserrat"> */}
-//                 <h2 className="text-2xl text-black font-bold mb-2 font-montserrat text-left ml-4">
+//                 {/* <h2 className="text-2xl text-black font-bold mb-2  font-montserrat"> */}
+//                 <h2 className="text-2xl text-black font-bold mb-2  font-montserrat text-left ml-4">
 //                   Dear Parents,
 //                   <br />
 //                   <br />
@@ -545,8 +472,8 @@
 //           </div>
 //           <div className="absolute bottom-0 left-0 mb-4 ml-4">
 //             <button
-//               className="text-7xl text-[#02396B] cursor-pointer hover:opacity-30"
-//               onClick={() => setCurrentWindow('Main')}
+//               className="text-7xl text-[#02396B] cursor-pointer hover:opacity-30  font-  montserrat"
+//               onClick={() => setCurrentWindow('MainMenu')}
 //             >
 //               ←
 //             </button>
@@ -557,41 +484,40 @@
 //   );
 // };
 
-// function Instructions() {
-//   // function Instructions({ closeModal }) {
-//   const [currentWindow, setCurrentWindow] = useState('Main');
-//   // const [gameOver, setGameOver] = useState(false);
+  function Instructions({ closeModal }) {
+  const [currentWindow, setCurrentWindow] = useState('MainMenu');
+  const [gameOver, setGameOver] = useState(false);
 
-//   // const steps = ['MainMenu', 'HowToPlay', 'Hints', 'Settings'];
-//   // const currentStep = steps.indexOf(currentWindow) + 1;
+  // const steps = ['MainMenu', 'HowToPlay', 'Hints', 'Settings'];
+  // const currentStep = steps.indexOf(currentWindow) + 1;
 
-//   const windows = {
-//     Main: <Main setCurrentWindow={setCurrentWindow} currentStep={0} />,
-//     HowToPlay: (
-//       <TypeOfProduct setCurrentWindow={setCurrentWindow} currentStep={1} />
-//     ),
-//     HowToPlay2: (
-//       <HowToPlay2 setCurrentWindow={setCurrentWindow} currentStep={2} />
-//     ),
-//     HowToPlay3: (
-//       <HowToPlay3 setCurrentWindow={setCurrentWindow} currentStep={3} />
-//     ),
-//     HowToPlay4: (
-//       <HowToPlay4 setCurrentWindow={setCurrentWindow} currentStep={4} />
-//     ),
-//     Hints: <Hints setCurrentWindow={setCurrentWindow} currentStep={5} />,
-//     // Play: <WordTurtle setCurrentWindow={setCurrentWindow} />,
-//     About21E: <About21E setCurrentWindow={setCurrentWindow} />,
-//   };
+  const windows = {
+    MainMenu: <MainMenu setCurrentWindow={setCurrentWindow} currentStep={0} />,
+    // HowToPlay: (
+    //   <HowToPlay setCurrentWindow={setCurrentWindow} currentStep={1} />
+    // ),
+    // HowToPlay2: (
+    //   <HowToPlay2 setCurrentWindow={setCurrentWindow} currentStep={2} />
+    // ),
+    // HowToPlay3: (
+    //   <HowToPlay3 setCurrentWindow={setCurrentWindow} currentStep={3} />
+    // ),
+    // HowToPlay4: (
+    //   <HowToPlay4 setCurrentWindow={setCurrentWindow} currentStep={4} />
+    // ),
+    // Hints: <Hints setCurrentWindow={setCurrentWindow} currentStep={5} />,
+    // Play: <WordTurtle setCurrentWindow={setCurrentWindow} />,
+    // About21E: <About21E setCurrentWindow={setCurrentWindow} />,
+  };
 
-//   return (
-//     <div className="bg-none border-2 border-black rounded-xl pb-8 px-8">
-//       {/* <p className="mt-5 text-4xl cursor-pointer" onClick={() => closeModal()}>
-//         ❌
-//       </p> */}
-//       {windows[currentWindow]}
-//     </div>
-//   );
-// }
+  return (
+    <div className="bg-none border-2 border-black rounded-xl pb-8 px-8  font-  montserrat">
+      {/* <p className="mt-5 text-4xl cursor-pointer" onClick={() => closeModal()}>
+        ❌
+      </p> */}
+      {windows[currentWindow]}
+    </div>
+  );
+}
 
-// export default Instructions;
+export default Instructions;

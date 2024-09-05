@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 const DonateFormComponent = () => {
     const [firstName, setFirstName] = useState("");
@@ -11,7 +11,7 @@ const DonateFormComponent = () => {
     const [product, setProduct] = useState("");
     const [description, setDescription] = useState("");
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault(); // This prevents the default form submission

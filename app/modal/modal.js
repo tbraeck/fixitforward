@@ -1,9 +1,9 @@
 'use client'
 
 import { useState } from 'react';
-import Instructions from '../instructions/page';
+import Donation from '../components/Donation';
 
-function InstructionsModal() {
+function Modal() {
   const [showModal, setShowModal] = useState(false);
 
   const handleClick = () => {
@@ -22,7 +22,7 @@ function InstructionsModal() {
       {showModal && (
         <div className="modal-container">
           <div className="modal">
-            <Instructions closeModal={() => setShowModal(false)} />
+            <Donation closeModal={() => setShowModal(false)} />
           </div>
         </div>
       )}
@@ -30,4 +30,4 @@ function InstructionsModal() {
   );
 }
 
-export default InstructionsModal;
+export default Modal;
