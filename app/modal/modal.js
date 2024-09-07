@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react';
-import Donation from '../components/Donation';
+import Donation from '../pages/Donation';
 
 function Modal() {
   const [showModal, setShowModal] = useState(false);

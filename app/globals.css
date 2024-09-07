@@ -163,3 +163,11 @@ textarea {
   background-color: #e8472a;
 }
 
+.backBtn{
+  background-color: none;
+  width: 175px;
+  height: 30px;
+  padding: 0;
+  color: #fff;
+  margin-bottom: 10px;
+}
