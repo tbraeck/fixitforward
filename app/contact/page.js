@@ -1,6 +1,6 @@
 'use client'
 import { useState } from "react";
-import BackButton from "../pages/BackButton";
+import BackButton from "../pages/back";
 
 const ContactComponent = () => {
 
@@ -92,6 +92,7 @@ const ContactComponent = () => {
             id="message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
+            className="border-2"
           />
     
           <button type="submit">Send</button>
