@@ -1,31 +1,35 @@
 'use client'
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 
-const Transport = () => {
-    const [transport, setTransport] = useState('')
+
+const Success = ({details}) => {
+    // const [shop, setShop] = useState('')
     const router = useRouter(); 
 
 const handleSubmit = (e) => {
     e.preventDefault(); 
 
     console.log('you are going forward');
-    router.push('/choose-shop'); 
+    router.push('/'); 
 }
 
 const handleBack = (e) => { 
     e.preventDefault(); 
 
     console.log('you are going back');
-    router.push('/donate-form');
+    router.push('/choose-shop');
 }
 
   return (
     <div className='form-page'>
     <div className="App">
-     <fieldset>
-      <form>
+        <h1>Congratulations! </h1>
+        <h2>You are all set to make your donation.</h2>
+        <p>Here&apos;s the details of your donation for your records:</p>
+        <p>{details}</p>
+     {/* <fieldset> */}
+      {/* <form>
       <label htmlFor="transport">How To Transport Your Donation*</label>
         <select 
             id="transport" 
@@ -37,7 +41,7 @@ const handleBack = (e) => {
                 <option value="Drop-Off" >Drop-Off</option>
                 <option value="Pick Up">Pick Up</option>
                 <option value="Delivery Service">Delivery Service</option>
-            </select>
+            </select> */}
             <button
                 className='reset-submit-button'
                 type="submit"
@@ -50,11 +54,11 @@ const handleBack = (e) => {
             onClick={handleBack}>
                 BACK
             </button>
-      </form>
-      </fieldset>
+      {/* </form>
+      </fieldset> */}
     </div>
     </div>
   )
 }
 
-export default Transport
+export default Success

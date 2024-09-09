@@ -3,15 +3,16 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-const Transport = () => {
-    const [transport, setTransport] = useState('')
+
+const ChooseShop = () => {
+    const [shop, setShop] = useState('')
     const router = useRouter(); 
 
 const handleSubmit = (e) => {
     e.preventDefault(); 
 
     console.log('you are going forward');
-    router.push('/choose-shop'); 
+    router.push('/success'); 
 }
 
 const handleBack = (e) => { 
@@ -26,13 +27,13 @@ const handleBack = (e) => {
     <div className="App">
      <fieldset>
       <form>
-      <label htmlFor="transport">How To Transport Your Donation*</label>
+      <label htmlFor="shop">Choose a Shop Near You*</label>
         <select 
-            id="transport" 
-            name="transport" 
-            value={transport}
+            id="shop" 
+            name="shop" 
+            value={shop}
             required
-            onChange={(e) => setTransport(e.target.value)}
+            onChange={(e) => setShop(e.target.value)}
         >
                 <option value="Drop-Off" >Drop-Off</option>
                 <option value="Pick Up">Pick Up</option>
@@ -57,4 +58,4 @@ const handleBack = (e) => {
   )
 }
 
-export default Transport
+export default ChooseShop

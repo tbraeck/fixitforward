@@ -40,12 +40,10 @@ const DonateFormComponent = () => {
     return (
         <div className='form-page'>
             <div className='flex  flex-col justify-left items-left'>
-            <h1>FIX IT FORWARD</h1>
-            <h2>☞ Donations Form ☜</h2>
+                <h1>FIX IT FORWARD</h1>
+                <h2>☞ Donations Form ☜</h2>
             </div>
-             
             <div className="App">
-                
                 <fieldset>
                     <form className='fixitform'>
                         <label htmlFor="firstname">First Name*</label>
