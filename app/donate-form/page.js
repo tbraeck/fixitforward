@@ -1,5 +1,6 @@
 'use client'
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
 
@@ -12,19 +13,17 @@ const DonateFormComponent = () => {
     const [brand, setBrand] = useState("");
     const [howBroken, setHowBroken] = useState("");
 
-    // const navigate = useNavigate();
+  
+    const router = useRouter(); // Initialize useRouter
 
     const handleSubmit = (e) => {
-        e.preventDefault(); // This prevents the default form submission
-        console.log(firstName, lastName, email, phoneNumber, product, brand, howBroken);
+        e.preventDefault(); // Prevent default form submission
 
         // Perform any additional form processing here
-return(
-    <Link>
-    
-    </Link>
-)
-        // navigate("/"); 
+        console.log(firstName, lastName, email, phoneNumber, product, brand, howBroken);
+
+        // Redirect to another page after form submission
+        router.push('/transport'); // Redirect to the desired page, e.g., "/thank-you"
     };
 
     const handleReset = () => {
@@ -171,7 +170,7 @@ return(
                             value="Submit"
                             onClick={handleSubmit}
                         >
-                            SUBMIT
+                            NEXT
                         </button>
                     </form>
                 </fieldset>
