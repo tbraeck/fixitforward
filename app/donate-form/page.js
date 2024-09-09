@@ -20,7 +20,7 @@ const DonateFormComponent = () => {
 
         // Perform any additional form processing here
 
-        navigate("/"); // This navigates to the next form page
+        navigate("/"); 
     };
 
     const handleReset = () => {
