@@ -9,7 +9,7 @@ const DonateFormComponent = () => {
     const [email, setEmail] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
     const [product, setProduct] = useState("");
-    const [description, setDescription] = useState("");
+    const [brand, setBrand] = useState("");
 
     // const navigate = useNavigate();
 
@@ -28,7 +28,7 @@ const DonateFormComponent = () => {
         setEmail('');
         setPhoneNumber('');
         setProduct('');
-        setDescription('');
+        setBrand('');
     };
 
     return (
@@ -85,17 +85,44 @@ const DonateFormComponent = () => {
                             placeholder="Enter phone number"
                             required
                         />
-                        <label htmlFor="product">Product Name*</label>
-                        <input
-                            type="text"
-                            name="product"
-                            id="product"
-                            value={product}
-                            onChange={(e) => setProduct(e.target.value)}
-                            placeholder="Enter product name"
+                            <label htmlFor="product">Product*</label>
+                            <select 
+                            id="product" 
+                            name="product" 
                             required
-                        />
-                        <label htmlFor="description">Product Description*</label>
+                            onChange={(e) => setProduct(e.target.value)}
+                            >
+                            <option value="Television">Television</option>
+                            <option value="Stereo">Stereo</option>
+                            <option value="Microwave" selected>Microwave</option>
+                            <option value="Blender">Blender</option>
+                            <option value="Rice Cooker">Rice Cooker</option>
+                            <option value="InstaPot">InstaPot</option>
+                            <option value="Coffee Maker">Coffee Maker</option>
+                            <option value="Mixer">Mixer</option>
+                            <option value="Toaster">InstaPot</option>
+                            <option value="Crock Pot">Crock Pot</option>
+                            </select>
+
+                            <label htmlFor="brand">Brand*</label>
+                            <select 
+                            id="brand" 
+                            name="brand" 
+                            required
+                            onChange={(e) => setBrand(e.target.value)}
+                            >
+                            <option value="GE">GE</option>
+                            <option value="Whirlpool">Whirlpool</option>
+                            <option value="Microwave" selected>Microwave</option>
+                            <option value="Blender">Blender</option>
+                            <option value="Rice Cooker">Rice Cooker</option>
+                            <option value="InstaPot">InstaPot</option>
+                            <option value="Coffee Maker">Coffee Maker</option>
+                            <option value="Mixer">Mixer</option>
+                            <option value="Toaster">InstaPot</option>
+                            <option value="Crock Pot">Crock Pot</option>
+                            </select>
+                        {/* <label htmlFor="description">Product Description*</label>
                         <input
                             type="text"
                             name="description"
@@ -104,7 +131,7 @@ const DonateFormComponent = () => {
                             onChange={(e) => setDescription(e.target.value)}
                             placeholder="Enter product description / what's broken?"
                             required
-                        />
+                        /> */}
                         <button
                             className='reset-submit-button'
                             type="reset"

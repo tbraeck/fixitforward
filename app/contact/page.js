@@ -1,6 +1,6 @@
 'use client'
+import Link from "next/link";
 import { useState } from "react";
-import BackButton from "../pages/back";
 
 const ContactComponent = () => {
 
@@ -48,6 +48,13 @@ const ContactComponent = () => {
     
       return (
         <div>
+             <div>
+                <Link href="/">
+                    <button className='back-button'>
+                        BACK
+                    </button>
+                </Link>
+            </div>
         <form className="App" onSubmit={submit}>
             <h1>CONTACT US</h1>
             <label htmlFor="firstName">First Name</label>
@@ -97,7 +104,6 @@ const ContactComponent = () => {
     
           <button type="submit">Send</button>
         </form>
-        <BackButton/>
         </div>
     
   )

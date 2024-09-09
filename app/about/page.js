@@ -1,7 +1,15 @@
+import Link from "next/link";
 
 const AboutComponent = () => {
   return (
     <div className="flex flex-col items-center justify-center h-2/3">
+       <div>
+                <Link href="/">
+                    <button className='back-button'>
+                        BACK
+                    </button>
+                </Link>
+            </div>
     <div className="flex flex-col w-2/4 items-center justify-center border-2 border-black ">
       <h1 className="text-black mb-4">
         ABOUT FixItForward
