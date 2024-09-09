@@ -10,6 +10,7 @@ const DonateFormComponent = () => {
     const [phoneNumber, setPhoneNumber] = useState("");
     const [product, setProduct] = useState("");
     const [brand, setBrand] = useState("");
+    const [howBroken, setHowBroken] = useState("");
 
     // const navigate = useNavigate();
 
@@ -19,7 +20,7 @@ const DonateFormComponent = () => {
 
         // Perform any additional form processing here
 
-        navigate("/product"); // This navigates to the next form page
+        navigate("/"); // This navigates to the next form page
     };
 
     const handleReset = () => {
@@ -29,20 +30,18 @@ const DonateFormComponent = () => {
         setPhoneNumber('');
         setProduct('');
         setBrand('');
+        setHowBroken('');
     };
 
     return (
         <div className='form-page'>
-            <div>
-                <Link href="/">
-                    <button className='back-button'>
-                        BACK
-                    </button>
-                </Link>
+            <div className='flex  flex-col justify-left items-left'>
+            <h1>FIX IT FORWARD</h1>
+            <h2>☞ Donations Form ☜</h2>
             </div>
+             
             <div className="App">
-                <h1>FIX IT FORWARD</h1>
-                <h2>☞ Donations ☜</h2>
+                
                 <fieldset>
                     <form className='fixitform'>
                         <label htmlFor="firstname">First Name*</label>
@@ -89,12 +88,14 @@ const DonateFormComponent = () => {
                             <select 
                             id="product" 
                             name="product" 
+                            value={product}
                             required
                             onChange={(e) => setProduct(e.target.value)}
                             >
+                            <option value="unknown" selected>unknown</option>
                             <option value="Television">Television</option>
                             <option value="Stereo">Stereo</option>
-                            <option value="Microwave" selected>Microwave</option>
+                            <option value="Microwave" >Microwave</option>
                             <option value="Blender">Blender</option>
                             <option value="Rice Cooker">Rice Cooker</option>
                             <option value="InstaPot">InstaPot</option>
@@ -108,19 +109,36 @@ const DonateFormComponent = () => {
                             <select 
                             id="brand" 
                             name="brand" 
+                            value={brand}
                             required
                             onChange={(e) => setBrand(e.target.value)}
                             >
+                            <option value="unknown" selected>unknown</option>
                             <option value="GE">GE</option>
                             <option value="Whirlpool">Whirlpool</option>
-                            <option value="Microwave" selected>Microwave</option>
-                            <option value="Blender">Blender</option>
-                            <option value="Rice Cooker">Rice Cooker</option>
-                            <option value="InstaPot">InstaPot</option>
-                            <option value="Coffee Maker">Coffee Maker</option>
-                            <option value="Mixer">Mixer</option>
-                            <option value="Toaster">InstaPot</option>
-                            <option value="Crock Pot">Crock Pot</option>
+                            <option value="Samsung" >Samsung</option>
+                            <option value="KitchenAid">KitchenAid</option>
+                            <option value="Frigidaire">Frigidaire</option>
+                            <option value="Maytag">Maytag</option>
+                            <option value="Kenmore">Kenmore</option>
+                            <option value="LG">LG</option>
+                            <option value="Haier">Haier</option>
+                            <option value="Panasonic">Panasonic</option>
+                            </select>
+
+                            <label htmlFor="howBroken">How Broken Is It?*</label>
+                            <select 
+                            id="howBroken" 
+                            name="howBroken" 
+                            value={howBroken}
+                            required
+                            onChange={(e) => setHowBroken(e.target.value)}
+                            >
+                            <option value="unknown" selected>unknown</option>
+                            <option value="aLittle">A Little</option>
+                            <option value="somewhat">Somewhat</option>
+                            <option value="prettyBad">It&apos;s Pretty Bad</option>
+                            <option value="aLittle">Wow, this thing is Super Broken!</option>
                             </select>
                         {/* <label htmlFor="description">Product Description*</label>
                         <input
@@ -151,6 +169,11 @@ const DonateFormComponent = () => {
                     </form>
                 </fieldset>
             </div>
+            <Link href="/">
+                    <button className='back-button'>
+                        BACK
+                    </button>
+                </Link>
         </div>
     );
 };
