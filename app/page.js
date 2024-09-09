@@ -10,7 +10,7 @@ export default function Home() {
         <div className="">
         <div className="flex justify-center items-center bg-blue">
           <Link href='/donate-form'>
-            <button className="flex justify-center items-center w-72 h-32 text-xl">
+            <button className="flex justify-center items-center w-72 h-32 text-3xl">
              {/* <InstructionsModal>I Want To Donate Something</InstructionsModal>  */}
               I Want To Donate Something
             </button>
@@ -18,7 +18,7 @@ export default function Home() {
         </div>
         <div className="flex justify-center items-center bg-blue">
           <Link href='/repair-form'>
-            <button className="flex justify-center items-center w-72 h-32  text-xl">
+            <button className="flex justify-center items-center w-72 h-32  text-3xl">
               I Want to Repair Things
             </button>
           </Link>

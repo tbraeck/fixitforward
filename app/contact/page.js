@@ -101,7 +101,6 @@ const ContactComponent = () => {
             onChange={(e) => setMessage(e.target.value)}
             className="border-2"
           />
-    
           <button type="submit">Send</button>
         </form>
         </div>

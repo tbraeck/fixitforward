@@ -26,11 +26,13 @@ const handleReset = () => {
  setWhatTypeOfRepair('');
 }
 
-
   return (
     <div className='form-page'>
-        <h1>FIX IT FORWARD</h1>
-        <h2>☞ Repair | Reseller Form ☜</h2>
+        <div className='mb-4 mt-4'>
+            <h1>FIX IT FORWARD</h1>
+            <h2>☞ Repair | Reseller Form ☜</h2>
+        </div>
+       
     <div className="App">
     <fieldset>
         <form action="#" method="get" className='fixitform'>
