@@ -16,11 +16,11 @@ const DonateFormComponent = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault(); // This prevents the default form submission
-        console.log(firstName, lastName, email, phoneNumber, product, description);
+        console.log(firstName, lastName, email, phoneNumber, product, brand, howBroken);
 
         // Perform any additional form processing here
 
-        navigate("/"); 
+        // navigate("/"); 
     };
 
     const handleReset = () => {
@@ -31,6 +31,7 @@ const DonateFormComponent = () => {
         setProduct('');
         setBrand('');
         setHowBroken('');
+        console.log(firstName, lastName, email, phoneNumber, product, brand, howBroken  );
     };
 
     return (
@@ -92,7 +93,7 @@ const DonateFormComponent = () => {
                             required
                             onChange={(e) => setProduct(e.target.value)}
                             >
-                            <option value="unknown" selected>unknown</option>
+                            <option value="unknown" >unknown</option>
                             <option value="Television">Television</option>
                             <option value="Stereo">Stereo</option>
                             <option value="Microwave" >Microwave</option>
@@ -112,8 +113,9 @@ const DonateFormComponent = () => {
                             value={brand}
                             required
                             onChange={(e) => setBrand(e.target.value)}
+
                             >
-                            <option value="unknown" selected>unknown</option>
+                            <option value="unknown" >unknown</option>
                             <option value="GE">GE</option>
                             <option value="Whirlpool">Whirlpool</option>
                             <option value="Samsung" >Samsung</option>
@@ -133,8 +135,9 @@ const DonateFormComponent = () => {
                             value={howBroken}
                             required
                             onChange={(e) => setHowBroken(e.target.value)}
+
                             >
-                            <option value="unknown" selected>unknown</option>
+                            <option value="unknown" >unknown</option>
                             <option value="aLittle">A Little</option>
                             <option value="somewhat">Somewhat</option>
                             <option value="prettyBad">It&apos;s Pretty Bad</option>

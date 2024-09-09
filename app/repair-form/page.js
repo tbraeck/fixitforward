@@ -29,18 +29,9 @@ const handleReset = () => {
 
   return (
     <div className='form-page'>
-        <div >
-        <Link href="/">
-      <button className='back-button'>
-        BACK
-      </button>
-        </Link>
-        </div>
-   
+        <h1>FIX IT FORWARD</h1>
+        <h2>☞ Repair | Reseller Form ☜</h2>
     <div className="App">
-       
-    <h1>FIX IT FORWARD</h1>
-    <h2>☞ Repairs ☜</h2>
     <fieldset>
         <form action="#" method="get" className='fixitform'>
             <label htmlFor="firstName">
@@ -136,6 +127,13 @@ const handleReset = () => {
         </form>
     </fieldset>
 </div>
+<div >
+        <Link href="/">
+      <button className='back-button'>
+        BACK
+      </button>
+        </Link>
+        </div>
 </div>
   )
 }

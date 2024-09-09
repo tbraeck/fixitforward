@@ -8,11 +8,9 @@ export default function Home() {
       <HeaderComponent />
       <div className="main-content flex-grow flex justify-center items-center">
         <div className="">
-
-       
         <div className="flex justify-center items-center bg-blue">
           <Link href='/donate-form'>
-            <button className="flex justify-center items-center w-56 text-xl">
+            <button className="flex justify-center items-center w-72 h-32 text-xl">
              {/* <InstructionsModal>I Want To Donate Something</InstructionsModal>  */}
               I Want To Donate Something
             </button>
@@ -20,7 +18,7 @@ export default function Home() {
         </div>
         <div className="flex justify-center items-center bg-blue">
           <Link href='/repair-form'>
-            <button className="flex justify-center items-center w-56 text-xl">
+            <button className="flex justify-center items-center w-72 h-32  text-xl">
               I Want to Repair Things
             </button>
           </Link>
