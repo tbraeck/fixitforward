@@ -5,10 +5,17 @@ import { useEffect, useState } from "react";
 
 // Simulate fetching data from the data.json file
 const fetchLocations = async () => {
-  const res = await fetch('/data.json'); // Replace with your actual JSON file path
-  const data = await res.json();
-  return data;
-}
+    const res = await fetch('/data.json');
+    
+    if (!res.ok) {
+      throw new Error('Failed to fetch data');
+    }
+    
+    const data = await res.json();
+    console.log(data);
+    return data;
+  }
+  
 
 const PickUpPage = ({ zipCode }) => {
   const router = useRouter();
@@ -20,14 +27,21 @@ const PickUpPage = ({ zipCode }) => {
   useEffect(() => {
     const getFilteredLocations = async () => {
       const data = await fetchLocations();
-console.log(data);
-      // Filter locations based on the client's zip code (assuming nearby zip codes logic)
-      const nearbyLocations = data.filter(location => 
-        location.zipCode.startsWith(zipCode.slice(0, 3)) // Simplistic filtering by first 3 digits of zip
-      );
+      console.log('Fetched data:', data); // Check if data is being fetched correctly
 
-      // Select top 5
-      setFilteredLocations(nearbyLocations.slice(0, 5));
+      if (data && zipCode) {
+        // Filter locations based on the client's zip code (using first 3 digits)
+        const nearbyLocations = data.filter(location => 
+          location.zipCode.startsWith(zipCode.slice(0, 3))
+        );
+
+        console.log('Filtered nearby locations:', nearbyLocations);
+
+        // Select top 5 locations
+        setFilteredLocations(nearbyLocations.slice(0, 5));
+      } else {
+        console.error('Invalid data or zipCode:', { data, zipCode });
+      }
     };
 
     getFilteredLocations();
@@ -54,7 +68,7 @@ console.log(data);
         {filteredLocations.length > 0 ? (
           <fieldset>
             {filteredLocations.map((location, index) => (
-              <div key={location.zipCode} className="location-container">
+              <div key={location.zip_code} className="location-container">
                 <input
                   type="radio"
                   id={location.zipCode}
