@@ -19,7 +19,7 @@
 body {
   color: rgb(var(--foreground-rgb));
   /* background: #ffffff; */
-  background-image: url('/FFF_b_w.png');
+  background-image: url('/FF-bg.png');
   background-size: 100vh;
   background-repeat: no-repeat;
   max-height: 100vh;

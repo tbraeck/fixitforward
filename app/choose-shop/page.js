@@ -3,10 +3,14 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-
 const ChooseShop = () => {
-    const [shop, setShop] = useState('')
+    const [shop, setShop] = useState('');
+
+// const data = './data.json';
+// console.log(data, 'this is the data')
     const router = useRouter(); 
+// const data = data.json();
+// console.log(data, "here's the data")
 
 const handleSubmit = (e) => {
     e.preventDefault(); 
@@ -21,6 +25,12 @@ const handleBack = (e) => {
     console.log('you are going back');
     router.push('/donate-form');
 }
+
+const handleFilterRepairshops = () => {
+
+
+}
+
 
   return (
     <div className='form-page'>
@@ -52,9 +62,7 @@ const handleBack = (e) => {
                 >
                     NEXT
                 </button>
-               
             </div>
-            
       </form>
       </fieldset>
     </div>

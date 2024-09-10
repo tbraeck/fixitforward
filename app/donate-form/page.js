@@ -86,39 +86,66 @@ const DonateFormComponent = () => {
                             required
                             className="form-input"
                         />
-                        <label htmlFor="product" className="form-label">Product*</label>
-                        <select
-                            id="product"
-                            name="product"
+                        
+                       
+                        <label htmlFor="product">Product*</label>
+                            <select 
+                            id="product" 
+                            name="product" 
                             value={product}
                             required
                             onChange={(e) => setProduct(e.target.value)}
-                            className="form-input"
-                        >
-                            {/* Add options here */}
-                        </select>
-                        <label htmlFor="brand" className="form-label">Brand*</label>
-                        <select
-                            id="brand"
-                            name="brand"
+                            >
+                            <option value="unknown" >unknown</option>
+                            <option value="Television">Television</option>
+                            <option value="Stereo">Stereo</option>
+                            <option value="Microwave" >Microwave</option>
+                            <option value="Blender">Blender</option>
+                            <option value="Rice Cooker">Rice Cooker</option>
+                            <option value="InstaPot">InstaPot</option>
+                            <option value="Coffee Maker">Coffee Maker</option>
+                            <option value="Mixer">Mixer</option>
+                            <option value="Toaster">InstaPot</option>
+                            <option value="Crock Pot">Crock Pot</option>
+                            </select>
+
+                            <label htmlFor="brand">Brand*</label>
+                            <select 
+                            id="brand" 
+                            name="brand" 
                             value={brand}
                             required
                             onChange={(e) => setBrand(e.target.value)}
-                            className="form-input"
-                        >
-                            {/* Add options here */}
-                        </select>
-                        <label htmlFor="howBroken" className="form-label">How Broken Is It?*</label>
-                        <select
-                            id="howBroken"
-                            name="howBroken"
+
+                            >
+                            <option value="unknown" >unknown</option>
+                            <option value="GE">GE</option>
+                            <option value="Whirlpool">Whirlpool</option>
+                            <option value="Samsung" >Samsung</option>
+                            <option value="KitchenAid">KitchenAid</option>
+                            <option value="Frigidaire">Frigidaire</option>
+                            <option value="Maytag">Maytag</option>
+                            <option value="Kenmore">Kenmore</option>
+                            <option value="LG">LG</option>
+                            <option value="Haier">Haier</option>
+                            <option value="Panasonic">Panasonic</option>
+                            </select>
+
+                            <label htmlFor="howBroken">How Broken Is It?*</label>
+                            <select 
+                            id="howBroken" 
+                            name="howBroken" 
                             value={howBroken}
                             required
                             onChange={(e) => setHowBroken(e.target.value)}
-                            className="form-input"
-                        >
-                            {/* Add options here */}
-                        </select>
+
+                            >
+                            <option value="unknown" >unknown</option>
+                            <option value="aLittle">A Little</option>
+                            <option value="somewhat">Somewhat</option>
+                            <option value="prettyBad">It&apos;s Pretty Bad</option>
+                            <option value="aLittle">Wow, this thing is Super Broken!</option>
+                            </select>
                         <div className="button-container">
                             <button
                                 className='reset-submit-button'
