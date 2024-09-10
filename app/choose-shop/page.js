@@ -39,18 +39,22 @@ const handleBack = (e) => {
                 <option value="Pick Up">Pick Up</option>
                 <option value="Delivery Service">Delivery Service</option>
             </select>
-            <button
-                className='reset-submit-button'
-                type="submit"
-                value="Submit"
-                onClick={handleSubmit}
-            >
-                 NEXT
-            </button>
-            <button className='back-button'
-            onClick={handleBack}>
-                BACK
-            </button>
+            <div className="flex flex-row">
+                <button className='back-button'
+                    onClick={handleBack}>
+                        BACK
+                </button>
+                <button
+                    className='reset-submit-button'
+                    type="submit"
+                    value="Submit"
+                    onClick={handleSubmit}
+                >
+                    NEXT
+                </button>
+               
+            </div>
+            
       </form>
       </fieldset>
     </div>

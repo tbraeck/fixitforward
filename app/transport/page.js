@@ -23,7 +23,7 @@ const handleBack = (e) => {
 
   return (
     <div className='form-page'>
-    <div className="App">
+    <div className="form-container">
      <fieldset>
       <form>
       <label htmlFor="transport">How To Transport Your Donation*</label>
@@ -38,6 +38,11 @@ const handleBack = (e) => {
                 <option value="Pick Up">Pick Up</option>
                 <option value="Delivery Service">Delivery Service</option>
             </select>
+            <div className="flex flex-row">
+            <button className='back-button'
+            onClick={handleBack}>
+                BACK
+            </button>
             <button
                 className='reset-submit-button'
                 type="submit"
@@ -46,10 +51,11 @@ const handleBack = (e) => {
             >
                  NEXT
             </button>
-            <button className='back-button'
-            onClick={handleBack}>
-                BACK
-            </button>
+            
+            </div>
+           
+           
+           
       </form>
       </fieldset>
     </div>
