@@ -13,6 +13,8 @@ const fetchLocations = async () => {
 
 const DropOffPage = ({ zipCode }) => {
   const router = useRouter();
+  const[time, setTime] = useState('');
+  const[date, setDate] = useState('');
   const [locations, setLocations] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [filteredLocations, setFilteredLocations] = useState([]);
@@ -36,7 +38,7 @@ const DropOffPage = ({ zipCode }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(firstName, lastName, email, phoneNumber, product, brand, howBroken);
+    console.log(locations, "locations are here");
     router.push('/success');
 };
 
@@ -44,20 +46,44 @@ const DropOffPage = ({ zipCode }) => {
     router.push('/transport');
   };
 
-//   const handleLocationChange = (e) => {
-//     setSelectedLocation(e.target.value);
-//   };
+  const handleLocationChange = (e) => {
+    setSelectedLocation(e.target.value);
+  };
 
+  const handleDateChange= (e) => {
+    e.preventDefault();
+
+    setDate(e.target.value);
+  }
+
+  const handleTimeChange= (e) => {
+    e.preventDefault();
+
+    setTime(e.target.value);
+  }
   return (
     <div className="form-page">
       <div className="form-container">
-      <label >Drop Off Day
-        <input type="date" name="drop_off"  min="2024-09-11" max="2035-01-01"/>
+      <label htmlFor="date">Drop Off Day
+        <input type="date" 
+          name="date"  
+          min="2024-09-11" 
+          max="2035-01-01"
+          value={date}
+          onChange={handleDateChange} 
+        />
         </label>
-        <label className="input"  htmlFor="drop_off">Choose a Time for Pick Up</label>
-        <input type="time" id="drop_off" value="09:00:00" step="00:15" name="drop_off" min="09:00" max="18:00" required />
+        <label className="input"  htmlFor="time">Drop Off Time</label>
+        <input type="time" id="delivery" 
+          onChange={handleTimeChange} 
+          step="00:15" 
+          name="delivery" 
+          min="09:00" 
+          max="18:00" 
+          value={time}
+          required />
         <h2>Select a Drop Off Location</h2>
-        {/* {filteredLocations.length > 0 ? (
+        {filteredLocations.length > 0 ? (
           <fieldset>
             {filteredLocations.map((location, index) => (
               <div key={location.zipCode} className="location-container">
@@ -75,10 +101,10 @@ const DropOffPage = ({ zipCode }) => {
                 </label>
               </div>
             ))}
-          </fieldset> */}
-        {/* ) : ( */}
+          </fieldset> 
+        ) : (
           <p>Loading nearby locations...</p>
-        {/* )} */}
+        )}
         
         <div className="flex flex-row">
         <button className='back-button' onClick={handleBack}>

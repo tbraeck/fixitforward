@@ -19,6 +19,8 @@ const fetchLocations = async () => {
 
 const DeliveryPage = ({ zipCode }) => {
   const router = useRouter();
+  const[time, setTime] = useState('');
+  const[date, setDate] = useState('');
   const [locations, setLocations] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [filteredLocations, setFilteredLocations] = useState([]);
@@ -62,15 +64,39 @@ const DeliveryPage = ({ zipCode }) => {
     setSelectedLocation(e.target.value);
   };
 
+  const handleDateChange= (e) => {
+    e.preventDefault();
+
+    setDate(e.target.value);
+  }
+
+  const handleTimeChange= (e) => {
+    e.preventDefault();
+
+    setTime(e.target.value);
+  }
   return (
     <div className="form-page">
       <div className="form-container">
       <h2>Delivery</h2>
-        <label >Delivery Day
-        <input type="date" name="delivery"  min="2024-09-11" max="2035-01-01"/>
+        <label htmlFor="date">Delivery Day
+        <input type="date" 
+          name="date"  
+          min="2024-09-11" 
+          max="2035-01-01"
+          value={date}
+          onChange={handleDateChange} 
+        />
         </label>
-        <label className="input"  for="delivery">Choose a Time for Pick Up</label>
-        <input type="time" id="delivery" value="09:00:00" step="00:15" name="delivery" min="09:00" max="18:00" required />
+        <label className="input"  htmlFor="time">Delivery Time</label>
+        <input type="time" id="delivery" 
+          onChange={handleTimeChange} 
+          step="00:15" 
+          name="delivery" 
+          min="09:00" 
+          max="18:00" 
+          value={time}
+          required />
 
         
             {/* <small>Office hours are 9am to 6pm</small> */}

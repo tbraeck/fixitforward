@@ -13,13 +13,13 @@ const Transport = () => {
         // Conditional routing based on the selected transport option
         if (transport === 'Drop-Off') {
             console.log('Redirecting to Drop-Off page');
-            router.push('/drop-off-page'); // Replace with your actual route
+            router.push('/drop-off-page'); 
         } else if (transport === 'Pick Up') {
             console.log('Redirecting to Pick Up page');
-            router.push('/pick-up-page'); // Replace with your actual route
+            router.push('/pick-up-page'); 
         } else if (transport === 'Delivery Service') {
             console.log('Redirecting to Delivery Service page');
-            router.push('/delivery-service-page'); // Replace with your actual route
+            router.push('/delivery-service-page'); 
         } else {
             console.log('No transport method selected');
         }
