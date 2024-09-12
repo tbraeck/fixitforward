@@ -25,9 +25,17 @@ body {
   max-height: 100vh;
   display: flex;
   flex-direction: column;
+  display: flex;
   margin: 0; /* Remove default body margin */
 }
 
+.start-page-buttons{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+
+}
 .header {
   /* background-color: #cdcdd6; */
   padding: 10px 20px;
@@ -59,7 +67,7 @@ body {
   width: 450px;
   flex-direction: column;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   padding-right: 50px
  
@@ -203,10 +211,12 @@ textarea {
   margin-left: auto; /* Pushes the form to the right */
   width: 50%; /* Adjust the width of the form */
   border-radius: 15px;
+  background-color: white;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   padding: 10px 20px;
   transition: transform 0.2s;
   width: 500px;
   margin-right: 75px;
+  justify-content: center;
   align-items: center;
 }

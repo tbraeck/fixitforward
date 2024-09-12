@@ -47,11 +47,12 @@ const PickUpPage = ({ zipCode }) => {
     getFilteredLocations();
   }, [zipCode]);
 
-  const handleNext = () => {
-    console.log('Next button clicked');
-    console.log('Selected location:', selectedLocation);
-    // Proceed with the next logic
-  };
+ 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log(firstName, lastName, email, phoneNumber, product, brand, howBroken);
+    router.push('/success');
+};
 
   const handleBack = () => {
     router.push('/transport');
@@ -64,12 +65,19 @@ const PickUpPage = ({ zipCode }) => {
   return (
     <div className="form-page">
       <div className="form-container">
-        <h2>Select a Drop-Off Location</h2>
-        {filteredLocations.length > 0 ? (
+      <h2>Pick Up</h2>
+        <label >Pick Up Day
+        <input type="date" name="pick_up"  min="2024-09-11" max="2035-01-01"/>
+        </label>
+        <label className="input"  for="pick_up">Choose a Time for Pick Up</label>
+        <input type="time" id="pick_up" value="09:00:00" step="00:15" name="pick_up" min="09:00" max="18:00" required />
+
+        
+            {/* <small>Office hours are 9am to 6pm</small> */}
           <fieldset>
-            {filteredLocations.map((location, index) => (
-              <div key={location.zip_code} className="location-container">
-                <input
+            
+              {/* <div key={location.zip_code} className="location-container"> */}
+                {/* <input
                   type="radio"
                   id={location.zipCode}
                   name="location"
@@ -77,16 +85,15 @@ const PickUpPage = ({ zipCode }) => {
                   onChange={handleLocationChange}
                 />
                 <label htmlFor={location.zipCode}>
-                  <strong>{index + 1}. {location.name}</strong><br />
+                  <strong>{id + 1}. {location.name}</strong><br />
                   {location.zipCode}<br />
                   {location.contactInfo}
-                </label>
-              </div>
-            ))}
+                </label> */}
+              {/* </div> */}
+            
           </fieldset>
-        ) : (
-          <p>Loading nearby locations...</p>
-        )}
+      
+       
         
         <div className="flex flex-row">
           <button className='back-button' onClick={handleBack}>
@@ -95,8 +102,8 @@ const PickUpPage = ({ zipCode }) => {
           <button
             className='reset-submit-button'
             type="button"
-            disabled={!selectedLocation} // Disable Next button until a location is selected
-            onClick={handleNext}
+            // disabled={!selectedLocation} // Disable Next button until a location is selected
+            onClick={handleSubmit}
           >
             NEXT
           </button>

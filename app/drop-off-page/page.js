@@ -5,8 +5,9 @@ import { useEffect, useState } from "react";
 
 // Simulate fetching data from the data.json file
 const fetchLocations = async () => {
-  const res = await fetch('/path/to/data.json'); // Replace with your actual JSON file path
+  const res = await fetch('./data.json'); // Replace with your actual JSON file path
   const data = await res.json();
+  console.log(data, "all that data is here")
   return data;
 }
 
@@ -39,6 +40,12 @@ const DropOffPage = ({ zipCode }) => {
     // Proceed with the next logic
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // console.log(firstName, lastName, email, phoneNumber, product, brand, howBroken);
+    router.push('/success');
+};
+
   const handleBack = () => {
     router.push('/transport');
   };
@@ -50,7 +57,12 @@ const DropOffPage = ({ zipCode }) => {
   return (
     <div className="form-page">
       <div className="form-container">
-        <h2>Select a Drop-Off Location</h2>
+      <label >Drop Off Day
+        <input type="date" name="pick_up"  min="2024-09-11" max="2035-01-01"/>
+        </label>
+        <label className="input"  for="pick_up">Choose a Time for Pick Up</label>
+        <input type="time" id="pick_up" value="09:00:00" step="00:15" name="pick_up" min="09:00" max="18:00" required />
+        <h2>Select a Drop Off Location</h2>
         {filteredLocations.length > 0 ? (
           <fieldset>
             {filteredLocations.map((location, index) => (
