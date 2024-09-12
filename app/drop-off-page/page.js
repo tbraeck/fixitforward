@@ -34,12 +34,6 @@ const DropOffPage = ({ zipCode }) => {
     getFilteredLocations();
   }, [zipCode]);
 
-  const handleNext = () => {
-    console.log('Next button clicked');
-    console.log('Selected location:', selectedLocation);
-    // Proceed with the next logic
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log(firstName, lastName, email, phoneNumber, product, brand, howBroken);
@@ -60,10 +54,10 @@ const DropOffPage = ({ zipCode }) => {
       <label >Drop Off Day
         <input type="date" name="pick_up"  min="2024-09-11" max="2035-01-01"/>
         </label>
-        <label className="input"  for="pick_up">Choose a Time for Pick Up</label>
+        <label className="input"  htmlFor="pick_up">Choose a Time for Pick Up</label>
         <input type="time" id="pick_up" value="09:00:00" step="00:15" name="pick_up" min="09:00" max="18:00" required />
         <h2>Select a Drop Off Location</h2>
-        {filteredLocations.length > 0 ? (
+        {/* {filteredLocations.length > 0 ? (
           <fieldset>
             {filteredLocations.map((location, index) => (
               <div key={location.zipCode} className="location-container">
@@ -81,10 +75,10 @@ const DropOffPage = ({ zipCode }) => {
                 </label>
               </div>
             ))}
-          </fieldset>
-        ) : (
+          </fieldset> */}
+        {/* ) : ( */}
           <p>Loading nearby locations...</p>
-        )}
+        {/* )} */}
         
         <div className="flex flex-row">
           <button className='back-button' onClick={handleBack}>
@@ -94,7 +88,7 @@ const DropOffPage = ({ zipCode }) => {
             className='reset-submit-button'
             type="button"
             disabled={!selectedLocation} // Disable Next button until a location is selected
-            onClick={handleNext}
+            onClick={handleSubmit}
           >
             NEXT
           </button>
