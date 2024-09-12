@@ -1,5 +1,6 @@
-[
-    {
+{
+    "retailers": [
+      {
         "id": 1,
         "first_name": "Virginie",
         "last_name": "Van der Baaren",
@@ -8,8 +9,8 @@
         "address": "3 Ridgeview Avenue",
         "phone_number": "282-194-8564",
         "zipCode": "80207"
-    },
-    {
+      },
+      {
         "id": 2,
         "first_name": "Bambi",
         "last_name": "Giannotti",
@@ -18,9 +19,8 @@
         "address": "10 Roxbury Junction",
         "phone_number": "364-324-1674",
         "zipCode": "80206"
-
-    },
-    {
+      },
+      {
         "id": 3,
         "first_name": "Lowrance",
         "last_name": "Gumbley",
@@ -29,9 +29,8 @@
         "address": "86926 Norway Maple Street",
         "phone_number": "241-543-7653",
         "zipCode": "80207"
-
-    },
-    {
+      },
+      {
         "id": 4,
         "first_name": "Brenden",
         "last_name": "Melville",
@@ -40,9 +39,8 @@
         "address": "7294 Vidon Junction",
         "phone_number": "866-140-4721",
         "zipCode": "80203"
-
-    },
-    {
+      },
+      {
         "id": 5,
         "first_name": "Jeffrey",
         "last_name": "Groven",
@@ -51,9 +49,8 @@
         "address": "8061 Warner Place",
         "phone_number": "286-519-2168",
         "zipCode": "80202"
-
-    },
-    {
+      },
+      {
         "id": 6,
         "first_name": "Camille",
         "last_name": "Insole",
@@ -62,9 +59,8 @@
         "address": "248 Sutteridge Plaza",
         "phone_number": "946-734-8032",
         "zipCode": "80205"
-
-    },
-    {
+      },
+      {
         "id": 7,
         "first_name": "Ambrosius",
         "last_name": "Pacher",
@@ -73,9 +69,8 @@
         "address": "1 Fordem Alley",
         "phone_number": "369-120-4449",
         "zipCode": "80201"
-
-    },
-    {
+      },
+      {
         "id": 8,
         "first_name": "Roxanne",
         "last_name": "MacDunlevy",
@@ -84,9 +79,8 @@
         "address": "32 Vidon Way",
         "phone_number": "708-179-1499",
         "zipCode": "80205"
-
-    },
-    {
+      },
+      {
         "id": 9,
         "first_name": "Waldon",
         "last_name": "Dyster",
@@ -95,9 +89,8 @@
         "address": "52940 North Lane",
         "phone_number": "212-872-0510",
         "zipCode": "80204"
-
-    },
-    {
+      },
+      {
         "id": 10,
         "first_name": "Sibel",
         "last_name": "Thornthwaite",
@@ -106,9 +99,8 @@
         "address": "555 Independence Road",
         "phone_number": "632-387-3658",
         "zipCode": "80207"
-
-    },
-    {
+      },
+      {
         "id": 11,
         "first_name": "Marlo",
         "last_name": "Luciano",
@@ -117,9 +109,8 @@
         "address": "03703 Ohio Trail",
         "phone_number": "102-355-5917",
         "zipCode": "80202"
-
-    },
-    {
+      },
+      {
         "id": 12,
         "first_name": "Godfrey",
         "last_name": "Killshaw",
@@ -128,9 +119,8 @@
         "address": "2821 Claremont Alley",
         "phone_number": "420-992-1536",
         "zipCode": "80203"
-
-    },
-    {
+      },
+      {
         "id": 13,
         "first_name": "Diannne",
         "last_name": "Caberas",
@@ -139,9 +129,8 @@
         "address": "13 Moose Hill",
         "phone_number": "549-943-2105",
         "zipCode": "80211"
-
-    },
-    {
+      },
+      {
         "id": 14,
         "first_name": "Berky",
         "last_name": "M'cowis",
@@ -150,9 +139,8 @@
         "address": "9 Duke Circle",
         "phone_number": "383-140-1484",
         "zipCode": "80201"
-
-    },
-    {
+      },
+      {
         "id": 15,
         "first_name": "Koo",
         "last_name": "Gabbot",
@@ -161,9 +149,8 @@
         "address": "5516 Monica Junction",
         "phone_number": "154-512-2414",
         "zipCode": "80206"
-
-    },
-    {
+      },
+      {
         "id": 16,
         "first_name": "Rhodia",
         "last_name": "Fasey",
@@ -172,9 +159,8 @@
         "address": "825 Moland Circle",
         "phone_number": "618-802-1587",
         "zipCode": "80204"
-
-    },
-    {
+      },
+      {
         "id": 17,
         "first_name": "Tamarra",
         "last_name": "Reinbech",
@@ -183,9 +169,8 @@
         "address": "3 Ruskin Alley",
         "phone_number": "598-904-1674",
         "zipCode": "80205"
-
-    },
-    {
+      },
+      {
         "id": 18,
         "first_name": "Chip",
         "last_name": "Tombleson",
@@ -194,9 +179,8 @@
         "address": "9041 Granby Parkway",
         "phone_number": "410-439-9859",
         "zipCode": "80203"
-
-    },
-    {
+      },
+      {
         "id": 19,
         "first_name": "Chloe",
         "last_name": "Benazet",
@@ -205,9 +189,8 @@
         "address": "9748 Golden Leaf Avenue",
         "phone_number": "199-409-1639",
         "zipCode": "80208"
-
-    },
-    {
+      },
+      {
         "id": 20,
         "first_name": "Chryste",
         "last_name": "Rust",
@@ -216,9 +199,8 @@
         "address": "16048 Helena Lane",
         "phone_number": "400-965-4145",
         "zipCode": "80208"
-
-    },
-    {
+      },
+      {
         "id": 21,
         "first_name": "Cassandry",
         "last_name": "Ummfrey",
@@ -226,106 +208,42 @@
         "companyName": "Zulauf-Mann",
         "address": "3 Maywood Parkway",
         "phone_number": "556-743-7647",
-        "zipCode": "80211"
-
-    },
-    {
+        "zipCode": "80201"
+      },
+      {
         "id": 22,
-        "first_name": "Eleanor",
-        "last_name": "Menel",
-        "email": "emenell@facebook.com",
-        "companyName": "Russel Group",
-        "address": "10 Macpherson Circle",
-        "phone_number": "410-930-2915",
-        "zipCode": "80232"
-
-    },
-    {
+        "first_name": "Freeman",
+        "last_name": "Pauls",
+        "email": "fpaulsl@time.com",
+        "companyName": "Schimmel-Cronin",
+        "address": "6747 Dakota Court",
+        "phone_number": "515-872-1956",
+        "zipCode": "80202"
+      },
+      {
         "id": 23,
-        "first_name": "Erik",
-        "last_name": "Wilbor",
-        "email": "ewilborm@harvard.edu",
-        "companyName": "Rau LLC",
-        "address": "71 8th Road",
-        "phone_number": "103-945-7609",
-        "zipCode": "80202"
+        "first_name": "Phaedra",
+        "last_name": "Featenby",
+        "email": "pfeatenbym@1688.com",
+        "companyName": "Yundt LLC",
+        "address": "07743 Coolidge Trail",
+        "phone_number": "496-839-6504",
+        "zipCode": "80208"
+      }
 
-    },
-    {
-        "id": 24,
-        "first_name": "Nada",
-        "last_name": "Patriche",
-        "email": "npatrichen@angelfire.com",
-        "companyName": "Kirlin Inc",
-        "address": "98 Novick Avenue",
-        "phone_number": "931-780-0790",
-        "zipCode": "80203"
 
-    },
-    {
-        "id": 25,
-        "first_name": "Jammie",
-        "last_name": "Mewton",
-        "email": "jmewtono@opera.com",
-        "companyName": "Funk, Jenkins and Zemlak",
-        "address": "1 Memorial Court",
-        "phone_number": "394-569-0152",
-        "zipCode": "80209"
-
-    },
-    {
-        "id": 26,
-        "first_name": "Candide",
-        "last_name": "Hustings",
-        "email": "chustingsp@squidoo.com",
-        "companyName": "Hauck-Sipes",
-        "address": "18741 Eagan Way",
-        "phone_number": "143-609-5027",
-        "zipCode": "80204"
-
-    },
-    {
-        "id": 27,
-        "first_name": "Gardie",
-        "last_name": "Keating",
-        "email": "gkeatingq@zimbio.com",
-        "companyName": "Nolan, Stark and Pouros",
-        "address": "6 Nevada Pass",
-        "phone_number": "271-991-8273",
-        "zipCode": "80204"
-
-    },
-    {
-        "id": 28,
-        "first_name": "Katuscha",
-        "last_name": "Trevna",
-        "email": "ktrevnar@naver.com",
-        "companyName": "Strosin-Emmerich",
-        "address": "18282 Manufacturers Pass",
-        "phone_number": "929-690-8525",
-        "zipCode": "80203"
-
-    },
-    {
-        "id": 29,
-        "first_name": "Ros",
-        "last_name": "Michallat",
-        "email": "rmichallats@epa.gov",
-        "companyName": "Orn, D'Amore and Raynor",
-        "address": "557 Sundown Point",
-        "phone_number": "985-604-8034",
-        "zipCode": "80202"
-
-    },
-    {
-        "id": 30,
-        "first_name": "Correna",
-        "last_name": "Neumann",
-        "email": "cneumannt@oracle.com",
-        "companyName": "Batz and Sons",
-        "address": "02031 Reindahl Plaza",
-        "phone_number": "835-975-5674",
-        "zipCode": "80209"
-
+    ],
+    "thirdParty": {
+      "deliveryMethods": [
+        "slow",
+        "express",
+        "super-express"
+      ],
+      "contactInfo": {
+        "name": "Uber",
+        "email": "support@thirdparty.com",
+        "phone": "555-555-5555"
+      }
     }
-]
+  }
+  
