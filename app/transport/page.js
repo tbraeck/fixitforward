@@ -10,15 +10,11 @@ const Transport = () => {
     const handleSubmit = (e) => {
         e.preventDefault(); 
 
-        // Conditional routing based on the selected transport option
         if (transport === 'Drop-Off') {
-            console.log('Redirecting to Drop-Off page');
             router.push('/drop-off-page'); 
         } else if (transport === 'Pick Up') {
-            console.log('Redirecting to Pick Up page');
             router.push('/pick-up-page'); 
         } else if (transport === 'Delivery Service') {
-            console.log('Redirecting to Delivery Service page');
             router.push('/delivery-service-page'); 
         } else {
             console.log('No transport method selected');
@@ -27,7 +23,6 @@ const Transport = () => {
 
     const handleBack = (e) => { 
         e.preventDefault(); 
-        console.log('Going back to previous page');
         router.push('/donate-form');
     }
 

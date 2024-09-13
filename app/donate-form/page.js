@@ -8,6 +8,7 @@ const DonateFormComponent = () => {
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
+    const [zipCode, setZipCode] = useState("");
     const [product, setProduct] = useState("");
     const [brand, setBrand] = useState("");
     const [howBroken, setHowBroken] = useState("");
@@ -16,7 +17,7 @@ const DonateFormComponent = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(firstName, lastName, email, phoneNumber, product, brand, howBroken);
+        // console.log(firstName, lastName, email, phoneNumber, product, brand, howBroken);
         router.push('/transport');
     };
 
@@ -49,7 +50,7 @@ const DonateFormComponent = () => {
                 <h1 className='form-title'>FIX IT FORWARD</h1>
                 <h2 className='form-subtitle'>☞ Donations Form ☜</h2>
                 <fieldset>
-                    <form className='fixitform' required  onSubmit="return validateForm()"      >
+                    <form className='fixitform' required    >
                         <label htmlFor="firstName" className="form-label">First Name*</label>
                         <input
                             type="text"
@@ -94,9 +95,19 @@ const DonateFormComponent = () => {
                             required
                             className="form-input"
                         />
-                        
-                       
-                        <label htmlFor="product">Product*</label>
+                        <label htmlFor="zipCode" className="form-label">Zip Code*</label>
+                        <input
+                            type="number"
+                            name="zipCode"
+                            id="zipCode"
+                            value={zipCode}
+                            onChange={(e) => setZipCode(e.target.value)}
+                            placeholder="Enter Zip Code"
+                            required
+                            className="form-input"
+                        />
+                       <div className='product-inputs'>
+                       <label htmlFor="product">Product*</label>
                             <select 
                             id="product" 
                             name="product" 
@@ -154,6 +165,8 @@ const DonateFormComponent = () => {
                             <option value="prettyBad">It&apos;s Pretty Bad</option>
                             <option value="aLittle">Wow, this thing is Super Broken!</option>
                             </select>
+                       </div>
+                        
                         <div className="button-container">
                             <button
                                 className='reset-submit-button'

@@ -1,44 +1,57 @@
 'use client'
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Simulate fetching data from the data.json file
 const fetchLocations = async () => {
-  const res = await fetch('./data.json'); // Replace with your actual JSON file path
-  const data = await res.json();
-  console.log(data, "all that data is here")
-  return data;
-}
+  try {
+    const res = await fetch('./data.json');
+    if (!res.ok) throw new Error("Failed to fetch data");
+    const data = await res.json();
+    console.log(data, "all that data is here");
+    return data;
+  } catch (error) {
+    console.error("Error fetching locations:", error);
+    return []; // Return an empty array if an error occurs
+  }
+};
 
 const DropOffPage = ({ zipCode }) => {
   const router = useRouter();
   const[time, setTime] = useState('');
   const[date, setDate] = useState('');
-  const [locations, setLocations] = useState([]);
+  const [location, setLocation] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [filteredLocations, setFilteredLocations] = useState([]);
   
-  // Fetch data and filter it based on the zip code
-//   useEffect(() => {
-//     const getFilteredLocations = async () => {
-//       const data = await fetchLocations();
+  console.log(zipCode, "zip code is here")
+  useEffect(() => {
+    const getFilteredLocations = async () => {
+      const data = await fetchLocations();
 
-//       // Filter locations based on the client's zip code (assuming nearby zip codes logic)
-//       const nearbyLocations = data.filter(location => 
-//         location.zipCode.startsWith(zipCode.slice(0, 3)) // Simplistic filtering by first 3 digits of zip
-//       );
+      if (!Array.isArray(data)) {
+        console.error("Data is not an array");
+        return;
+      }
 
-//       // Select top 5
-//       setFilteredLocations(nearbyLocations.slice(0, 5));
-//     };
+      // Filter locations based on the client's zip code (assuming nearby zip codes logic)
+      const nearbyLocations = data.filter(location => 
+        location.zipCode.startsWith(zipCode.slice(0, 3))
+      );
 
-//     getFilteredLocations();
-//   }, [zipCode]);
+      // Select top 5 locations
+      setFilteredLocations(nearbyLocations.slice(0, 5));
+    };
+
+    if (zipCode) {
+      getFilteredLocations();
+    }
+  }, [zipCode]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(locations, "locations are here");
+    console.log(location, "locations are here");
     router.push('/success');
 };
 
@@ -61,6 +74,9 @@ const DropOffPage = ({ zipCode }) => {
 
     setTime(e.target.value);
   }
+
+  console.log(filteredLocations, "filtered locations to display");
+
   return (
     <div className="form-page">
       <div className="form-container">
