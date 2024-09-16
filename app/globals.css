@@ -226,3 +226,12 @@ textarea {
   flex-direction: row;
   margin-top: 20px;
 }
+.product-brand-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px; /* Adjust spacing as needed */
+}
+
+.product-input, .brand-input {
+  flex: 1; /* This makes both fields take equal width */
+}
