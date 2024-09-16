@@ -26,6 +26,7 @@ body {
   display: flex;
   flex-direction: column;
   display: flex;
+justify-content: center ;
   margin: 0; /* Remove default body margin */
 }
 
