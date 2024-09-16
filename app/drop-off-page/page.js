@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 // Simulate fetching data from the data.json file
 const fetchLocations = async () => {
   try {
-    const res = await fetch('./data.json');
+    const res = await fetch('/data.json');
     if (!res.ok) throw new Error("Failed to fetch data");
     const data = await res.json();
     console.log(data, "all that data is here");
@@ -29,7 +29,7 @@ const DropOffPage = ({ zipCode }) => {
   useEffect(() => {
     const getFilteredLocations = async () => {
       const data = await fetchLocations();
-
+console.log(data)
       if (!Array.isArray(data)) {
         console.error("Data is not an array");
         return;

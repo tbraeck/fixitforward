@@ -17,6 +17,7 @@ const DonateFormComponent = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(firstName, lastName, email, phoneNumber, zipCode, product, brand, howBroken)
         router.push('/transport');
     };
 

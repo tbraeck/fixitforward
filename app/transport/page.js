@@ -12,10 +12,14 @@ const Transport = () => {
 
         if (transport === 'Drop-Off') {
             router.push('/drop-off-page'); 
+            console.log('Drop-Off');
         } else if (transport === 'Pick Up') {
             router.push('/pick-up-page'); 
+            console.log('Pick Up');
         } else if (transport === 'Delivery Service') {
             router.push('/delivery-service-page'); 
+            console.log('Delivery');
+
         } else {
             console.log('No transport method selected');
         }
