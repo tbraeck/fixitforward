@@ -1,23 +1,28 @@
 'use client'
+
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { useZipCode } from '../context/ZipCodeContext';
 
 const DonateFormComponent = () => {
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
-    const [zipCode, setZipCode] = useState("");
     const [product, setProduct] = useState("");
     const [brand, setBrand] = useState("");
     const [howBroken, setHowBroken] = useState("");
+    
+    // Accessing zipCode from context
+    const { zipCode, setZipCode } = useZipCode();
 
     const router = useRouter();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(firstName, lastName, email, phoneNumber, zipCode, product, brand, howBroken)
+        // Log values including zipCode
+        console.log(firstName, lastName, email, phoneNumber, zipCode, product, brand, howBroken);
         router.push('/transport');
     };
 
@@ -26,7 +31,7 @@ const DonateFormComponent = () => {
         setLastName('');
         setEmail('');
         setPhoneNumber('');
-        setZipCode('');
+        setZipCode('');  // Clearing the zip code in context
         setProduct('');
         setBrand('');
         setHowBroken('');
@@ -94,7 +99,7 @@ const DonateFormComponent = () => {
                         
                         <label htmlFor="zipCode" className="form-label">Zip Code*</label>
                         <input
-                            type="number"
+                            type="text"  // Use text to handle zip codes with leading zeros
                             name="zipCode"
                             id="zipCode"
                             value={zipCode}
@@ -191,4 +196,3 @@ const DonateFormComponent = () => {
 };
 
 export default DonateFormComponent;
-

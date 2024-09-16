@@ -2,15 +2,18 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useZipCode } from "../context/ZipCodeContext";
 
 const Transport = () => {
     const [transport, setTransport] = useState('');
     const router = useRouter(); 
-
+    const { zipCode } = useZipCode(); // Use the custom hook to get zipCode
+    
     const handleSubmit = (e) => {
         e.preventDefault(); 
 
         if (transport === 'Drop-Off') {
+
             router.push('/drop-off-page'); 
             console.log('Drop-Off');
         } else if (transport === 'Pick Up') {
