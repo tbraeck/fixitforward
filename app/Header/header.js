@@ -10,9 +10,9 @@ function HeaderComponent() {
     <nav>
         <ul>
             {/* <li><a href="/">Home</a></li> */}
-            <li><h1><a href="/about">About</a></h1></li>
-            <li><h1><a href="/contact">Contact</a></h1></li>
-            <li><h1><a href="/partners">Partners</a></h1></li>
+            <li ><h1 className="font-sans hover:text-[#000000] text-[#888B90]"><a href="/about">About</a></h1></li>
+            <li ><h1 className="font-sans hover:text-[#000000] text-[#888B90]"><a href="/contact">Contact</a></h1></li>
+            <li ><h1 className="font-sans hover:text-[#000000] text-[#888B90]"><a href="/partners" >Partners</a></h1></li>
         </ul>
     </nav>
 </header>  

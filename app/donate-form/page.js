@@ -17,23 +17,15 @@ const DonateFormComponent = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // console.log(firstName, lastName, email, phoneNumber, product, brand, howBroken);
         router.push('/transport');
     };
 
-
-    // const validateForm = ( ) => {
-    //     var x = document.forms["myForm"]["fname"].value;
-    //     if (x == "") {
-    //       alert("Name must be filled out");
-    //       return false;
-    //     }
-    //   }
     const handleReset = () => {
         setFirstName('');
         setLastName('');
         setEmail('');
         setPhoneNumber('');
+        setZipCode('');
         setProduct('');
         setBrand('');
         setHowBroken('');
@@ -43,14 +35,14 @@ const DonateFormComponent = () => {
         <div className='form-page'>
             <div className="back-button-container">
                 <Link href="/">
-                <button className="back-button">BACK</button>
+                    <button className="back-button">BACK</button>
                 </Link>
             </div>
             <div className="App">
                 <h1 className='form-title'>FIX IT FORWARD</h1>
                 <h2 className='form-subtitle'>☞ Donations Form ☜</h2>
                 <fieldset>
-                    <form className='fixitform' required    >
+                    <form className='fixitform' required>
                         <label htmlFor="firstName" className="form-label">First Name*</label>
                         <input
                             type="text"
@@ -62,6 +54,7 @@ const DonateFormComponent = () => {
                             required
                             className="form-input"
                         />
+                        
                         <label htmlFor="lastName" className="form-label">Last Name*</label>
                         <input
                             type="text"
@@ -73,6 +66,7 @@ const DonateFormComponent = () => {
                             required
                             className="form-input"
                         />
+                        
                         <label htmlFor="email" className="form-label">Email*</label>
                         <input
                             type="email"
@@ -84,6 +78,7 @@ const DonateFormComponent = () => {
                             required
                             className="form-input"
                         />
+                        
                         <label htmlFor="phoneNumber" className="form-label">Phone Number*</label>
                         <input
                             type="tel"
@@ -95,6 +90,7 @@ const DonateFormComponent = () => {
                             required
                             className="form-input"
                         />
+                        
                         <label htmlFor="zipCode" className="form-label">Zip Code*</label>
                         <input
                             type="number"
@@ -106,67 +102,70 @@ const DonateFormComponent = () => {
                             required
                             className="form-input"
                         />
-                       <div className='product-inputs'>
-                       <label htmlFor="product">Product*</label>
+
+                        {/* Dropdowns */}
+                        <div className='product-inputs'>
+                            <label htmlFor="product" className="form-label">Product*</label>
                             <select 
-                            id="product" 
-                            name="product" 
-                            value={product}
-                            required
-                            onChange={(e) => setProduct(e.target.value)}
+                                id="product" 
+                                name="product" 
+                                value={product}
+                                required
+                                onChange={(e) => setProduct(e.target.value)}
+                                className="form-select"
                             >
-                            <option value="unknown" >unknown</option>
-                            <option value="Television">Television</option>
-                            <option value="Stereo">Stereo</option>
-                            <option value="Microwave" >Microwave</option>
-                            <option value="Blender">Blender</option>
-                            <option value="Rice Cooker">Rice Cooker</option>
-                            <option value="InstaPot">InstaPot</option>
-                            <option value="Coffee Maker">Coffee Maker</option>
-                            <option value="Mixer">Mixer</option>
-                            <option value="Toaster">InstaPot</option>
-                            <option value="Crock Pot">Crock Pot</option>
+                                <option value="unknown">unknown</option>
+                                <option value="Television">Television</option>
+                                <option value="Stereo">Stereo</option>
+                                <option value="Microwave">Microwave</option>
+                                <option value="Blender">Blender</option>
+                                <option value="Rice Cooker">Rice Cooker</option>
+                                <option value="InstaPot">InstaPot</option>
+                                <option value="Coffee Maker">Coffee Maker</option>
+                                <option value="Mixer">Mixer</option>
+                                <option value="Toaster">Toaster</option>
+                                <option value="Crock Pot">Crock Pot</option>
                             </select>
 
-                            <label htmlFor="brand">Brand*</label>
+                            <label htmlFor="brand" className="form-label">Brand*</label>
                             <select 
-                            id="brand" 
-                            name="brand" 
-                            value={brand}
-                            required
-                            onChange={(e) => setBrand(e.target.value)}
-
+                                id="brand" 
+                                name="brand" 
+                                value={brand}
+                                required
+                                onChange={(e) => setBrand(e.target.value)}
+                                className="form-select"
                             >
-                            <option value="unknown" >unknown</option>
-                            <option value="GE">GE</option>
-                            <option value="Whirlpool">Whirlpool</option>
-                            <option value="Samsung" >Samsung</option>
-                            <option value="KitchenAid">KitchenAid</option>
-                            <option value="Frigidaire">Frigidaire</option>
-                            <option value="Maytag">Maytag</option>
-                            <option value="Kenmore">Kenmore</option>
-                            <option value="LG">LG</option>
-                            <option value="Haier">Haier</option>
-                            <option value="Panasonic">Panasonic</option>
+                                <option value="unknown">unknown</option>
+                                <option value="GE">GE</option>
+                                <option value="Whirlpool">Whirlpool</option>
+                                <option value="Samsung">Samsung</option>
+                                <option value="KitchenAid">KitchenAid</option>
+                                <option value="Frigidaire">Frigidaire</option>
+                                <option value="Maytag">Maytag</option>
+                                <option value="Kenmore">Kenmore</option>
+                                <option value="LG">LG</option>
+                                <option value="Haier">Haier</option>
+                                <option value="Panasonic">Panasonic</option>
                             </select>
 
-                            <label htmlFor="howBroken">How Broken Is It?*</label>
+                            <label htmlFor="howBroken" className="form-label">How Broken Is It?*</label>
                             <select 
-                            id="howBroken" 
-                            name="howBroken" 
-                            value={howBroken}
-                            required
-                            onChange={(e) => setHowBroken(e.target.value)}
-
+                                id="howBroken" 
+                                name="howBroken" 
+                                value={howBroken}
+                                required
+                                onChange={(e) => setHowBroken(e.target.value)}
+                                className="form-select"
                             >
-                            <option value="unknown" >unknown</option>
-                            <option value="aLittle">A Little</option>
-                            <option value="somewhat">Somewhat</option>
-                            <option value="prettyBad">It&apos;s Pretty Bad</option>
-                            <option value="aLittle">Wow, this thing is Super Broken!</option>
+                                <option value="unknown">unknown</option>
+                                <option value="aLittle">A Little</option>
+                                <option value="somewhat">Somewhat</option>
+                                <option value="prettyBad">It&apos;s Pretty Bad</option>
+                                <option value="superBroken">Wow, this thing is Super Broken!</option>
                             </select>
-                       </div>
-                        
+                        </div>
+
                         <div className="button-container">
                             <button
                                 className='reset-submit-button'
@@ -191,3 +190,4 @@ const DonateFormComponent = () => {
 };
 
 export default DonateFormComponent;
+
