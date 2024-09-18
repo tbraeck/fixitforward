@@ -45,9 +45,24 @@ const DropOffPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(zipCode);
-    router.push('/success');
+  
+    const selectedLocationData = filteredLocations.find(location => location.zipCode === selectedLocation);
+  
+    // Pass the data through the router with query parameters
+    router.push({
+      pathname: '/success',
+      query: {
+        date,
+        time,
+        locationName: selectedLocation.companyName,
+        address: selectedLocation.address,
+        zipCode: selectedLocation.zipCode,
+        phoneNumber: selectedLocation.phone_number,
+        email: selectedLocation.email,
+      },
+    });
   };
+  
 
   const handleBack = () => {
     router.push('/transport');
@@ -55,6 +70,7 @@ const DropOffPage = () => {
 
   const handleLocationChange = (e) => {
     setSelectedLocation(e.target.value);
+    console.log('selected location',selectedLocation); 
   };
 
   const handleDateChange = (e) => {
@@ -93,38 +109,34 @@ const DropOffPage = () => {
         <br/>
         <h2>Select a Drop Off Location</h2>
         {filteredLocations.length > 0 ? (
-          <fieldset>
-            {filteredLocations.map((location, index) => (
-              <div key={location.zipCode} className="location-container">
-                {/* <input
-                  type="radio"
-                  id={location.zipCode}
-                  name="location"
-                  value={location.zipCode}
-                  onChange={handleLocationChange}
-                /> */}
-                <label htmlFor={location.zipCode} className='drop-off-location'>
-                  <strong>{index + 1}. <br/> {location.companyName}</strong><br />
-                  {location.address}<br />
-                  {location.zipCode}<br />
-                  {location.phone_number}<br />
-                  {location.email}<br />
-                  <div>
-                  <input
-                  type="radio"
-                  id={location.zipCode}
-                  name="location"
-                  value={location.zipCode}
-                  onChange={handleLocationChange}
-                />
-                </div>
-                </label>
-              </div>
-            ))}
-          </fieldset> 
-        ) : (
-          <p>Loading nearby locations...</p>
-        )}
+      <fieldset className="space-y-4">
+        {filteredLocations.map((location, index) => (
+          <div key={location.zipCode} className="location-container flex justify-between items-center p-4 border border-gray-400 rounded-md">
+            <div className="drop-off-location flex-grow">
+              <label htmlFor={location.zipCode}>
+                <strong>{index + 1}.<br /> {location.companyName}</strong><br />
+                {location.address}<br />
+                {location.zipCode}<br />
+                {location.phone_number}<br />
+                {location.email}
+              </label>
+            </div>
+            <div className="ml-4">
+              <input
+                type="radio"
+                id={location.zipCode}
+                name="location"
+                value={location.zipCode}
+                onChange={handleLocationChange}
+                className="mr-12 transform scale-150" 
+              />
+            </div>
+          </div>
+        ))}
+      </fieldset>
+    ) : (
+      <p className="text-gray-500">Loading nearby locations...</p>
+    )}
         
         <div className="flex flex-row">
           <button className='back-button' onClick={handleBack}>

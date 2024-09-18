@@ -1,4 +1,5 @@
 'use client'
+
 import Link from "next/link";
 import { ZipCodeProvider } from "./context/ZipCodeContext";
 import FooterComponent from "./footer/footer";
