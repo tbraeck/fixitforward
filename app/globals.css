@@ -236,3 +236,16 @@ textarea {
 .product-input, .brand-input {
   flex: 1; /* This makes both fields take equal width */
 }
+
+.location-container {
+  border: #555;
+  border-radius: 10px;
+  border-width: 2px;
+  display: flex;
+  flex-direction: row;
+}
+
+.drop-off-locations{
+  display: flex;
+  flex-direction: row;
+}

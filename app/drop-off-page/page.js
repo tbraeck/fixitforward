@@ -39,7 +39,7 @@ const DropOffPage = () => {
         location.zipCode.startsWith(zipCode.slice(0, 3))
       );
       console.log('Filtered Locations:', nearbyLocations); // Debug line
-      setFilteredLocations(nearbyLocations.slice(0, 5));  // Limit to 5 locations
+      setFilteredLocations(nearbyLocations.slice(0, 2));  // Limit to 5 locations
     }
   }, [data, zipCode]);
 
@@ -90,22 +90,34 @@ const DropOffPage = () => {
           onChange={handleTimeChange} 
           required 
         />
+        <br/>
         <h2>Select a Drop Off Location</h2>
         {filteredLocations.length > 0 ? (
           <fieldset>
             {filteredLocations.map((location, index) => (
               <div key={location.zipCode} className="location-container">
-                <input
+                {/* <input
+                  type="radio"
+                  id={location.zipCode}
+                  name="location"
+                  value={location.zipCode}
+                  onChange={handleLocationChange}
+                /> */}
+                <label htmlFor={location.zipCode} className='drop-off-location'>
+                  <strong>{index + 1}. <br/> {location.companyName}</strong><br />
+                  {location.address}<br />
+                  {location.zipCode}<br />
+                  {location.phone_number}<br />
+                  {location.email}<br />
+                  <div>
+                  <input
                   type="radio"
                   id={location.zipCode}
                   name="location"
                   value={location.zipCode}
                   onChange={handleLocationChange}
                 />
-                <label htmlFor={location.zipCode}>
-                  <strong>{index + 1}. {location.name}</strong><br />
-                  {location.zipCode}<br />
-                  {location.contactInfo}
+                </div>
                 </label>
               </div>
             ))}
