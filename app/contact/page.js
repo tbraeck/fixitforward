@@ -42,15 +42,13 @@ const ContactComponent = () => {
   }
 
   return (
-    <div className="contact-container">
-      <div className="back-button-container">
-        <Link href="/">
-          <button className="back-button">
-            BACK
-          </button>
-        </Link>
-      </div>
-
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="back-button-container absolute top-0 left-0 m-4">
+                <Link href="/">
+                    <button className="back-button">BACK</button>
+                </Link>
+            </div>
+    {/* <div className="flex flex-col w-2/4 items-center justify-right border-2 border-[#818589] bg-white p-6 opacity-90"> */}
       <form className="form-container" onSubmit={submit}>
         <h1>CONTACT US</h1>
         <label htmlFor="firstName">First Name</label>
@@ -100,6 +98,7 @@ const ContactComponent = () => {
         <button type="submit">Send</button>
       </form>
     </div>
+    // </div>
   );
 }
 

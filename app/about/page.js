@@ -38,9 +38,9 @@ const AboutComponent = () => {
                     <button className="back-button">BACK</button>
                 </Link>
             </div>
-      <div className="flex flex-col w-2/4 items-center justify-right border-2 border-black bg-white p-6 opacity-90">
+      <div className="flex flex-col w-2/4 items-center justify-right border-2 border-[#818589] bg-white p-6 opacity-90">
         <h1 className="text-black mb-4">ABOUT FixItForward</h1>
-        <h2>
+        <h2 className="text-[#818589]">
         Lorem ipsum odor amet, consectetuer adipiscing elit. Morbi finibus faucibus fusce bibendum nostra sodales imperdiet quisque. At dolor est consequat morbi cursus porttitor ipsum augue id. Faucibus nulla in gravida quisque cubilia, augue nibh iaculis. Tempus luctus lacinia commodo; imperdiet sollicitudin aenean. Neque sollicitudin cras nibh; torquent sodales curabitur donec. Amet posuere felis cubilia tempor interdum ultrices. Risus ante lectus tempus luctus donec pellentesque. Eleifend condimentum fusce semper consequat cursus porta nunc massa dignissim.
 
 Maecenas nec dolor malesuada varius malesuada dolor vestibulum? Commodo et mi pharetra etiam vel? Vitae neque fusce facilisi adipiscing amet, porta curae dictumst. Inceptos nascetur habitant proin donec feugiat; tristique habitasse vulputate. Torquent euismod donec malesuada, interdum odio magna penatibus. Felis vehicula facilisis accumsan donec praesent, massa hendrerit. Blandit auctor eleifend himenaeos libero vehicula dapibus. Bibendum vulputate cursus parturient tincidunt ex ad?

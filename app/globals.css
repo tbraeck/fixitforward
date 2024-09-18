@@ -65,7 +65,7 @@ justify-content: center ;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
  
   /* transition: transform 0.2s; */
-  width: 550px;
+  width: 650px;
   flex-direction: column;
   display: flex;
   justify-content: space-between;
@@ -194,6 +194,24 @@ textarea {
   padding: 20px;
 }
 
+.form-group {
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between;
+  /* Stack label and select vertically */
+}
+.form-label {
+height: 25px;
+display: flex;
+flex-direction: column;
+margin-left: 10px;
+padding-right: 0px;
+}
+
+/* .form-select {
+padding-left: 5px;
+} */
+
 .contact-container {
   display: flex;
   justify-content: space-between;
@@ -226,7 +244,9 @@ textarea {
   display: flex;
   flex-direction: row;
   margin-top: 20px;
+  justify-content: space-around;
 }
+
 .product-brand-container {
   display: flex;
   justify-content: space-between;
@@ -234,14 +254,17 @@ textarea {
 }
 
 .product-input, .brand-input {
-  flex: 1; /* This makes both fields take equal width */
+  flex: 1;
 }
 
 .location-container {
   border: #555;
+  
   border-radius: 10px;
-  border-width: 2px;
+  border-width: 5px;
   display: flex;
+  /* margin-top: 5px; */
+  background-color: aliceblue;
   flex-direction: row;
 }
 

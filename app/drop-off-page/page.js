@@ -45,24 +45,9 @@ const DropOffPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
-    const selectedLocationData = filteredLocations.find(location => location.zipCode === selectedLocation);
-  
-    // Pass the data through the router with query parameters
-    router.push({
-      pathname: '/success',
-      query: {
-        date,
-        time,
-        locationName: selectedLocation.companyName,
-        address: selectedLocation.address,
-        zipCode: selectedLocation.zipCode,
-        phoneNumber: selectedLocation.phone_number,
-        email: selectedLocation.email,
-      },
-    });
+    console.log(zipCode);
+    router.push('/success');
   };
-  
 
   const handleBack = () => {
     router.push('/transport');
@@ -70,7 +55,7 @@ const DropOffPage = () => {
 
   const handleLocationChange = (e) => {
     setSelectedLocation(e.target.value);
-    console.log('selected location',selectedLocation); 
+    
   };
 
   const handleDateChange = (e) => {
@@ -107,7 +92,7 @@ const DropOffPage = () => {
           required 
         />
         <br/>
-        <h2>Select a Drop Off Location</h2>
+        <h2 className='mb-4'>Select a Drop Off Location</h2>
         {filteredLocations.length > 0 ? (
       <fieldset className="space-y-4">
         {filteredLocations.map((location, index) => (

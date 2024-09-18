@@ -1,80 +1,62 @@
 'use client';
 
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from 'react';
 
-// Function to add a prefix to the path with type-checking
-const addPathPrefix = (path, prefix) => {
-    console.log('path:', path);  // Log the value of path
-    console.log('prefix:', prefix);  // Log the value of prefix
-  
-    // Check if the path is not a string
-    if (typeof path !== 'string') {
-      console.error(`Expected 'path' to be a string, but received ${typeof path}:`, path);
-      throw new TypeError(`Expected 'path' to be a string, but received ${typeof path}`);
-    }
-  
-    if (!path.startsWith(prefix)) {
-      return `${prefix}${path}`;
-    }
-  
-    return path;
-  };
-  
+const Success = () => {
+  const router = useRouter(); 
+  const [queryData, setQueryData] = useState(null);
 
-const Success = ({ details }) => {
-  const router = useRouter();
-  const { query } = router;
+  useEffect(() => {
+    // Access the query data once it's available
+    if (router.query) {
+      setQueryData(router.query);
+    }
+  }, [router.query]);
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
     console.log('you are going forward');
+    router.push('/'); // Navigate to the home page
+  }
 
-    // Example usage of addPathPrefix
-    const nextPath = addPathPrefix('/', '/success');
-    router.push(nextPath); 
-  };
-
-  const handleBack = (e) => {
-    e.preventDefault();
+  const handleBack = (e) => { 
+    e.preventDefault(); 
     console.log('you are going back');
+    router.push('/choose-shop'); // Navigate back to the shop selection page
+  }
 
-    // Example usage of addPathPrefix
-    const previousPath = addPathPrefix('/choose-shop', '/');
-    router.push(previousPath);
-  };
+  if (!queryData) {
+    return <p>Loading summary...</p>;
+  }
 
   return (
     <div className='form-page'>
       <div className="App">
-        <h1>Congratulations! </h1>
+        <h1>Congratulations!</h1>
         <h2>You are all set to make your donation.</h2>
         <div>
           <h2>Summary of Your Information</h2>
-          <p><strong>Date:</strong> {query.date}</p>
-          <p><strong>Time:</strong> {query.time}</p>
+          <p><strong>Date:</strong> {queryData.date}</p>
+          <p><strong>Time:</strong> {queryData.time}</p>
           <h3>Drop-Off Location Details</h3>
-          <p><strong>Company Name:</strong> {query.locationName}</p>
-          <p><strong>Address:</strong> {query.address}</p>
-          <p><strong>Zip Code:</strong> {query.zipCode}</p>
-          <p><strong>Phone Number:</strong> {query.phoneNumber}</p>
-          <p><strong>Email:</strong> {query.email}</p>
+          <p><strong>Company Name:</strong> {queryData.locationName}</p>
+          <p><strong>Address:</strong> {queryData.address}</p>
+          <p><strong>Zip Code:</strong> {queryData.zipCode}</p>
+          <p><strong>Phone Number:</strong> {queryData.phoneNumber}</p>
+          <p><strong>Email:</strong> {queryData.email}</p>
         </div>
         <div className="flex flex-row">
           <button className='back-button' onClick={handleBack}>
             BACK
           </button>
-          <button
-            className='reset-submit-button'
-            type="submit"
-            value="Submit"
-            onClick={handleSubmit}
-          >
+          <button className='reset-submit-button' onClick={handleSubmit}>
             ALL DONE
           </button>
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default Success;
