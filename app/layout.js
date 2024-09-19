@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import { DateAndTimeProvider } from "./context/DateAndTimeContext";
 import { ZipCodeProvider } from "./context/ZipCodeContext"; // Import ZipCodeProvider
 import "./globals.css";
 
@@ -15,7 +16,9 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         {/* Wrap the children with ZipCodeProvider */}
         <ZipCodeProvider>
+          <DateAndTimeProvider>
           {children}
+          </DateAndTimeProvider>
         </ZipCodeProvider>
       </body>
     </html>

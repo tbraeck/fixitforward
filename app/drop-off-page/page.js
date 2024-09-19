@@ -2,18 +2,19 @@
 
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { useDateAndTime } from '../context/DateAndTimeContext';
 import { useZipCode } from '../context/ZipCodeContext';
 
 const DropOffPage = () => {
   const router = useRouter();
-  const [time, setTime] = useState('');
-  const [date, setDate] = useState('');
+  // const [time, setTime] = useState('');
+  // const [date, setDate] = useState('');
   const [data, setData] = useState([]);
   const [filteredLocations, setFilteredLocations] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState(null);
 
   const { zipCode } = useZipCode();  // Access zipCode from context
-
+const {date, setDate, time, setTime} = useDateAndTime(); // Access date and time from context
   console.log(zipCode, "zip code is here");
 
   // Fetch the data only once when the component mounts
@@ -55,7 +56,7 @@ const DropOffPage = () => {
 
   const handleLocationChange = (e) => {
     setSelectedLocation(e.target.value);
-    
+
   };
 
   const handleDateChange = (e) => {
@@ -123,7 +124,7 @@ const DropOffPage = () => {
       <p className="text-gray-500">Loading nearby locations...</p>
     )}
         
-        <div className="flex flex-row">
+        <div className="flex flex-row mt-2 justify-center items-center">
           <button className='back-button' onClick={handleBack}>
             BACK
           </button>

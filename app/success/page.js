@@ -1,62 +1,73 @@
-'use client';
+'use client'
 
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from 'react';
+import { useDateAndTime } from "../context/DateAndTimeContext";
+import { useZipCode } from '../context/ZipCodeContext';
 
-const Success = () => {
-  const router = useRouter(); 
-  const [queryData, setQueryData] = useState(null);
 
-  useEffect(() => {
-    // Access the query data once it's available
-    if (router.query) {
-      setQueryData(router.query);
-    }
-  }, [router.query]);
+const Success = ({details}) => {
+    // const [shop, setShop] = useState('')
+    const router = useRouter(); 
+    const { zipCode } = useZipCode(); 
+    const {date, setDate, time, setTime} = useDateAndTime(); 
 
-  const handleSubmit = (e) => {
+    const handleSubmit = (e) => {
     e.preventDefault(); 
+
     console.log('you are going forward');
-    router.push('/'); // Navigate to the home page
-  }
+    router.push('/'); 
+}
 
-  const handleBack = (e) => { 
+console.log(date, time, "date and time are here")
+const handleBack = (e) => { 
     e.preventDefault(); 
-    console.log('you are going back');
-    router.push('/choose-shop'); // Navigate back to the shop selection page
-  }
 
-  if (!queryData) {
-    return <p>Loading summary...</p>;
-  }
+    console.log('you are going back');
+    router.push('/drop-off-page');
+}
 
   return (
     <div className='form-page'>
-      <div className="App">
-        <h1>Congratulations!</h1>
+    <div className="App">
+        <h1>Congratulations! </h1>
         <h2>You are all set to make your donation.</h2>
-        <div>
-          <h2>Summary of Your Information</h2>
-          <p><strong>Date:</strong> {queryData.date}</p>
-          <p><strong>Time:</strong> {queryData.time}</p>
-          <h3>Drop-Off Location Details</h3>
-          <p><strong>Company Name:</strong> {queryData.locationName}</p>
-          <p><strong>Address:</strong> {queryData.address}</p>
-          <p><strong>Zip Code:</strong> {queryData.zipCode}</p>
-          <p><strong>Phone Number:</strong> {queryData.phoneNumber}</p>
-          <p><strong>Email:</strong> {queryData.email}</p>
-        </div>
-        <div className="flex flex-row">
-          <button className='back-button' onClick={handleBack}>
-            BACK
-          </button>
-          <button className='reset-submit-button' onClick={handleSubmit}>
-            ALL DONE
-          </button>
-        </div>
-      </div>
+        <p>Here&apos;s the details of your donation for your records:</p>
+        {/* <p>{details}</p> */}
+     {/* <fieldset> */}
+      {/* <form>
+      <label htmlFor="transport">How To Transport Your Donation*</label>
+        <select 
+            id="transport" 
+            name="transport" 
+            value={transport}
+            required
+            onChange={(e) => setTransport(e.target.value)}
+        >
+                <option value="Drop-Off" >Drop-Off</option>
+                <option value="Pick Up">Pick Up</option>
+                <option value="Delivery Service">Delivery Service</option>
+            </select> */}
+            <div className="flex flex-row">
+                <button className='back-button'
+                onClick={handleBack}>
+                    BACK
+                </button>
+            <button
+                className='reset-submit-button'
+                type="submit"
+                value="Submit"
+                onClick={handleSubmit}
+            >
+                 ALL DONE
+            </button>
+          
+            </div>
+            
+      {/* </form>
+      </fieldset> */}
     </div>
-  );
+    </div>
+  )
 }
 
-export default Success;
+export default Success
