@@ -1,6 +1,7 @@
 'use client'
 
 import Link from "next/link";
+import { ContactProvider } from "./context/ContactContext";
 import { DateAndTimeProvider } from "./context/DateAndTimeContext";
 import { DonateProvider } from "./context/DonateContext";
 import { TransportProvider } from "./context/TransportContext";
@@ -12,6 +13,7 @@ export default function Home() {
     <DonateProvider>
       <TransportProvider>
       <DateAndTimeProvider>
+        <ContactProvider>
     <div className="flex flex-col min-h-screen mr-10">  
       <HeaderComponent />
       <div className="main-content flex-grow flex justify-center items-center">
@@ -34,6 +36,7 @@ export default function Home() {
       </div>
       <FooterComponent />
     </div>
+    </ContactProvider>
       </DateAndTimeProvider>
       </TransportProvider>
     </DonateProvider>

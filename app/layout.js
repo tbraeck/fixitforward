@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import { ContactProvider } from "./context/ContactContext";
 import { DateAndTimeProvider } from "./context/DateAndTimeContext";
 import { DonateProvider } from "./context/DonateContext";
 import { TransportProvider } from "./context/TransportContext";
@@ -19,8 +20,9 @@ export default function RootLayout({ children }) {
         <DonateProvider>
           <TransportProvider>
             <DateAndTimeProvider>
-            
+              <ContactProvider>
           {children}
+            </ContactProvider>
           </DateAndTimeProvider>
           </TransportProvider>
         </DonateProvider>

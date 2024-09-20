@@ -1,53 +1,63 @@
 'use client'
 import Link from "next/link";
 import { useState } from "react";
+import { useContact } from "../context/ContactContext";
 
 const ContactComponent = () => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+ 
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
-  function submit(e) {
-    e.preventDefault();
-
-    fetch("https://formcarry.com/s/XXXXXXX", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({ email: email, message: message })
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.code === 200) {
-          setSubmitted(true);
-        } else {
-          setError(res.message);
-        }
-      })
-      .catch((error) => setError(error));
-  }
-
-  if (error) {
-    return <p>{error}</p>;
-  }
-
-  if (submitted) {
-    return <p>We&apos;ve received your message, thank you for contacting us!</p>;
-  }
+  const {
+    firstName, setFirstName,
+    lastName, setLastName,
+    phoneNumber, setPhoneNumber,
+    email, setEmail,
+    message, setMessage
+  } =useContact();
+  
+ 
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log("Submit has happened", firstName)
+    console.log("Submit has happened", message)
+  //   fetch("https://formcarry.com/s/XXXXXXX", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Accept: "application/json"
+  //     },
+  //     body: JSON.stringify({ email: email, message: message })
+  //   })
+  //     .then((res) => res.json())
+  //     .then((res) => {
+  //       if (res.code === 200) {
+  //         setSubmitted(true);
+  //       } else {
+  //         setError(res.message);
+  //       }
+  //     })
+  //     .catch((error) => setError(error));
+  // }
+
+  // if (error) {
+  //   return <p>{error}</p>;
+  // }
+
+  // if (submitted) {
+  //   return <p>We&apos;ve received your message, thank you for contacting us!</p>;
+  // }
+    setFirstName('');
+    setLastName('');
+    setPhoneNumber('');
+    setEmail('');
+    setMessage('');
+
+
   }
-  
+
   return (
     <div className="flex items-center justify-center min-h-screen">
       <div className="back-button-container absolute top-0 left-0 m-4">
@@ -56,7 +66,7 @@ const ContactComponent = () => {
                 </Link>
             </div>
     {/* <div className="flex flex-col w-2/4 items-center justify-right border-2 border-[#818589] bg-white p-6 opacity-90"> */}
-      <form className="form-container" onSubmit={submit}>
+      <form className="form-container" >
         <h1>CONTACT US</h1>
         <label htmlFor="firstName">First Name</label>
         <input
