@@ -2,14 +2,22 @@
 
 import { useRouter } from "next/navigation";
 import { useDateAndTime } from "../context/DateAndTimeContext";
+import { useDonate } from "../context/DonateContext";
 import { useZipCode } from '../context/ZipCodeContext';
-
 
 const Success = ({details}) => {
     // const [shop, setShop] = useState('')
     const router = useRouter(); 
     const { zipCode } = useZipCode(); 
-    const {date, setDate, time, setTime} = useDateAndTime(); 
+    const {date,  time} = useDateAndTime(); 
+    const {
+      firstName,  
+      lastName, 
+      email,
+      phoneNumber,  
+      product, 
+      brand, 
+      howBroken} = useDonate();
 
     const handleSubmit = (e) => {
     e.preventDefault(); 
@@ -17,7 +25,7 @@ const Success = ({details}) => {
     console.log('you are going forward');
     router.push('/'); 
 }
-
+console.log(firstName, lastName)
 console.log(date, time, "date and time are here")
 const handleBack = (e) => { 
     e.preventDefault(); 
@@ -30,8 +38,16 @@ const handleBack = (e) => {
     <div className='form-page'>
     <div className="App">
         <h1>Congratulations! </h1>
-        <h2>You are all set to make your donation.</h2>
-        <p>Here&apos;s the details of your donation for your records:</p>
+        <h2 className="mb-4">You are all set to make your donation.</h2>
+        <p className="mb-4">Here&apos;s the details of your donation for your records:</p>
+       
+        <p>Your Name:&nbsp;{firstName}{lastName}</p>
+        <p>Your Contact Information:&nbsp;{email}{phoneNumber}</p>
+        <h2>You are </h2>
+        <p>Time:&nbsp;{time}</p>
+        <p>:&nbsp;{date}</p>
+        <p>Date:&nbsp;{date}</p>
+        
         {/* <p>{details}</p> */}
      {/* <fieldset> */}
       {/* <form>
