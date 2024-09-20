@@ -2,22 +2,20 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import { useZipCode } from '../context/ZipCodeContext';
+import { useDonate } from '../context/DonateContext';
 
 const DonateFormComponent = () => {
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [email, setEmail] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("");
-    const [product, setProduct] = useState("");
-    const [brand, setBrand] = useState("");
-    const [howBroken, setHowBroken] = useState("");
-    
-    // Accessing zipCode from context
-    const { zipCode, setZipCode } = useZipCode();
-
-    const router = useRouter();
+        const {
+        firstName,setFirstName,  
+        lastName, setLastName,
+        email, setEmail,
+        phoneNumber, setPhoneNumber,
+        zipCode, setZipCode,
+        product, setProduct,
+        brand, setBrand,
+        howBroken, setHowBroken} = useDonate();    
+        
+        const router = useRouter();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -31,7 +29,7 @@ const DonateFormComponent = () => {
         setLastName('');
         setEmail('');
         setPhoneNumber('');
-        setZipCode('');  // Clearing the zip code in context
+        setZipCode('');  
         setProduct('');
         setBrand('');
         setHowBroken('');

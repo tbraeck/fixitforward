@@ -3,87 +3,97 @@
 import { useRouter } from "next/navigation";
 import { useDateAndTime } from "../context/DateAndTimeContext";
 import { useDonate } from "../context/DonateContext";
-import { useZipCode } from '../context/ZipCodeContext';
+import { useTransport } from "../context/TransportContext";
 
-const Success = ({details}) => {
-    // const [shop, setShop] = useState('')
-    const router = useRouter(); 
-    const { zipCode } = useZipCode(); 
-    const {date,  time} = useDateAndTime(); 
-    const {
-      firstName,  
-      lastName, 
-      email,
-      phoneNumber,  
-      product, 
-      brand, 
-      howBroken} = useDonate();
+const Success = ({ details }) => {
+  const router = useRouter(); 
+  const { date, time } = useDateAndTime(); 
+  const { 
+    firstName,  
+    lastName, 
+    email,
+    phoneNumber,  
+    product, 
+    brand, 
+    howBroken 
+  } = useDonate();
 
-    const handleSubmit = (e) => {
+  const { transport } = useTransport();
+
+  const handleSubmit = (e) => {
     e.preventDefault(); 
+    router.push('/');
+  }
 
-    console.log('you are going forward');
-    router.push('/'); 
-}
-console.log(firstName, lastName)
-console.log(date, time, "date and time are here")
-const handleBack = (e) => { 
-    e.preventDefault(); 
-
-    console.log('you are going back');
+  const handleBack = (e) => { 
+    e.preventDefault();
     router.push('/drop-off-page');
-}
+  }
+
+  const renderTransportDetails = () => {
+    if (transport === 'Drop-Off') {
+      return (
+        <p>
+          <b>Transport Type:</b> Drop-Off<br />
+          <b>Drop-Off Location:</b> 123 Donation Center, Main Street
+        </p>
+      );
+    } else if (transport === 'Pick Up') {
+      return (
+        <p>
+          <b>Transport Type:</b> Pick Up<br />
+          <b>Company Name:</b> Donation Pickups Inc.<br />
+          <b>Contact Info:</b> 555-1234<br />
+          <b>Pick Up Date and Time:</b> {date} at {time}
+        </p>
+      );
+    } else if (transport === 'Delivery Service') {
+      return (
+        <p>
+          <b>Transport Type:</b> Delivery Service<br />
+          <b>Delivery Company:</b> FastShip Delivery<br />
+          <b>Tracking Number:</b> ABC123456789
+        </p>
+      );
+    } else {
+      return <p>No transport method selected.</p>;
+    }
+  }
 
   return (
-    <div className='form-page'>
-    <div className="App">
+    <div className='form-page-success'>
+      <div className="success-form ">
         <h1>Congratulations! </h1>
         <h2 className="mb-4">You are all set to make your donation.</h2>
         <p className="mb-4">Here&apos;s the details of your donation for your records:</p>
-       
-        <p>Your Name:&nbsp;{firstName}{lastName}</p>
-        <p>Your Contact Information:&nbsp;{email}{phoneNumber}</p>
-        <h2>You are </h2>
-        <p>Time:&nbsp;{time}</p>
-        <p>:&nbsp;{date}</p>
-        <p>Date:&nbsp;{date}</p>
+       <div className="donation-info">
+
+        <h2>Contact Information:</h2>
+        <p><b>Your Name:</b>&nbsp;{firstName}&nbsp;{lastName}</p>
+        <p><b>Email:</b>&nbsp;{email}</p>
+        <p><b>Phone #:</b>&nbsp;{phoneNumber}</p>
+        <p>
+          <b>You are donating a:</b>&nbsp;{brand}&nbsp;{product}<br />
+          <b>Condition:</b>&nbsp;{howBroken}
+        </p>
         
-        {/* <p>{details}</p> */}
-     {/* <fieldset> */}
-      {/* <form>
-      <label htmlFor="transport">How To Transport Your Donation*</label>
-        <select 
-            id="transport" 
-            name="transport" 
-            value={transport}
-            required
-            onChange={(e) => setTransport(e.target.value)}
-        >
-                <option value="Drop-Off" >Drop-Off</option>
-                <option value="Pick Up">Pick Up</option>
-                <option value="Delivery Service">Delivery Service</option>
-            </select> */}
-            <div className="flex flex-row">
-                <button className='back-button'
-                onClick={handleBack}>
-                    BACK
-                </button>
-            <button
-                className='reset-submit-button'
-                type="submit"
-                value="Submit"
-                onClick={handleSubmit}
-            >
-                 ALL DONE
-            </button>
-          
-            </div>
-            
-      {/* </form>
-      </fieldset> */}
-    </div>
+        <h2 className="mt-4">Donation Details</h2>
+        {renderTransportDetails()} {/* Conditional rendering of transport details */}
+        <p><b>Date:</b>&nbsp;{date}</p>
+        <p><b>Time:</b>&nbsp;{time}</p>
+        </div>
+
+        <div className="flex flex-row mt-6 justify-center ">
+          <button className='back-button' onClick={handleBack}>
+            BACK
+          </button>
+          <button className='reset-submit-button' type="submit" onClick={handleSubmit}>
+            ALL DONE
+          </button>
+        </div>
+      </div>
     </div>
   )
 }
 
-export default Success
+export default Success;

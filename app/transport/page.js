@@ -22,7 +22,6 @@ const {transport, setTransport} = useTransport();
         } else if (transport === 'Delivery Service') {
             router.push('/delivery-service-page'); 
             console.log('Delivery');
-
         } else {
             console.log('No transport method selected');
         }
@@ -56,7 +55,7 @@ const {transport, setTransport} = useTransport();
                             <option value="Delivery Service">Delivery Service</option>
                         </select>
                         
-                        <div className="flex flex-row">
+                        <div className="button-container flex flex-row">
                             <button className='back-button' onClick={handleBack}>
                                 BACK
                             </button>

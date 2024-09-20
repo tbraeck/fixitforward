@@ -74,6 +74,24 @@ justify-content: center ;
  margin-right: 50px;
 }
 
+.success-form {
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  width: 450px;
+  flex-direction: column;
+  display: flex;
+  justify-content: left;
+  align-items: right;
+  padding: 25px 25px 25px 25px;
+ margin-right: 50px;
+}
+
+.donation-info{
+  background-color: aliceblue;
+  padding: 20px 20px 20px 20px;
+}
+
 h1 {
   font-size: x-large;
   text-align: center;
@@ -145,17 +163,15 @@ button:hover {
 }
 
 .reset-submit-button{
-  padding: 5px;
-  border-radius: 20px;
-  margin: 10px;
-  border: none;
-  color: white;
-  cursor: pointer;
-  background-color: #4caf50;
+  justify-content: center;
+  align-items: center;
+  display: flex;
   width: 120px;
   height: 50px;
-  font-size: 20px;
-  margin-bottom: 10px;
+  margin: 10px;
+ font-size: 20px;
+  border-radius: 15px;
+  background-color: #4caf50;
 }
 
 textarea {
@@ -184,6 +200,14 @@ textarea {
   padding: 0;
   color: #fff;
   margin-bottom: 10px;
+}
+
+.form-page-success{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end ;
+  justify-content: center;
+  padding: 20px;
 }
 
 .form-page{
@@ -226,6 +250,10 @@ padding-left: 5px;
   left: 10px;
 }
 
+.button-container{
+  justify-content: center;
+  display: flex;
+}
 .form-container {
   margin-left: auto; /* Pushes the form to the right */
   width: 75%; /* Adjust the width of the form */

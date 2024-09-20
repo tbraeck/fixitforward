@@ -41,6 +41,13 @@ const ContactComponent = () => {
     return <p>We&apos;ve received your message, thank you for contacting us!</p>;
   }
 
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log("Submit has happened", firstName)
+  }
+  
   return (
     <div className="flex items-center justify-center min-h-screen">
       <div className="back-button-container absolute top-0 left-0 m-4">
@@ -95,7 +102,15 @@ const ContactComponent = () => {
           onChange={(e) => setMessage(e.target.value)}
           className="border-2"
         />
-        <button type="submit">Send</button>
+        <div className="flex flex-row justify-center items-center">
+        <button
+            className='reset-submit-button'
+            type="button"
+            onClick={handleSubmit}
+          >
+            SEND
+          </button>
+          </div>
       </form>
     </div>
     // </div>
