@@ -1,13 +1,13 @@
 'use client'
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { useZipCode } from "../context/ZipCodeContext";
+import { useTransport } from "../context/TransportContext";
 
 const Transport = () => {
-    const [transport, setTransport] = useState('');
+
+const {transport, setTransport} = useTransport();
+
     const router = useRouter(); 
-    const { zipCode } = useZipCode(); // Use the custom hook to get zipCode
     
     const handleSubmit = (e) => {
         e.preventDefault(); 

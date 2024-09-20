@@ -11,12 +11,13 @@ export const DonateProvider = ({ children }) => {
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
+    const [zipCode, setZipCode] = useState("");
     const [product, setProduct] = useState("");
     const [brand, setBrand] = useState("");
     const [howBroken, setHowBroken] = useState("");
 
   return (
-    <DonateContext.Provider value={{ firstName, setFirstName, lastName, setLastName, email, setEmail, phoneNumber, setPhoneNumber, product, setProduct, brand, setBrand, howBroken, setHowBroken }}>
+    <DonateContext.Provider value={{ firstName, setFirstName, lastName, setLastName, email, setEmail, phoneNumber, setPhoneNumber, zipCode, setZipCode, product, setProduct, brand, setBrand, howBroken, setHowBroken }}>
       {children}
     </DonateContext.Provider>
   );

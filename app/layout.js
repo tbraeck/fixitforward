@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import { DateAndTimeProvider } from "./context/DateAndTimeContext";
 import { DonateProvider } from "./context/DonateContext";
-import { ZipCodeProvider } from "./context/ZipCodeContext";
+import { TransportProvider } from "./context/TransportContext";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -16,14 +16,15 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         {/* Wrap the children with ZipCodeProvider */}
-        <ZipCodeProvider>
-          <DateAndTimeProvider>
-            <DonateProvider>
-              
+        <DonateProvider>
+          <TransportProvider>
+            <DateAndTimeProvider>
+            
           {children}
-          </DonateProvider>
           </DateAndTimeProvider>
-        </ZipCodeProvider>
+          </TransportProvider>
+        </DonateProvider>
+
       </body>
     </html>
   );

@@ -3,19 +3,16 @@
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useDateAndTime } from '../context/DateAndTimeContext';
-import { useZipCode } from '../context/ZipCodeContext';
+import { useDonate } from '../context/DonateContext';
 
 const DropOffPage = () => {
   const router = useRouter();
-  // const [time, setTime] = useState('');
-  // const [date, setDate] = useState('');
   const [data, setData] = useState([]);
   const [filteredLocations, setFilteredLocations] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState(null);
 
-  const { zipCode } = useZipCode();  // Access zipCode from context
 const {date, setDate, time, setTime} = useDateAndTime(); // Access date and time from context
-  console.log(zipCode, "zip code is here");
+const {zipCode} = useDonate();
 
   // Fetch the data only once when the component mounts
   useEffect(() => {

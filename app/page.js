@@ -3,15 +3,13 @@
 import Link from "next/link";
 import { DateAndTimeProvider } from "./context/DateAndTimeContext";
 import { DonateProvider } from "./context/DonateContext";
-import { ZipCodeProvider } from "./context/ZipCodeContext";
 import FooterComponent from "./footer/footer";
 import HeaderComponent from "./header/header";
 
 export default function Home() {
   return (
-    <ZipCodeProvider>
+    <DonateProvider>
       <DateAndTimeProvider>
-        <DonateProvider>
     <div className="flex flex-col min-h-screen mr-10">  
       <HeaderComponent />
       <div className="main-content flex-grow flex justify-center items-center">
@@ -34,8 +32,7 @@ export default function Home() {
       </div>
       <FooterComponent />
     </div>
+      </DateAndTimeProvider>
     </DonateProvider>
-    </DateAndTimeProvider>
-    </ZipCodeProvider>
   );
 }
