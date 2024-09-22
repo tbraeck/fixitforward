@@ -43,7 +43,6 @@ const {zipCode} = useDonate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(zipCode);
     router.push('/success');
   };
 
@@ -53,18 +52,17 @@ const {zipCode} = useDonate();
 
   const handleLocationChange = (e) => {
     setSelectedLocation(e.target.value);
-
   };
 
   const handleDateChange = (e) => {
+    e.preventDefault();
     setDate(e.target.value);
   };
 
   const handleTimeChange = (e) => {
+    e.preventDefault();
     setTime(e.target.value);
   };
-
-  console.log(filteredLocations, "filtered locations to display");
 
   return (
     <div className="form-page">

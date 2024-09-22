@@ -167,10 +167,10 @@ const DonateFormComponent = () => {
             className="form-select"
         >
             <option value="unknown">unknown</option>
-            <option value="aLittle">A Little</option>
-            <option value="somewhat">Somewhat</option>
-            <option value="prettyBad">It&apos;s Pretty Bad</option>
-            <option value="superBroken">Wow, this thing is Super Broken!</option>
+            <option value="A Little">A Little</option>
+            <option value="Somewhat">Somewhat</option>
+            <option value="Pretty Bad">It&apos;s Pretty Bad</option>
+            <option value="Super Broken">Wow, this thing is Super Broken!</option>
         </select>
     </div>
 </div>
