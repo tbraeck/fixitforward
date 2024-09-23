@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ContactProvider } from "./context/ContactContext";
 import { DateAndTimeProvider } from "./context/DateAndTimeContext";
 import { DonateProvider } from "./context/DonateContext";
+import { RepairProvider } from "./context/RepairContext";
 import { TransportProvider } from "./context/TransportContext";
 import FooterComponent from "./footer/footer";
 import HeaderComponent from "./header/header";
@@ -11,6 +12,7 @@ import HeaderComponent from "./header/header";
 export default function Home() {
   return (
     <DonateProvider>
+      <RepairProvider>
       <TransportProvider>
       <DateAndTimeProvider>
         <ContactProvider>
@@ -39,6 +41,7 @@ export default function Home() {
     </ContactProvider>
       </DateAndTimeProvider>
       </TransportProvider>
+      </RepairProvider>
     </DonateProvider>
   );
 }

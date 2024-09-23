@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import { ContactProvider } from "./context/ContactContext";
 import { DateAndTimeProvider } from "./context/DateAndTimeContext";
 import { DonateProvider } from "./context/DonateContext";
+import { RepairProvider } from "./context/RepairContext";
 import { TransportProvider } from "./context/TransportContext";
 import "./globals.css";
 
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         {/* Wrap the children with ZipCodeProvider */}
         <DonateProvider>
+          <RepairProvider>
           <TransportProvider>
             <DateAndTimeProvider>
               <ContactProvider>
@@ -25,6 +27,7 @@ export default function RootLayout({ children }) {
             </ContactProvider>
           </DateAndTimeProvider>
           </TransportProvider>
+         </RepairProvider>
         </DonateProvider>
 
       </body>
