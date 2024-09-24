@@ -50,6 +50,11 @@ justify-content: center ;
   flex: 1; /* Ensures the main content grows to fill available space */
 }
 
+.fixitform{
+width: 2/4;
+
+}
+
 .footer {
   /* background-color: #cdcdd6; */
   padding: 10px 20px;
@@ -224,6 +229,11 @@ display: flex;
   flex-direction: column; 
   /* justify-content: space-between; */
   /* Stack label and select vertically */
+}
+
+.wide-input {
+  width: 100%; /* Adjust to the desired width */
+  max-width: 500px; /* Set a maximum width if needed */
 }
 .form-label {
 height: 25px;

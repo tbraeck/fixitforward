@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useDonate } from '../context/DonateContext';
 
+
+
 const DonateFormComponent = () => {
         const {
         firstName,setFirstName,  
@@ -17,13 +19,20 @@ const DonateFormComponent = () => {
         
         const router = useRouter();
 
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     router.push('/transport');
+    // };
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Log values including zipCode
-        console.log(firstName, lastName, email, phoneNumber, zipCode, product, brand, howBroken);
+        // Store the current page in session storage
+        sessionStorage.setItem('previousPage', router.pathname);
+      
+        // Navigate to the transport page
         router.push('/transport');
-    };
-
+      };
+      
     const handleReset = () => {
         setFirstName('');
         setLastName('');
