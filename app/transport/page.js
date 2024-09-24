@@ -1,37 +1,35 @@
 'use client'
 
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from 'react';
 import { useTransport } from "../context/TransportContext";
 
 const Transport = () => {
-    const { transport, setTransport } = useTransport();
+
+const {transport, setTransport} = useTransport();
+
     const router = useRouter(); 
-    const [previousPage, setPreviousPage] = useState(null);
-
-    useEffect(() => {
-        // Retrieve the previous page from session storage
-        const prevPage = sessionStorage.getItem('previousPage');
-        setPreviousPage(prevPage);
-    }, []);
-
+    
     const handleSubmit = (e) => {
         e.preventDefault(); 
 
         if (transport === 'Drop-Off') {
+
             router.push('/drop-off-page'); 
+            console.log('Drop-Off');
         } else if (transport === 'Pick Up') {
             router.push('/pick-up-page'); 
+            console.log('Pick Up');
         } else if (transport === 'Delivery Service') {
             router.push('/delivery-service-page'); 
+            console.log('Delivery');
+        } else {
+            console.log('No transport method selected');
         }
     }
 
     const handleBack = (e) => { 
         e.preventDefault(); 
-        if (previousPage) {
-            router.push(previousPage); // Go back to the page the user came from
-        }
+        router.push('/donate-form');
     }
 
     const handleTransportChange = (e) => {

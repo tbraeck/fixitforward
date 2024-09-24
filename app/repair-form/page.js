@@ -37,7 +37,7 @@ const RepairFormComponent = () => {
                     <button className="back-button">BACK</button>
                 </Link>
             </div>
-            <div className="App">
+            <div className="App-repair">
                 <h1 className='form-title'>FIX IT FORWARD</h1>
                 <h2 className='form-subtitle'>☞ Repair / Reseller Form ☜</h2>
                 <fieldset>
@@ -107,13 +107,13 @@ const RepairFormComponent = () => {
                         />
 
                         {/* <div className='product-inputs'> */}
-                            {/* <div className="form-group">
+                            <div className="form-group">
                                 <label htmlFor="typeOfRepair" className="form-label">Type of Repair*</label>
                                 <select 
                                     id="typeOfRepair" 
                                     name="typeOfRepair" 
                                     value={typeOfRepair}
-                                    required
+                                    required    
                                     multiple
                                     onChange={(e) => setTypeOfRepair(e.target.value)}
                                     className="form-select"
@@ -124,7 +124,7 @@ const RepairFormComponent = () => {
                                     <option value="Audio Equipment">Audio Equipment</option>
                                     <option value="Large Appliances">Large Appliances</option>
                                 </select>
-                            </div>   */}
+                            </div>  
                         {/* </div>   */}
                         <div className="button-container">
                             <button

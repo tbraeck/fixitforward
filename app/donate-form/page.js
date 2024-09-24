@@ -19,19 +19,19 @@ const DonateFormComponent = () => {
         
         const router = useRouter();
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     router.push('/transport');
-    // };
-
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Store the current page in session storage
-        sessionStorage.setItem('previousPage', router.pathname);
-      
-        // Navigate to the transport page
         router.push('/transport');
-      };
+    };
+
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     // Store the current page in session storage
+    //     sessionStorage.setItem('previousPage', router.pathname);
+      
+    //     // Navigate to the transport page
+    //     router.push('/transport');
+    //   };
       
     const handleReset = () => {
         setFirstName('');
