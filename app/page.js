@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ContactProvider } from "./context/ContactContext";
 import { DateAndTimeProvider } from "./context/DateAndTimeContext";
+import { DateAndTimeRepairProvider } from "./context/DateAndTimeRepairContext";
 import { DonateProvider } from "./context/DonateContext";
 import { RepairProvider } from "./context/RepairContext";
 import { TransportProvider } from "./context/TransportContext";
@@ -16,6 +17,7 @@ export default function Home() {
       <RepairProvider>
       <TransportProvider>
         <TransportRepairProvider>
+          <DateAndTimeRepairProvider>
       <DateAndTimeProvider>
         <ContactProvider>
     <div className="flex flex-col min-h-screen mr-10">  
@@ -42,6 +44,7 @@ export default function Home() {
     </div>
     </ContactProvider>
       </DateAndTimeProvider>
+      </DateAndTimeRepairProvider>
       </TransportRepairProvider>
       </TransportProvider>
       </RepairProvider>

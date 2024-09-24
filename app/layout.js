@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import { ContactProvider } from "./context/ContactContext";
 import { DateAndTimeProvider } from "./context/DateAndTimeContext";
+import { DateAndTimeRepairProvider } from "./context/DateAndTimeRepairContext";
 import { DonateProvider } from "./context/DonateContext";
 import { RepairProvider } from "./context/RepairContext";
 import { TransportProvider } from "./context/TransportContext";
@@ -23,11 +24,13 @@ export default function RootLayout({ children }) {
           <RepairProvider>
           <TransportProvider>
             <TransportRepairProvider>
+              <DateAndTimeRepairProvider >
             <DateAndTimeProvider>
               <ContactProvider>
           {children}
             </ContactProvider>
           </DateAndTimeProvider>
+          </DateAndTimeRepairProvider >
           </TransportRepairProvider>
           </TransportProvider>
          </RepairProvider>

@@ -1,6 +1,6 @@
 'use client';
-
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { useTransport } from "../context/TransportContext";
 
 const TransportRepair = () => {
@@ -8,9 +8,11 @@ const TransportRepair = () => {
     const router = useRouter();
 
     // Initialize transport as an array if it's not already
-    if (!Array.isArray(transport)) {
-        setTransport([]);
-    }
+    useEffect(() => {
+        if (!Array.isArray(transport)) {
+            setTransport([]); // Only set it once when component mounts if it's not already an array
+        }
+    }, [transport, setTransport]);
 
     const handleSubmit = (e) => {
         e.preventDefault(); 
@@ -19,15 +21,15 @@ const TransportRepair = () => {
             console.log('Selected transport methods:', transport);
 
             // Perform conditional navigation based on selected transport methods
-            if (transport.includes('Drop-Off')) {
-                router.push('/drop-off-page'); 
+            if (transport.includes('Drop-Off', 'Pick-Up', 'Delivery')) {
+                router.push('/repair-day-and-time'); 
             }
-            if (transport.includes('Pick Up')) {
-                router.push('/pick-up-page');
-            }
-            if (transport.includes('Delivery Service')) {
-                router.push('/delivery-service-page');
-            }
+            // if (transport.includes('Pick Up')) {
+            //     router.push('/pick-up-page');
+            // }
+            // if (transport.includes('Delivery Service')) {
+            //     router.push('/delivery-service-page');
+            // }
         } else {
             console.log('No transport method selected');
         }
