@@ -11,6 +11,7 @@ const RepairFormComponent = () => {
         email, setEmail,
         phoneNumber, setPhoneNumber,
         zipCode, setZipCode,
+        productsAccepted, setProductsAccepted,
         typeOfRepair, setTypeOfRepair} = useRepair();    
         
         const router = useRouter();
@@ -18,7 +19,7 @@ const RepairFormComponent = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(companyName, address, "I have found the data")
-        router.push('/transport');
+        router.push('/transport-repair');
     };
 
     const handleReset = () => {
@@ -51,7 +52,7 @@ const RepairFormComponent = () => {
                             onChange={(e) => setCompanyName(e.target.value)}
                             placeholder="Enter Company Name"
                             required
-                            className="form-input wide-input" // New classname
+                            className="form-input wide-input"
                             />
                         
                         <label htmlFor="address" className="form-label">Address*</label>
@@ -63,10 +64,8 @@ const RepairFormComponent = () => {
                             onChange={(e) => setAddress(e.target.value)}
                             placeholder="Enter Address"
                             required
-                            className="form-input wide-input" // New classname
-
+                            className="form-input wide-input"
                         />
-                        
                         <label htmlFor="email" className="form-label">Email*</label>
                         <input
                             type="email"
@@ -76,7 +75,7 @@ const RepairFormComponent = () => {
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="Enter email"
                             required
-                            className="form-input wide-input" // New classname
+                            className="form-input wide-input"
 
                         />
                         
@@ -89,7 +88,7 @@ const RepairFormComponent = () => {
                             onChange={(e) => setPhoneNumber(e.target.value)}
                             placeholder="Enter phone number"
                             required
-                            className="form-input wide-input" // New classname
+                            className="form-input wide-input" 
 
                         />
                         
@@ -102,11 +101,27 @@ const RepairFormComponent = () => {
                             onChange={(e) => setZipCode(e.target.value)}
                             placeholder="Enter Zip Code"
                             required
-                            className="form-input wide-input" // New classname
+                            className="form-input wide-input" 
 
                         />
-
-                        {/* <div className='product-inputs'> */}
+                        <div className="form-group">
+                                <label htmlFor="productsAccepted" className="form-label">Products You Repair*</label>
+                                <select 
+                                    id="productsAccepted" 
+                                    name="productsAccepted" 
+                                    value={productsAccepted}
+                                    required    
+                                    multiple
+                                    onChange={(e) => setProductsAccepted(e.target.value)}
+                                    className="form-select"
+                                >
+                                    <option value="unknown">unknown</option>
+                                    <option value="Kitchen Appliances">Kitchen Appliances</option>
+                                    <option value="Video Equipment">Video Equipment</option>
+                                    <option value="Audio Equipment">Audio Equipment</option>
+                                    <option value="Large Appliances">Large Appliances</option>
+                                </select>
+                            </div> 
                             <div className="form-group">
                                 <label htmlFor="typeOfRepair" className="form-label">Type of Repair*</label>
                                 <select 
@@ -125,7 +140,6 @@ const RepairFormComponent = () => {
                                     <option value="Large Appliances">Large Appliances</option>
                                 </select>
                             </div>  
-                        {/* </div>   */}
                         <div className="button-container">
                             <button
                                 className='reset-submit-button'

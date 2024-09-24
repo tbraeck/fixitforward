@@ -4,6 +4,7 @@ import { DateAndTimeProvider } from "./context/DateAndTimeContext";
 import { DonateProvider } from "./context/DonateContext";
 import { RepairProvider } from "./context/RepairContext";
 import { TransportProvider } from "./context/TransportContext";
+import { TransportRepairProvider } from "./context/TransportContextRepair";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -21,11 +22,13 @@ export default function RootLayout({ children }) {
         <DonateProvider>
           <RepairProvider>
           <TransportProvider>
+            <TransportRepairProvider>
             <DateAndTimeProvider>
               <ContactProvider>
           {children}
             </ContactProvider>
           </DateAndTimeProvider>
+          </TransportRepairProvider>
           </TransportProvider>
          </RepairProvider>
         </DonateProvider>

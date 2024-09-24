@@ -12,10 +12,11 @@ export const RepairProvider = ({ children }) => {
     const [zipCode, setZipCode] = useState("");
     const [email, setEmail] = useState("");
     const [phoneNumber, setPhoneNumber] = useState("");
-    const [typeOfRepair, setTypeOfRepair] = useState("");
+    const [productsAccepted, setProductsAccepted] = useState([]);
+    const [typeOfRepair, setTypeOfRepair] = useState([]);
 
   return (
-    <RepairContext.Provider value={{ companyName, setCompanyName, address, setAddress, email, setEmail, phoneNumber, setPhoneNumber, zipCode, setZipCode, typeOfRepair, setTypeOfRepair }}>
+    <RepairContext.Provider value={{ companyName, setCompanyName, address, setAddress, email, setEmail, phoneNumber, setPhoneNumber, zipCode, setZipCode, productsAccepted, setProductsAccepted, typeOfRepair, setTypeOfRepair }}>
       {children}
     </RepairContext.Provider>
   );

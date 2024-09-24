@@ -6,6 +6,7 @@ import { DateAndTimeProvider } from "./context/DateAndTimeContext";
 import { DonateProvider } from "./context/DonateContext";
 import { RepairProvider } from "./context/RepairContext";
 import { TransportProvider } from "./context/TransportContext";
+import { TransportRepairProvider } from "./context/TransportContextRepair";
 import FooterComponent from "./footer/footer";
 import HeaderComponent from "./header/header";
 
@@ -14,6 +15,7 @@ export default function Home() {
     <DonateProvider>
       <RepairProvider>
       <TransportProvider>
+        <TransportRepairProvider>
       <DateAndTimeProvider>
         <ContactProvider>
     <div className="flex flex-col min-h-screen mr-10">  
@@ -40,6 +42,7 @@ export default function Home() {
     </div>
     </ContactProvider>
       </DateAndTimeProvider>
+      </TransportRepairProvider>
       </TransportProvider>
       </RepairProvider>
     </DonateProvider>
