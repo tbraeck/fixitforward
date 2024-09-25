@@ -1,18 +1,26 @@
+
 'use client';
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useDateAndTimeRepair } from '../context/DateAndTimeRepairContext';
-// import { useDonate } from '../context/DonateContext';
 
 const RepairDayAndTime = () => {
   const router = useRouter();
-  const [data, setData] = useState([]);
-
-const {date, setDate, time, setTime} = useDateAndTimeRepair(); 
+  const { date, setDate, time, setTime } = useDateAndTimeRepair();
+  const [hours, setHours] = useState({
+    monday: { fromHour: '9', fromMinute: ':00', fromPeriod: 'AM', toHour: '5', toMinute: ':00', toPeriod: 'PM', closed: false },
+    tuesday: { fromHour: '9', fromMinute: ':00', fromPeriod: 'AM', toHour: '5', toMinute: ':00', toPeriod: 'PM', closed: false },
+    wednesday: { fromHour: '9', fromMinute: ':00', fromPeriod: 'AM', toHour: '5', toMinute: ':00', toPeriod: 'PM', closed: false },
+    thursday: { fromHour: '9', fromMinute: ':00', fromPeriod: 'AM', toHour: '5', toMinute: ':00', toPeriod: 'PM', closed: false },
+    friday: { fromHour: '9', fromMinute: ':00', fromPeriod: 'AM', toHour: '5', toMinute: ':00', toPeriod: 'PM', closed: false },
+    saturday: { fromHour: '9', fromMinute: ':00', fromPeriod: 'AM', toHour: '5', toMinute: ':00', toPeriod: 'PM', closed: false },
+    sunday: { fromHour: '9', fromMinute: ':00', fromPeriod: 'AM', toHour: '5', toMinute: ':00', toPeriod: 'PM', closed: false }
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(hours);
     router.push('/success-repair');
   };
 
@@ -20,488 +28,129 @@ const {date, setDate, time, setTime} = useDateAndTimeRepair();
     router.push('/transport-repair');
   };
 
-  const handleLocationChange = (e) => {
-    setSelectedLocation(e.target.value);
+  const handleDayChange = (day, field, value) => {
+    setHours((prev) => ({
+      ...prev,
+      [day]: {
+        ...prev[day],
+        [field]: value,
+      },
+    }));
   };
 
-  const handleDateChange = (e) => {
-    e.preventDefault();
-    setDate(e.target.value);
-  };
-
-  const handleTimeChange = (e) => {
-    e.preventDefault();
-    setTime(e.target.value);
-  };
+  const daysOfWeek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
   return (
     <div className="form-page">
       <div className="form-container-repair">
         <h2>Business Days and Times</h2>
         <div className="transport-options">
-            <div class="flex items-center gap-2 mb-4 mt-6">
-                <label for="mondayFromH" class="w-16 mr-6">Monday:</label>
-                    <select name="fromHour" id="mondayFromH" class="p-2 border rounded">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9" selected>9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                    </select>
-                    
-                    <select name="fromMinute" id="mondayFromM" class="p-2 border rounded">
-                        <option value=":00" selected>:00</option>
-                        <option value=":15">:15</option>
-                        <option value=":30">:30</option>
-                        <option value=":45">:45</option>
-                    </select>
-                    
-                    <select name="fromPeriod" id="mondayFromAP" class="p-2 border rounded">
-                        <option value="AM" selected>AM</option>
-                        <option value="PM">PM</option>
-                    </select>
-                    
-                    <span>to</span>
-                    
-                    <select name="toHour" id="mondayToH" class="p-2 border rounded">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5" selected>5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                    </select>
-                    
-                    <select name="toMinute" id="mondayToM" class="p-2 border rounded">
-                        <option value=":00" selected>:00</option>
-                        <option value=":15">:15</option>
-                        <option value=":30">:30</option>
-                        <option value=":45">:45</option>
-                    </select>
-                    
-                    <select name="toPeriod" id="mondayToAP" class="p-2 border rounded">
-                        <option value="AM">AM</option>
-                        <option value="PM" selected>PM</option>
-                    </select>
-                    
-                    <label for="mondayClosed" class="w-16">Closed:</label>
-                    <input type="checkbox" id="mondayClosed" name="mondayClosed" value="closed" class="form-checkbox h-5 w-5"/>
-                </div>
+          {daysOfWeek.map((day) => (
+            <div key={day} className="flex items-center gap-2 mb-4 mt-6">
+              <label htmlFor={`${day}FromH`} className="w-16 mr-6 capitalize">
+                {day}:
+              </label>
+              <select
+                name="fromHour"
+                id={`${day}FromH`}
+                className="p-2 border rounded"
+                value={hours[day].fromHour}
+                onChange={(e) => handleDayChange(day, 'fromHour', e.target.value)}
+              >
+                {Array.from({ length: 12 }, (_, i) => i + 1).map((hour) => (
+                  <option key={hour} value={hour}>
+                    {hour}
+                  </option>
+                ))}
+              </select>
+              <select
+                name="fromMinute"
+                id={`${day}FromM`}
+                className="p-2 border rounded"
+                value={hours[day].fromMinute}
+                onChange={(e) => handleDayChange(day, 'fromMinute', e.target.value)}
+              >
+                <option value=":00">:00</option>
+                <option value=":15">:15</option>
+                <option value=":30">:30</option>
+                <option value=":45">:45</option>
+              </select>
+              <select
+                name="fromPeriod"
+                id={`${day}FromAP`}
+                className="p-2 border rounded"
+                value={hours[day].fromPeriod}
+                onChange={(e) => handleDayChange(day, 'fromPeriod', e.target.value)}
+              >
+                <option value="AM">AM</option>
+                <option value="PM">PM</option>
+              </select>
 
-                    {/* Tuesday */}
-                    <div class="flex items-center gap-2 mb-4">
+              <span>to</span>
 
-                    <label for="tuesdayFromH" class="w-16 mr-6">Tuesday:</label>
-                    
-                    <select name="fromHour" id="tuesdayFromH" class="p-2 border rounded">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9" selected>9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                    </select>
-                    
-                    <select name="fromMinute" id="tuesdayFromM" class="p-2 border rounded">
-                        <option value=":00" selected>:00</option>
-                        <option value=":15">:15</option>
-                        <option value=":30">:30</option>
-                        <option value=":45">:45</option>
-                    </select>
-                    
-                    <select name="fromPeriod" id="tuesdayFromAP" class="p-2 border rounded">
-                        <option value="AM" selected>AM</option>
-                        <option value="PM">PM</option>
-                    </select>
-                    
-                    <span>to</span>
-                    
-                    <select name="toHour" id="tuesdayToH" class="p-2 border rounded">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5" selected>5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                    </select>
-                    
-                    <select name="toMinute" id="tuesdayToM" class="p-2 border rounded">
-                        <option value=":00" selected>:00</option>
-                        <option value=":15">:15</option>
-                        <option value=":30">:30</option>
-                        <option value=":45">:45</option>
-                    </select>
-                    
-                    <select name="toPeriod" id="tuesdayToAP" class="p-2 border rounded">
-                        <option value="AM">AM</option>
-                        <option value="PM" selected>PM</option>
-                    </select>
-                    
-                    <label for="tuesdayClosed" class="w-16">Closed:</label>
-                    <input type="checkbox" id="tuesdayClosed" name="tuesdayClosed" value="closed" class="form-checkbox h-5 w-5"/>
-                </div>
-                    {/* Wednesday */}
-                    <div class="flex items-center gap-2 mb-4">
+              <select
+                name="toHour"
+                id={`${day}ToH`}
+                className="p-2 border rounded"
+                value={hours[day].toHour}
+                onChange={(e) => handleDayChange(day, 'toHour', e.target.value)}
+              >
+                {Array.from({ length: 12 }, (_, i) => i + 1).map((hour) => (
+                  <option key={hour} value={hour}>
+                    {hour}
+                  </option>
+                ))}
+              </select>
+              <select
+                name="toMinute"
+                id={`${day}ToM`}
+                className="p-2 border rounded"
+                value={hours[day].toMinute}
+                onChange={(e) => handleDayChange(day, 'toMinute', e.target.value)}
+              >
+                <option value=":00">:00</option>
+                <option value=":15">:15</option>
+                <option value=":30">:30</option>
+                <option value=":45">:45</option>
+              </select>
+              <select
+                name="toPeriod"
+                id={`${day}ToAP`}
+                className="p-2 border rounded"
+                value={hours[day].toPeriod}
+                onChange={(e) => handleDayChange(day, 'toPeriod', e.target.value)}
+              >
+                <option value="AM">AM</option>
+                <option value="PM">PM</option>
+              </select>
 
-                    <label for="wednesdayFromH" class="w-16 mr-6">Wednesday:</label>
-                    
-                    <select name="fromHour" id="wednesdayFromH" class="p-2 border rounded">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9" selected>9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                    </select>
-                    
-                    <select name="fromMinute" id="wednesdayFromM" class="p-2 border rounded">
-                        <option value=":00" selected>:00</option>
-                        <option value=":15">:15</option>
-                        <option value=":30">:30</option>
-                        <option value=":45">:45</option>
-                    </select>
-                    
-                    <select name="fromPeriod" id="wednesdayFromAP" class="p-2 border rounded">
-                        <option value="AM" selected>AM</option>
-                        <option value="PM">PM</option>
-                    </select>
-                    
-                    <span>to</span>
-                    
-                    <select name="toHour" id="wednesdayToH" class="p-2 border rounded">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5" selected>5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                    </select>
-                    
-                    <select name="toMinute" id="wednesdayToM" class="p-2 border rounded">
-                        <option value=":00" selected>:00</option>
-                        <option value=":15">:15</option>
-                        <option value=":30">:30</option>
-                        <option value=":45">:45</option>
-                    </select>
-                    
-                    <select name="toPeriod" id="wednesdayToAP" class="p-2 border rounded">
-                        <option value="AM">AM</option>
-                        <option value="PM" selected>PM</option>
-                    </select>
-                    
-                    <label for="wednesdayClosed" class="w-16">Closed:</label>
-                    <input type="checkbox" id="wednesdayClosed" name="wednesdayClosed" value="closed" class="form-checkbox h-5 w-5"/>
-                </div>
-
-                    {/* Thursday */}
-                    <div class="flex items-center gap-2 mb-4">
-
-                    <label for="thursdayFromH" class="w-16 mr-6">Thursday:</label>
-                    
-                    <select name="fromHour" id="thursdayFromH" class="p-2 border rounded">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9" selected>9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                    </select>
-                    
-                    <select name="fromMinute" id="thursdayFromM" class="p-2 border rounded">
-                        <option value=":00" selected>:00</option>
-                        <option value=":15">:15</option>
-                        <option value=":30">:30</option>
-                        <option value=":45">:45</option>
-                    </select>
-                    
-                    <select name="fromPeriod" id="thursdayFromAP" class="p-2 border rounded">
-                        <option value="AM" selected>AM</option>
-                        <option value="PM">PM</option>
-                    </select>
-                    
-                    <span>to</span>
-                    
-                    <select name="toHour" id="thursdayToH" class="p-2 border rounded">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5" selected>5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                    </select>
-                    
-                    <select name="toMinute" id="thursdayToM" class="p-2 border rounded">
-                        <option value=":00" selected>:00</option>
-                        <option value=":15">:15</option>
-                        <option value=":30">:30</option>
-                        <option value=":45">:45</option>
-                    </select>
-                    
-                    <select name="toPeriod" id="thursdayToAP" class="p-2 border rounded">
-                        <option value="AM">AM</option>
-                        <option value="PM" selected>PM</option>
-                    </select>
-                    
-                    <label for="thursdayClosed" class="w-16">Closed:</label>
-                    <input type="checkbox" id="thursdayClosed" name="thursdayClosed" value="closed" class="form-checkbox h-5 w-5"/>
-                </div>
-
-                    {/* Friday */}
-                    <div class="flex items-center gap-2 mb-4">
-
-                    <label for="mondayFromH" class="w-16 mr-9">Friday:</label>
-                    
-                    <select name="fromHour" id="mondayFromH" class="p-2 border rounded">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9" selected>9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                    </select>
-                    
-                    <select name="fromMinute" id="mondayFromM" class="p-2 border rounded">
-                        <option value=":00" selected>:00</option>
-                        <option value=":15">:15</option>
-                        <option value=":30">:30</option>
-                        <option value=":45">:45</option>
-                    </select>
-                    
-                    <select name="fromPeriod" id="mondayFromAP" class="p-2 border rounded">
-                        <option value="AM" selected>AM</option>
-                        <option value="PM">PM</option>
-                    </select>
-                    
-                    <span>to</span>
-                    
-                    <select name="toHour" id="mondayToH" class="p-2 border rounded">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5" selected>5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                    </select>
-                    
-                    <select name="toMinute" id="mondayToM" class="p-2 border rounded">
-                        <option value=":00" selected>:00</option>
-                        <option value=":15">:15</option>
-                        <option value=":30">:30</option>
-                        <option value=":45">:45</option>
-                    </select>
-                    
-                    <select name="toPeriod" id="mondayToAP" class="p-2 border rounded">
-                        <option value="AM">AM</option>
-                        <option value="PM" selected>PM</option>
-                    </select>
-                    
-                    <label for="mondayClosed" class="w-16">Closed:</label>
-                    <input type="checkbox" id="mondayClosed" name="mondayClosed" value="closed" class="form-checkbox h-5 w-5"/>
-                </div>
-
-                    {/* Saturday */}
-                    <div class="flex items-center gap-2 mb-4">
-
-                    <label for="mondayFromH" class="w-16 mr-6">Saturday:</label>
-                    
-                    <select name="fromHour" id="mondayFromH" class="p-2 border rounded">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9" selected>9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                    </select>
-                    
-                    <select name="fromMinute" id="mondayFromM" class="p-2 border rounded">
-                        <option value=":00" selected>:00</option>
-                        <option value=":15">:15</option>
-                        <option value=":30">:30</option>
-                        <option value=":45">:45</option>
-                    </select>
-                    
-                    <select name="fromPeriod" id="mondayFromAP" class="p-2 border rounded">
-                        <option value="AM" selected>AM</option>
-                        <option value="PM">PM</option>
-                    </select>
-                    
-                    <span>to</span>
-                    
-                    <select name="toHour" id="mondayToH" class="p-2 border rounded">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5" selected>5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                    </select>
-                    
-                    <select name="toMinute" id="mondayToM" class="p-2 border rounded">
-                        <option value=":00" selected>:00</option>
-                        <option value=":15">:15</option>
-                        <option value=":30">:30</option>
-                        <option value=":45">:45</option>
-                    </select>
-                    
-                    <select name="toPeriod" id="mondayToAP" class="p-2 border rounded">
-                        <option value="AM">AM</option>
-                        <option value="PM" selected>PM</option>
-                    </select>
-                    
-                    <label for="mondayClosed" class="w-16">Closed:</label>
-                    <input type="checkbox" id="mondayClosed" name="mondayClosed" value="closed" class="form-checkbox h-5 w-5"/>
-                </div>
-
-                    {/* sunday */}
-                    <div class="flex items-center gap-2 mb-4">
-
-                    <label for="mondayFromH" class="w-16 mr-7">Sunday:</label>
-                    
-                    <select name="fromHour" id="mondayFromH" class="p-2 border rounded">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9" selected>9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                    </select>
-                    
-                    <select name="fromMinute" id="mondayFromM" class="p-2 border rounded">
-                        <option value=":00" selected>:00</option>
-                        <option value=":15">:15</option>
-                        <option value=":30">:30</option>
-                        <option value=":45">:45</option>
-                    </select>
-                    
-                    <select name="fromPeriod" id="mondayFromAP" class="p-2 border rounded">
-                        <option value="AM" selected>AM</option>
-                        <option value="PM">PM</option>
-                    </select>
-                    
-                    <span>to</span>
-                    
-                    <select name="toHour" id="mondayToH" class="p-2 border rounded">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5" selected>5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
-                        <option value="9">9</option>
-                        <option value="10">10</option>
-                        <option value="11">11</option>
-                        <option value="12">12</option>
-                    </select>
-                    
-                    <select name="toMinute" id="mondayToM" class="p-2 border rounded">
-                        <option value=":00" selected>:00</option>
-                        <option value=":15">:15</option>
-                        <option value=":30">:30</option>
-                        <option value=":45">:45</option>
-                    </select>
-                    
-                    <select name="toPeriod" id="mondayToAP" class="p-2 border rounded">
-                        <option value="AM">AM</option>
-                        <option value="PM" selected>PM</option>
-                    </select>
-                    
-                    <label for="mondayClosed" class="w-16">Closed:</label>
-                    <input type="checkbox" id="mondayClosed" name="mondayClosed" value="closed" class="form-checkbox h-5 w-5"/>
-                </div>
+              <label htmlFor={`${day}Closed`} className="w-16">
+                Closed:
+              </label>
+              <input
+                type="checkbox"
+                id={`${day}Closed`}
+                name={`${day}Closed`}
+                className="form-checkbox h-5 w-5"
+                checked={hours[day].closed}
+                onChange={(e) => handleDayChange(day, 'closed', e.target.checked)}
+              />
             </div>
+          ))}
+        </div>
+
         <div className="flex flex-row mt-2 justify-center items-center">
           <button className='back-button' onClick={handleBack}>
-            BACK
-          </button>
-          <button
+           BACK
+           </button>
+            <button
             className='reset-submit-button'
-            type="button"
-            onClick={handleSubmit}
-          >
-            NEXT
-          </button>
-        </div>
+                         type="button"
+             onClick={handleSubmit}
+           >
+             NEXT
+           </button>
+         </div>
       </div>
     </div>
   );

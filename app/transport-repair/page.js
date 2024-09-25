@@ -1,10 +1,10 @@
 'use client';
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { useTransport } from "../context/TransportContext";
+import { useTransportRepair } from "../context/TransportContextRepair";
 
 const TransportRepair = () => {
-    const { transport, setTransport } = useTransport();
+    const { transport, setTransport } = useTransportRepair();
     const router = useRouter();
 
     // Initialize transport as an array if it's not already
@@ -19,24 +19,9 @@ const TransportRepair = () => {
 
         if (transport.length > 0) {
             console.log('Selected transport methods:', transport);
-
-            // Perform conditional navigation based on selected transport methods
-            if (transport.includes('Drop-Off')) {
-                router.push('/repair-day-and-time'); 
-                console.log(transport)
-
-            }
-            if (transport.includes('Pick Up')) {
-                router.push('/repair-day-and-time');
-                console.log(transport)
-
-            }
-            if (transport.includes('Delivery Service')) {
-                router.push('/repair-day-and-time');
-                console.log(transport)
-            }
+            router.push('/repair-day-and-time'); // Navigate regardless of method
         } else {
-            console.log('No transport method selected');
+            alert('Please select at least one transport method.');
         }
     };
 
@@ -105,7 +90,6 @@ const TransportRepair = () => {
                             <button
                                 className='reset-submit-button'
                                 type="submit"
-                                value="Submit"
                                 onClick={handleSubmit}
                             >
                                 NEXT

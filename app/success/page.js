@@ -19,7 +19,7 @@ const Success = ({ details }) => {
   } = useDonate();
 
   const { transport } = useTransport();
-
+console.log('the type of transport is', transport)
   const handleSubmit = (e) => {
     e.preventDefault(); 
     router.push('/');
