@@ -295,6 +295,20 @@ padding-left: 5px;
   align-items: center;
 }
 
+.form-container-repair {
+  margin-left: auto; /* Pushes the form to the right */
+  width: 75%; /* Adjust the width of the form */
+  border-radius: 15px;
+  background-color: white;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  padding: 10px 20px;
+  transition: transform 0.2s;
+  width: 700px;
+  margin-right: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
 .product-inputs{
   display: flex;
   flex-direction: row;
