@@ -113,6 +113,12 @@ align-items: center;
   padding: 20px 20px 20px 20px;
 }
 
+.repair-info{
+  background-color: aliceblue;
+  padding-top: 0%;
+  padding: 20px 20px 20px 20px;
+}
+
 h1 {
   font-size: x-large;
   text-align: center;
@@ -229,6 +235,20 @@ textarea {
   align-items: flex-end ;
   justify-content: center;
   padding: 20px;
+}
+
+.success-form-repair{
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  width: 650px;
+  height: 97vh;
+  flex-direction: column;
+  display: flex;
+  justify-content: left;
+  align-items: right;
+  padding: 25px 25px 25px 25px;
+ margin-right: 50px;
 }
 
 .form-page{

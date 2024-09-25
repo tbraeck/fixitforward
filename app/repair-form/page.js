@@ -34,13 +34,22 @@ const RepairFormComponent = () => {
         setTypeOfRepair('');
     };
 
-    const toggleRepairType = (method) => {
+    const toggleProductType = (method) => {
         if (productsAccepted.includes(method)) {
             setProductsAccepted(productsAccepted.filter((item) => item !== method)); // Remove method
         } else {
             setProductsAccepted([...productsAccepted, method]); // Add method
         }
         console.log(productsAccepted    )
+    };
+
+    const toggleRepairType = (method) => {
+        if (typeOfRepair.includes(method)) {
+            setTypeOfRepair(typeOfRepair.filter((item) => item !== method)); // Remove method
+        } else {
+            setTypeOfRepair ([...typeOfRepair, method]); // Add method
+        }
+        console.log(typeOfRepair    )
     };
 
     return (
@@ -116,92 +125,112 @@ const RepairFormComponent = () => {
                             className="form-input wide-input" 
 
                         />
-                        {/* <div className="form-group">
-                                <label htmlFor="productsAccepted" className="form-label">Products You Repair*</label>
-                                <select 
-                                    id="productsAccepted" 
-                                    name="productsAccepted" 
-                                    value={productsAccepted}
-                                    type="checkbox"
-                                    required    
-                                    multiple
-                                    onChange={(e) => setProductsAccepted(e.target.value)}
-                                    className="form-select"
-                                >
-                                    <option value="unknown">unknown</option>
-                                    <option value="Kitchen Appliances">Kitchen Appliances</option>
-                                    <option value="Video Equipment">Video Equipment</option>
-                                    <option value="Audio Equipment">Audio Equipment</option>
-                                    <option value="Large Appliances">Large Appliances</option>
-                                </select>
-                            </div>  */}
-                            <div className="transport-options">
-                            <div className="transport-option">
-                                <legend className='mt-4'>Products Accepted*</legend>
-                                <label  >
+            
+                            <div className="repair-info  flex flex-row justify-between space-x-8">
+                            {/* Products Accepted */}
+                            <div className="w-1/2">
+                                <legend className="mt-2">Products Accepted*</legend>
+                                <div className="transport-option">
+                                <label>
                                     <input
-                                        type="checkbox"
-                                        value="Kitchen-Appliances"
-                                        checked={productsAccepted.includes('Kitchen-Appliances')}
-                                        onChange={() => toggleRepairType('Kitchen-Appliances')}
+                                    type="checkbox"
+                                    value="Kitchen-Appliances"
+                                    checked={productsAccepted.includes('Kitchen-Appliances')}
+                                    onChange={() => toggleProductType('Kitchen-Appliances')}
                                     />
                                     Kitchen Appliances
                                 </label>
-                            </div>
+                                </div>
 
-                            <div className="transport-option">
+                                <div className="transport-option">
                                 <label>
                                     <input
-                                        type="checkbox"
-                                        value="Video Equipment"
-                                        checked={productsAccepted.includes('Video Equipment')}
-                                        onChange={() => toggleRepairType('Video Equipment')}
+                                    type="checkbox"
+                                    value="Video Equipment"
+                                    checked={productsAccepted.includes('Video Equipment')}
+                                    onChange={() => toggleProductType('Video Equipment')}
                                     />
                                     Video Equipment
                                 </label>
-                            </div>
+                                </div>
 
-                            <div className="transport-option">
+                                <div className="transport-option">
                                 <label>
                                     <input
-                                        type="checkbox"
-                                        value="Audio Equipment"
-                                        checked={productsAccepted.includes('Audio Equipment')}
-                                        onChange={() => toggleRepairType('Audio Equipment')}
+                                    type="checkbox"
+                                    value="Audio Equipment"
+                                    checked={productsAccepted.includes('Audio Equipment')}
+                                    onChange={() => toggleProductType('Audio Equipment')}
                                     />
                                     Audio Equipment
                                 </label>
-                            </div>
-                            <div className="transport-option">
+                                </div>
+
+                                <div className="transport-option">
                                 <label>
                                     <input
-                                        type="checkbox"
-                                        value="Large Appliances"
-                                        checked={productsAccepted.includes('Large Appliances')}
-                                        onChange={() => toggleRepairType('Large Appliances')}
+                                    type="checkbox"
+                                    value="Large Appliances"
+                                    checked={productsAccepted.includes('Large Appliances')}
+                                    onChange={() => toggleProductType('Large Appliances')}
                                     />
                                     Large Appliances
                                 </label>
+                                </div>
                             </div>
-                        </div>
-                                {/* <div className="form-group">
-                                    <label htmlFor="typeOfRepair" className="form-label">Type of Repair*</label>
-                                    <select 
-                                        id="typeOfRepair" 
-                                        name="typeOfRepair" 
-                                        value={typeOfRepair}
-                                        required    
-                                        multiple
-                                        onChange={(e) => setTypeOfRepair(e.target.value)}
-                                        className="form-select"
-                                    >
-                                        <option value="unknown">unknown</option>
-                                        <option value="Kitchen Appliances">Kitchen Appliances</option>
-                                        <option value="Video Equipment">Video Equipment</option>
-                                        <option value="Audio Equipment">Audio Equipment</option>
-                                        <option value="Large Appliances">Large Appliances</option>
-                                    </select>
-                                </div>   */}
+
+                            {/* Types of Repairs */}
+                            <div className="w-1/2">
+                                <legend className="mt-2">Types of Repairs*</legend>
+                                <div className="transport-option">
+                                <label>
+                                    <input
+                                    type="checkbox"
+                                    value="Minor Damage"
+                                    checked={typeOfRepair.includes('Minor Damage')}
+                                    onChange={() => toggleRepairType('Minor Damage')}
+                                    />
+                                    Minor Damage
+                                </label>
+                                </div>
+
+                                <div className="transport-option">
+                                <label>
+                                    <input
+                                    type="checkbox"
+                                    value="Medium Damage"
+                                    checked={typeOfRepair.includes('Medium Damage')}
+                                    onChange={() => toggleRepairType('Medium Damage')}
+                                    />
+                                    Medium Damage
+                                </label>
+                                </div>
+
+                                <div className="transport-option">
+                                <label>
+                                    <input
+                                    type="checkbox"
+                                    value="Heavy Damage"
+                                    checked={typeOfRepair.includes('Heavy Damage')}
+                                    onChange={() => toggleRepairType('Heavy Damage')}
+                                    />
+                                    Heavy Damage
+                                </label>
+                                </div>
+
+                                <div className="transport-option">
+                                <label>
+                                    <input
+                                    type="checkbox"
+                                    value="Full Overhaul"
+                                    checked={typeOfRepair.includes('Full Overhaul')}
+                                    onChange={() => toggleRepairType('Full Overhaul')}
+                                    />
+                                    Full Overhaul   
+                                </label>
+                                </div>
+                            </div>
+                            </div>
                         <div className="button-container">
                             <button
                                 className='reset-submit-button'

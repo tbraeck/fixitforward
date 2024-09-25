@@ -21,15 +21,20 @@ const TransportRepair = () => {
             console.log('Selected transport methods:', transport);
 
             // Perform conditional navigation based on selected transport methods
-            if (transport.includes('Drop-Off', 'Pick-Up', 'Delivery')) {
+            if (transport.includes('Drop-Off')) {
                 router.push('/repair-day-and-time'); 
+                console.log(transport)
+
             }
-            // if (transport.includes('Pick Up')) {
-            //     router.push('/pick-up-page');
-            // }
-            // if (transport.includes('Delivery Service')) {
-            //     router.push('/delivery-service-page');
-            // }
+            if (transport.includes('Pick Up')) {
+                router.push('/repair-day-and-time');
+                console.log(transport)
+
+            }
+            if (transport.includes('Delivery Service')) {
+                router.push('/repair-day-and-time');
+                console.log(transport)
+            }
         } else {
             console.log('No transport method selected');
         }

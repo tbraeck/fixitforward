@@ -5,7 +5,7 @@ import { useDateAndTimeRepair } from "../context/DateAndTimeRepairContext";
 import { useRepair } from "../context/RepairContext";
 import { useTransportRepair } from "../context/TransportContextRepair";
 
-const SuccessRepair = ({ details }) => {
+const SuccessRepair = () => {
   const router = useRouter(); 
   const { date, time } = useDateAndTimeRepair(); 
   const { 
@@ -18,7 +18,8 @@ const SuccessRepair = ({ details }) => {
      typeOfRepair,  
   } = useRepair();
 
-  const { transport } = useTransportRepair();
+  const { transport } = useTransportRepair([]);
+console.log(transport, phoneNumber)
 
   const handleSubmit = (e) => {
     e.preventDefault(); 
@@ -59,29 +60,44 @@ const SuccessRepair = ({ details }) => {
       return <p>No transport method selected.</p>;
     }
   }
-
+  
   return (
     <div className='form-page-success'>
-      <div className="success-form ">
+      <div className="success-form-repair ">
         <h1>Congratulations! </h1>
         <h2 className="mb-4">You are all set to make be a repair/ reseller for FixItForward!</h2>
-        <p className="mb-4">Here&apos;s the details of your company&apos;s contribution to FixItForward for your records:</p>
-       <div className="donation-info">
-        <h2>Contact Information:</h2>
+        {/* <p className="mb-2">Here&apos;s the details of your company&apos;s contribution to FixItForward for your records:</p> */}
+       <div className="repair-info">
+        <h2 className="pb-2">Contact Information:</h2>
         <p><b>Company Name:</b>&nbsp;{companyName}</p>
         <p><b>Address:</b>&nbsp;{address}</p>
         <p><b>Zip Code:</b>&nbsp;{zipCode}</p>
         <p><b>Phone #:</b>&nbsp;{phoneNumber}</p>
         <p><b>Email:</b>&nbsp;{email}</p>
+        <div className="flex flex-row justify-between space-x-8 mt-2">
         <p>
-          <b>Products you repair and resell are:</b>&nbsp;{productsAccepted}<br />
-          {/* <b>Condition:</b>&nbsp;{howBroken} */}
-        </p>
-        
-        <h2 className="mt-4">Donation Details</h2>
+            <b>You repair and resell:</b>
+            <ul>
+              {productsAccepted.map((product, index) => (
+                <li key={index}>{product}</li>  // Add key prop for each list item
+              ))}
+            </ul>
+          </p>
+          <p>
+            <b>Damage You Accept:</b>
+            <ul>
+              {typeOfRepair.map((repair, index) => (
+                <li key={index}>{repair}</li>  // Add key prop for each list item
+              ))}
+            </ul>
+          </p>
+          {renderTransportDetails()}
+         
+          </div>
+        <h2 className="mt-4">Hours of Operation</h2>
         {/* {renderTransportDetails()} Conditional rendering of transport details */}
-        <p><b>Date:</b>&nbsp;{date}</p>
-        <p><b>Time:</b>&nbsp;{time}</p>
+        <p><b>Days:</b>&nbsp;{date}</p>
+        <p><b>Times:</b>&nbsp;{time}</p>
         </div>
 
         <div className="flex flex-row mt-6 justify-center ">
