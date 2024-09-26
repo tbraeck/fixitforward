@@ -7,7 +7,15 @@ import { useTransportRepair } from "../context/TransportContextRepair";
 
 const SuccessRepair = () => {
   const router = useRouter(); 
-  const { date, time } = useDateAndTimeRepair(); 
+  const { times } = useDateAndTimeRepair();
+  
+  // Render times correctly by accessing properties of each time object
+  const timesNew = times.map((time, index) => (
+    <li key={index}>
+      <b>{time.day}:</b> {time.closed ? "Closed" : time.hours || "Unknown"}
+    </li>
+  ));
+
   const { 
     companyName,
     address, 
@@ -20,7 +28,6 @@ const SuccessRepair = () => {
 
   const { transport } = useTransportRepair(); // Ensure this returns an array
 
-  console.log(transport, 'transport is here')
   const handleSubmit = (e) => {
     e.preventDefault(); 
     router.push('/');
@@ -46,8 +53,8 @@ const SuccessRepair = () => {
       <div className="success-form-repair ">
         <h1>Congratulations!</h1>
         <h2 className="mb-4">You are all set to make repairs/resell for FixItForward!</h2>
-        <div className="repair-info">
-          <h2 className="pb-2">Contact Information:</h2>
+        <div className="repair-info ">
+          <h2 className="pb-2"><u>Contact Information</u></h2>
           <p><b>Company Name:</b>&nbsp;{companyName}</p>
           <p><b>Address:</b>&nbsp;{address}</p>
           <p><b>Zip Code:</b>&nbsp;{zipCode}</p>
@@ -75,9 +82,8 @@ const SuccessRepair = () => {
               {renderTransportDetails(transport)} {/* Pass the transport array here */}
             </div>
           </div>
-          <h2 className="mt-4">Hours of Operation</h2>
-          <p><b>Days:</b>&nbsp;{date}</p>
-          <p><b>Times:</b>&nbsp;{time}</p>
+          <h2 className="mt-4 mb-2"><u>Hours of Operation</u></h2>
+          <ul>{timesNew}</ul> {/* Render times as a list */}
         </div>
 
         <div className="flex flex-row mt-6 justify-center ">

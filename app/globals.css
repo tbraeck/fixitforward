@@ -81,7 +81,7 @@ body {
 
 .donation-info, .repair-info {
   background-color: aliceblue;
-  padding: 10px; /* Reduced padding */
+  padding: 20px; /* Reduced padding */
 }
 
 h1 {
@@ -224,6 +224,7 @@ textarea {
   margin-left: auto; /* Pushes the form to the right */
   width: 40%; /* Adjust the width of the form */
   border-radius: 15px;
+  margin-right: 30px;
   background-color: white;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   padding: 20px; /* Reduced padding */

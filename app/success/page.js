@@ -68,7 +68,7 @@ console.log('the type of transport is', transport)
         <p className="mb-4">Here&apos;s the details of your donation for your records:</p>
        <div className="donation-info">
 
-        <h2>Contact Information:</h2>
+        <h2 className="mb-2"><u>Contact Information</u></h2>
         <p><b>Your Name:</b>&nbsp;{firstName}&nbsp;{lastName}</p>
         <p><b>Email:</b>&nbsp;{email}</p>
         <p><b>Phone #:</b>&nbsp;{phoneNumber}</p>
@@ -77,7 +77,7 @@ console.log('the type of transport is', transport)
           <b>Condition:</b>&nbsp;{howBroken}
         </p>
         
-        <h2 className="mt-4">Donation Details</h2>
+        <h2 className="mt-4 mb-2"><u>Donation Details</u></h2>
         {renderTransportDetails()} {/* Conditional rendering of transport details */}
         <p><b>Date:</b>&nbsp;{date}</p>
         <p><b>Time:</b>&nbsp;{time}</p>

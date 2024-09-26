@@ -5,7 +5,7 @@ import { useDateAndTimeRepair } from '../context/DateAndTimeRepairContext';
 
 const RepairDayAndTime = () => {
   const router = useRouter();
-  const { times, setTimes } = useDateAndTimeRepair();
+  const { times, setTimes} = useDateAndTimeRepair();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,7 +31,7 @@ const RepairDayAndTime = () => {
   };
 
   const daysOfWeek = [
-    'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'
+    'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'
   ];
 
   return (
@@ -44,13 +44,6 @@ const RepairDayAndTime = () => {
             <div key={day} className="day-inputs flex items-center ">
               <div className="form-group flex items-center mr-1">
                 <p htmlFor={day} className="donation-info capitalize mr-1">{day}</p>
-                {/* <input
-                  type="checkbox"
-                  id={day}
-                  className="form-checkbox h-4 w-4"
-                  checked={times.find(item => item.day === day)?.closed || false}
-                  onChange={(e) => handleDayChange(day, 'closed', e.target.checked)}
-                /> */}
               </div>
 
               <div className="form-group flex items-center ">
@@ -58,7 +51,7 @@ const RepairDayAndTime = () => {
                 <select 
                   id={`${day}Times`} 
                   name={`${day}Times`} 
-                  value={times.find(item => item.day === day)?.hours || 'unknown'} // Default value
+                  value={times.find(item => item.day === day)?.hours || 'Closed'} // Default value
                   required
                   onChange={(e) => handleDayChange(day, 'hours', e.target.value)}
                   className="form-select"
@@ -68,10 +61,10 @@ const RepairDayAndTime = () => {
                   <option value="9:00am-5:00pm">9:00am - 5:00pm</option>
                   <option value="10:00am-6:00pm">10:00am - 6:00pm</option>
                   <option value="11:00am-7:00pm">11:00am - 7:00pm</option>
-                  <option value="unknown">unknown</option>
+                  <option value="Closed">Closed</option>
                 </select>
               </div>
-              <div className="form-group flex items-center ">
+              {/* <div className="form-group flex items-center ">
 
               <p htmlFor={day} className="form-label capitalize mr-1">Closed</p>
                 <input
@@ -81,7 +74,7 @@ const RepairDayAndTime = () => {
                   checked={times.find(item => item.day === day)?.closed || false}
                   onChange={(e) => handleDayChange(day, 'closed', e.target.checked)}
                 />
-            </div>
+            </div> */}
             </div>
           ))}
         </div>
