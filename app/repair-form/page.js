@@ -31,6 +31,7 @@ const RepairFormComponent = () => {
         setEmail('');
         setPhoneNumber('');
         setZipCode('');  
+        setProductsAccepted('');
         setTypeOfRepair('');
     };
 
@@ -53,8 +54,8 @@ const RepairFormComponent = () => {
     };
 
     return (
-        <div className='form-page w-full'>
-            <div className="back-button-container">
+        <div className='form-page '>
+            <div className="back-button-container hover:bg-red-700">
                 <Link href="/">
                     <button className="back-button">BACK</button>
                 </Link>
@@ -63,7 +64,7 @@ const RepairFormComponent = () => {
                 <h1 className='form-title'>FIX IT FORWARD</h1>
                 <h2 className='form-subtitle'>☞ Repair / Reseller Form ☜</h2>
                 <fieldset>
-                    <form className='fixitform w-full justify-center ' required>
+                    <form className='fixitform ' required>
                         <label htmlFor="companyName" className="form-label">Company Name*</label>
                         <input
                             type="text"
@@ -73,7 +74,7 @@ const RepairFormComponent = () => {
                             onChange={(e) => setCompanyName(e.target.value)}
                             placeholder="Enter Company Name"
                             required
-                            className="form-input wide-input"
+                            className="form-input "
                             />
                         
                         <label htmlFor="address" className="form-label">Address*</label>
@@ -85,7 +86,7 @@ const RepairFormComponent = () => {
                             onChange={(e) => setAddress(e.target.value)}
                             placeholder="Enter Address"
                             required
-                            className="form-input wide-input"
+                            className="form-input "
                         />
                         <label htmlFor="email" className="form-label">Email*</label>
                         <input
@@ -96,7 +97,7 @@ const RepairFormComponent = () => {
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="Enter email"
                             required
-                            className="form-input wide-input"
+                            className="form-input "
 
                         />
                         
@@ -109,7 +110,7 @@ const RepairFormComponent = () => {
                             onChange={(e) => setPhoneNumber(e.target.value)}
                             placeholder="Enter phone number"
                             required
-                            className="form-input wide-input" 
+                            className="form-input " 
 
                         />
                         
@@ -122,7 +123,7 @@ const RepairFormComponent = () => {
                             onChange={(e) => setZipCode(e.target.value)}
                             placeholder="Enter Zip Code"
                             required
-                            className="form-input wide-input" 
+                            className="form-input mb-4" 
 
                         />
             
