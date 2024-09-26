@@ -69,7 +69,8 @@ const {zipCode} = useDonate();
   return (
     <div className="form-page">
       <div className="form-container">
-      <h2>Pick Up</h2>
+      <h2 className='mb-4 text-blue-500'><u>Select a Pick Up Day and Time</u></h2>
+
       <label htmlFor="date">Pick Up Day
         <input type="date" 
           name="date"  
@@ -89,8 +90,8 @@ const {zipCode} = useDonate();
           value={time}
           required />
           <br/>
-        <h2 className='mb-4'>Select a Pick Up Company</h2>
-        {filteredLocations.length > 0 ? (
+          <h2 className='mb-4 text-blue-500'><u>Select a Pick Up Company</u></h2>
+          {filteredLocations.length > 0 ? (
       <fieldset className="space-y-4">
         {filteredLocations.map((location, index) => (
           <div key={location.zipCode} className="location-container flex justify-between items-center p-4 border border-gray-400 rounded-md">

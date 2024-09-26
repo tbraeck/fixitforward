@@ -236,8 +236,10 @@ textarea {
 .product-inputs {
   display: flex;
   flex-direction: row;
+  padding: 10px;
   gap: 10px; /* Reduced gap */
   margin-top: 10px; /* Reduced margin */
+  background-color: aliceblue;
 }
 
 .product-brand-container {

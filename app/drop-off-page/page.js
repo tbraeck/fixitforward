@@ -67,6 +67,8 @@ const {zipCode} = useDonate();
   return (
     <div className="form-page">
       <div className="form-container">
+      <h2 className='mb-4 text-blue-500'><u>Select a Drop Off Day and Time</u></h2>
+
         <label htmlFor="date">Drop Off Day
           <input type="date" 
             name="date"  
@@ -88,7 +90,7 @@ const {zipCode} = useDonate();
           required 
         />
         <br/>
-        <h2 className='mb-4'>Select a Drop Off Location</h2>
+        <h2 className='mb-4 text-blue-500'><u>Select a Drop Off Location</u></h2>
         {filteredLocations.length > 0 ? (
       <fieldset className="space-y-4">
         {filteredLocations.map((location, index) => (

@@ -21,7 +21,7 @@ const DeliveryPage = () => {
         let res = await fetch('/data.json');
         if (!res.ok) throw new Error("Failed to fetch data");
         let jsonData = await res.json();
-        setData(jsonData);  // Save fetched data
+        setData(jsonData); 
         console.log(jsonData, "all that data is here");
       } catch (error) {
         console.error("Error fetching locations:", error);
@@ -68,7 +68,7 @@ const DeliveryPage = () => {
   return (
     <div className="form-page">
       <div className="form-container">
-      <h2>Delivery</h2>
+      <h2 className='mb-4 text-blue-500'><u>Select a Delivery Day and Time</u></h2>
         <label htmlFor="date">Delivery Day
         <input type="date" 
           name="date"  
@@ -89,8 +89,8 @@ const DeliveryPage = () => {
           required 
           />
  <br/>
-        <h2 className='mb-4'>Select a Drop Off Location</h2>
-        {filteredLocations.length > 0 ? (
+ <h2 className='mb-4 text-blue-500'><u>Select a Delivery Company</u></h2>
+ {filteredLocations.length > 0 ? (
       <fieldset className="space-y-4">
         {filteredLocations.map((location, index) => (
           <div key={location.zipCode} className="location-container flex justify-between items-center p-4 border border-gray-400 rounded-md">

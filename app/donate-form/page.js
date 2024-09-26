@@ -44,8 +44,8 @@ const DonateFormComponent = () => {
                 </Link>
             </div>
             <div className="App">
-                <h1 className='form-title'>FIX IT FORWARD</h1>
-                <h2 className='form-subtitle'>☞ Donations Form ☜</h2>
+                <h1 className='form-title text-blue-500'>FIX IT FORWARD</h1>
+                <h2 className='form-subtitle text-blue-500'>☞ Donations Form ☜</h2>
                 <fieldset>
                     <form className='fixitform' required>
                         <label htmlFor="firstName" className="form-label">First Name*</label>
