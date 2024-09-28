@@ -55,7 +55,7 @@ const RepairFormComponent = () => {
 
     return (
         <div className='form-page '>
-            <div className="back-button-container hover:bg-red-700">
+            <div className="back-button-container ">
                 <Link href="/">
                     <button className="back-button">BACK</button>
                 </Link>
