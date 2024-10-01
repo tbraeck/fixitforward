@@ -40,11 +40,13 @@ body {
   color: rgb(68, 63, 63);
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  margin-top: 10px;
+  align-items: start ;
 }
 
 .main-content {
-  flex: 1; /* Ensures the main content grows to fill available space */
+  flex: 1; 
+  margin-bottom: 4%;
 }
 
 .fixitform {
