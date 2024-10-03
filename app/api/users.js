@@ -1,21 +1,40 @@
 import mongoose from 'mongoose';
-import connectToDatabase from '../../lib/db';
 
-// Define a simple User schema
+// MongoDB connection URI
+const uri = "mongodb+srv://tatebraeckel:SetAflame!0!2@fixitforward-cluster1.zsx6s.mongodb.net/FixItForwardUsers?retryWrites=true&w=majority&appName=FixItForward-cluster1";
+
+// Define the User schema
 const userSchema = new mongoose.Schema({
   name: String,
   email: String,
 });
 
+// Create the User model if it doesn't already exist
 const User = mongoose.models.User || mongoose.model('User', userSchema);
 
+// Function to connect to MongoDB
+async function connectToDatabase() {
+  if (mongoose.connection.readyState === 0) {
+    try {
+      await mongoose.connect(uri, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      });
+      console.log('Connected to MongoDB');
+    } catch (error) {
+      console.error('Error connecting to MongoDB:', error);
+    }
+  }
+}
+
+// Handler function for API requests
 export default async function handler(req, res) {
   await connectToDatabase();
 
   const { method } = req;
 
   switch (method) {
-    // GET request to retrieve users
+    // GET request to retrieve all users
     case 'GET':
       try {
         const users = await User.find({});
@@ -35,7 +54,7 @@ export default async function handler(req, res) {
       }
       break;
 
-    // PUT request to update a user by ID
+    // PUT request to update an existing user by ID
     case 'PUT':
       try {
         const { id } = req.query;
@@ -49,7 +68,7 @@ export default async function handler(req, res) {
       }
       break;
 
-    // DELETE request to delete a user by ID
+    // DELETE request to remove a user by ID
     case 'DELETE':
       try {
         const { id } = req.query;
