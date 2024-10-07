@@ -18,7 +18,9 @@ const {zipCode} = useDonate();
   useEffect(() => {
     async function fetchData() {
       try {
-        let res = await fetch('/data.json');
+        // let res = await fetch('/data.json');
+        let res = await fetch(`http://localhost:3000/sellers`);
+
         if (!res.ok) throw new Error("Failed to fetch data");
         let jsonData = await res.json();
         setData(jsonData);  // Save fetched data
