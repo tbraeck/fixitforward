@@ -15,7 +15,7 @@ export const DonorProvider = ({ children }) => {
         if (res.ok) {
           return res.json();
         } else {
-          throw new Error('Failed to fetch sellers');
+          throw new Error('Failed to fetch donors');
         }
       })
       .then((data) => {

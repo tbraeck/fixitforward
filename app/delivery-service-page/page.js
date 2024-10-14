@@ -15,20 +15,20 @@ const DeliveryPage = () => {
   const {zipCode} = useDonate();
   // Fetch data and filter it based on the zip code
   // Fetch the data only once when the component mounts
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        let res = await fetch('/data.json');
-        if (!res.ok) throw new Error("Failed to fetch data");
-        let jsonData = await res.json();
-        setData(jsonData); 
-        console.log(jsonData, "all that data is here");
-      } catch (error) {
-        console.error("Error fetching locations:", error);
-      }
-    }
-    fetchData();
-  }, []);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       let res = await fetch('/data.json');
+  //       if (!res.ok) throw new Error("Failed to fetch data");
+  //       let jsonData = await res.json();
+  //       setData(jsonData); 
+  //       console.log(jsonData, "all that data is here");
+  //     } catch (error) {
+  //       console.error("Error fetching locations:", error);
+  //     }
+  //   }
+  //   fetchData();
+  // }, []);
 
   // Filter locations based on the zipCode whenever data or zipCode changes
   useEffect(() => {

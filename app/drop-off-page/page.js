@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useDateAndTime } from '../context/DateAndTimeContext';
 import { useDonate } from '../context/DonateContext';
+import { useDonors } from '../context/DonorContext';
 import { useSellers } from '../context/SellerContext';
 
 const DropOffPage = () => {
@@ -15,8 +16,10 @@ const DropOffPage = () => {
 const {date, setDate, time, setTime} = useDateAndTime(); // Access date and time from context
 const {zipCode} = useDonate();
 const {allSellers, setAllSellers} = useSellers();
-
+const {allDonors, setAllDonors} = useDonors();
 console.log(allSellers, "here is all the sellers")
+console.log(allDonors, "here is all the sellers")
+
 // const sellers = allSellers
   // Fetch the data only once when the component mounts
   // useEffect(() => {
@@ -39,6 +42,16 @@ console.log(allSellers, "here is all the sellers")
   useEffect(() => {
     if (allSellers.length > 0 && zipCode) {
       const nearbyLocations = allSellers.filter(location =>
+        location.zipCode.startsWith(zipCode.slice(0, 3))
+      );
+      console.log('Filtered Locations:', nearbyLocations); // Debug line
+      setFilteredLocations(nearbyLocations.slice(0, 2));  // Limit to 5 locations
+    }
+  }, [data, zipCode]);
+
+  useEffect(() => {
+    if (allDonors.length > 0 && zipCode) {
+      const nearbyLocations = allDonors.filter(location =>
         location.zipCode.startsWith(zipCode.slice(0, 3))
       );
       console.log('Filtered Locations:', nearbyLocations); // Debug line
