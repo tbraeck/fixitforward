@@ -12,52 +12,35 @@ const DropOffPage = () => {
   const [data, setData] = useState([]);
   const [filteredLocations, setFilteredLocations] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState(null);
-
-const {date, setDate, time, setTime} = useDateAndTime(); // Access date and time from context
+  const [filteredSellers, setFilteredSellers] = useState([]);
+  const [filteredDonors, setFilteredDonors] = useState([]);
+  
+const {date, setDate, time, setTime} = useDateAndTime(); 
 const {zipCode} = useDonate();
 const {allSellers, setAllSellers} = useSellers();
 const {allDonors, setAllDonors} = useDonors();
-console.log(allSellers, "here is all the sellers")
-console.log(allDonors, "here is all the sellers")
+// console.log(allSellers, "here is all the sellers")
+// console.log(allDonors, "here is all the donors")
+useEffect(() => {
+  if (allSellers.length > 0 && zipCode) {
+    const nearbySellers = allSellers.filter(location =>
+      location.zipCode.startsWith(zipCode.slice(0, 3))
+    );
+    console.log('Filtered Sellers:', nearbySellers); 
+    setFilteredSellers(nearbySellers.slice(0, 2));  // Limit to 2 sellers
+  }
+}, [allSellers, zipCode]);
 
-// const sellers = allSellers
-  // Fetch the data only once when the component mounts
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     try {
-  //       let res = await fetch('/data.json');
+useEffect(() => {
+  if (allDonors.length > 0 && zipCode) {
+    const nearbyDonors = allDonors.filter(location =>
+      location.zipCode.startsWith(zipCode.slice(0, 3))
+    );
+    console.log('Filtered Donors:', nearbyDonors);
+    setFilteredDonors(nearbyDonors.slice(0, 2));  // Limit to 2 donors
+  }
+}, [allDonors, zipCode]);
 
-  //       if (!res.ok) throw new Error("Failed to fetch data");
-  //       let jsonData = await res.json();
-  //       setData(jsonData);  // Save fetched data
-  //       console.log(jsonData, "all that data is here");
-  //     } catch (error) {
-  //       console.error("Error fetching locations:", error);
-  //     }
-  //   }
-  //   fetchData();
-  // }, []);
-
-  // Filter locations based on the zipCode whenever data or zipCode changes
-  useEffect(() => {
-    if (allSellers.length > 0 && zipCode) {
-      const nearbyLocations = allSellers.filter(location =>
-        location.zipCode.startsWith(zipCode.slice(0, 3))
-      );
-      console.log('Filtered Locations:', nearbyLocations); // Debug line
-      setFilteredLocations(nearbyLocations.slice(0, 2));  // Limit to 5 locations
-    }
-  }, [data, zipCode]);
-
-  useEffect(() => {
-    if (allDonors.length > 0 && zipCode) {
-      const nearbyLocations = allDonors.filter(location =>
-        location.zipCode.startsWith(zipCode.slice(0, 3))
-      );
-      console.log('Filtered Locations:', nearbyLocations); // Debug line
-      setFilteredLocations(nearbyLocations.slice(0, 2));  // Limit to 5 locations
-    }
-  }, [data, zipCode]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
