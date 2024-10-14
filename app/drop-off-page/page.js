@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useDateAndTime } from '../context/DateAndTimeContext';
 import { useDonate } from '../context/DonateContext';
+import { useSellers } from '../context/SellerContext';
 
 const DropOffPage = () => {
   const router = useRouter();
@@ -13,29 +14,31 @@ const DropOffPage = () => {
 
 const {date, setDate, time, setTime} = useDateAndTime(); // Access date and time from context
 const {zipCode} = useDonate();
+const {allSellers, setAllSellers} = useSellers();
 
+console.log(allSellers, "here is all the sellers")
+// const sellers = allSellers
   // Fetch the data only once when the component mounts
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        // let res = await fetch('/data.json');
-        let res = await fetch(`http://localhost:3000/sellers`);
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     try {
+  //       let res = await fetch('/data.json');
 
-        if (!res.ok) throw new Error("Failed to fetch data");
-        let jsonData = await res.json();
-        setData(jsonData);  // Save fetched data
-        console.log(jsonData, "all that data is here");
-      } catch (error) {
-        console.error("Error fetching locations:", error);
-      }
-    }
-    fetchData();
-  }, []);
+  //       if (!res.ok) throw new Error("Failed to fetch data");
+  //       let jsonData = await res.json();
+  //       setData(jsonData);  // Save fetched data
+  //       console.log(jsonData, "all that data is here");
+  //     } catch (error) {
+  //       console.error("Error fetching locations:", error);
+  //     }
+  //   }
+  //   fetchData();
+  // }, []);
 
   // Filter locations based on the zipCode whenever data or zipCode changes
   useEffect(() => {
-    if (data.length > 0 && zipCode) {
-      const nearbyLocations = data.filter(location =>
+    if (allSellers.length > 0 && zipCode) {
+      const nearbyLocations = allSellers.filter(location =>
         location.zipCode.startsWith(zipCode.slice(0, 3))
       );
       console.log('Filtered Locations:', nearbyLocations); // Debug line

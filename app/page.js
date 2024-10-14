@@ -6,6 +6,7 @@ import { DateAndTimeProvider } from "./context/DateAndTimeContext";
 import { DateAndTimeRepairProvider } from "./context/DateAndTimeRepairContext";
 import { DonateProvider } from "./context/DonateContext";
 import { RepairProvider } from "./context/RepairContext";
+import { SellerProvider } from "./context/SellerContext";
 import { TransportProvider } from "./context/TransportContext";
 import { TransportRepairProvider } from "./context/TransportContextRepair";
 import FooterComponent from "./footer/footer";
@@ -15,6 +16,7 @@ export default function Home() {
   return (
     <DonateProvider>
       <RepairProvider>
+        <SellerProvider>
       <TransportProvider>
         <TransportRepairProvider>
           <DateAndTimeRepairProvider>
@@ -47,6 +49,7 @@ export default function Home() {
       </DateAndTimeRepairProvider>
       </TransportRepairProvider>
       </TransportProvider>
+      </SellerProvider>
       </RepairProvider>
     </DonateProvider>
   );

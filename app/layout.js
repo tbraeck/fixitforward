@@ -4,6 +4,7 @@ import { DateAndTimeProvider } from "./context/DateAndTimeContext";
 import { DateAndTimeRepairProvider } from "./context/DateAndTimeRepairContext";
 import { DonateProvider } from "./context/DonateContext";
 import { RepairProvider } from "./context/RepairContext";
+import { SellerProvider } from "./context/SellerContext";
 import { TransportProvider } from "./context/TransportContext";
 import { TransportRepairProvider } from "./context/TransportContextRepair";
 import "./globals.css";
@@ -22,6 +23,7 @@ export default function RootLayout({ children }) {
         {/* Wrap the children with ZipCodeProvider */}
         <DonateProvider>
           <RepairProvider>
+            <SellerProvider>
           <TransportProvider>
             <TransportRepairProvider>
               <DateAndTimeRepairProvider >
@@ -33,6 +35,7 @@ export default function RootLayout({ children }) {
           </DateAndTimeRepairProvider >
           </TransportRepairProvider>
           </TransportProvider>
+          </SellerProvider>
          </RepairProvider>
         </DonateProvider>
 
