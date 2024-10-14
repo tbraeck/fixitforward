@@ -5,6 +5,7 @@ import { ContactProvider } from "./context/ContactContext";
 import { DateAndTimeProvider } from "./context/DateAndTimeContext";
 import { DateAndTimeRepairProvider } from "./context/DateAndTimeRepairContext";
 import { DonateProvider } from "./context/DonateContext";
+import { DonorProvider } from "./context/DonorContext";
 import { RepairProvider } from "./context/RepairContext";
 import { SellerProvider } from "./context/SellerContext";
 import { TransportProvider } from "./context/TransportContext";
@@ -17,6 +18,7 @@ export default function Home() {
     <DonateProvider>
       <RepairProvider>
         <SellerProvider>
+          <DonorProvider>
       <TransportProvider>
         <TransportRepairProvider>
           <DateAndTimeRepairProvider>
@@ -49,6 +51,7 @@ export default function Home() {
       </DateAndTimeRepairProvider>
       </TransportRepairProvider>
       </TransportProvider>
+      </DonorProvider>
       </SellerProvider>
       </RepairProvider>
     </DonateProvider>
