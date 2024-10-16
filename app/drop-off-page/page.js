@@ -9,38 +9,30 @@ import { useSellers } from '../context/SellerContext';
 
 const DropOffPage = () => {
   const router = useRouter();
-  const [data, setData] = useState([]);
   const [filteredLocations, setFilteredLocations] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState(null);
-  const [filteredSellers, setFilteredSellers] = useState([]);
-  const [filteredDonors, setFilteredDonors] = useState([]);
   
-const {date, setDate, time, setTime} = useDateAndTime(); 
-const {zipCode} = useDonate();
-const {allSellers, setAllSellers} = useSellers();
-const {allDonors, setAllDonors} = useDonors();
-// console.log(allSellers, "here is all the sellers")
-// console.log(allDonors, "here is all the donors")
-useEffect(() => {
-  if (allSellers.length > 0 && zipCode) {
-    const nearbySellers = allSellers.filter(location =>
-      location.zipCode.startsWith(zipCode.slice(0, 3))
-    );
-    console.log('Filtered Sellers:', nearbySellers); 
-    setFilteredSellers(nearbySellers.slice(0, 2));  // Limit to 2 sellers
-  }
-}, [allSellers, zipCode]);
+  const { date, setDate, time, setTime } = useDateAndTime(); 
+  const { zipCode } = useDonate();
+  const { allSellers } = useSellers();
+  const { allDonors } = useDonors();
 
-useEffect(() => {
-  if (allDonors.length > 0 && zipCode) {
-    const nearbyDonors = allDonors.filter(location =>
-      location.zipCode.startsWith(zipCode.slice(0, 3))
-    );
-    console.log('Filtered Donors:', nearbyDonors);
-    setFilteredDonors(nearbyDonors.slice(0, 2));  // Limit to 2 donors
-  }
-}, [allDonors, zipCode]);
+  useEffect(() => {
+    // Combine filtered sellers  donors
+    if ((allSellers.length > 0 || allDonors.length > 0) && zipCode) {
+      const filteredSellers = allSellers.filter(location =>
+        location.zipCode.startsWith(zipCode.slice(0, 3))
+      );
 
+      const filteredDonors = allDonors.filter(location =>
+        location.zipCode.startsWith(zipCode.slice(0, 3))
+      );
+
+      // Combine both sellers and donors into a single array
+      const combinedLocations = [...filteredSellers, ...filteredDonors].slice(0, 2); // Limit to 2 locations
+      setFilteredLocations(combinedLocations);
+    }
+  }, [allSellers, allDonors, zipCode]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -68,7 +60,7 @@ useEffect(() => {
   return (
     <div className="form-page">
       <div className="form-container">
-      <h2 className='mb-4 text-blue-500'><u>Select a Drop Off Day and Time</u></h2>
+        <h2 className='mb-4 text-blue-500'><u>Select a Drop Off Day and Time</u></h2>
 
         <label htmlFor="date">Drop Off Day
           <input type="date" 
@@ -98,7 +90,7 @@ useEffect(() => {
           <div key={location.zipCode} className="location-container flex justify-between items-center p-4 border border-gray-400 rounded-md">
             <div className="drop-off-location flex-grow">
               <label htmlFor={location.zipCode}>
-                <strong>{index + 1}.<br /> {location.companyName}</strong><br />
+                <strong>{index + 1}.<br /> {location.companyName || 'Donor'}</strong><br />
                 {location.address}<br />
                 {location.zipCode}<br />
                 {location.phone_number}<br />
