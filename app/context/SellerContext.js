@@ -10,7 +10,7 @@ export const SellerProvider = ({ children }) => {
   const [allSellers, setAllSellers] = useState([]);
 
   useEffect(() => {
-    fetch("/sellers")
+    fetch("http://localhost:3000/sellers")
       .then((res) => {
         if (res.ok) {
           return res.json();

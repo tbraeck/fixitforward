@@ -16,6 +16,8 @@ const DropOffPage = () => {
   const { zipCode } = useDonate();
   const { allSellers } = useSellers();
   const { allDonors } = useDonors();
+console.log(allSellers, "all sellers are here")
+console.log(allDonors, "all sellers are here")
 
   useEffect(() => {
     // Combine filtered sellers  donors

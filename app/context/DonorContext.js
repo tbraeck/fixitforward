@@ -10,7 +10,7 @@ export const DonorProvider = ({ children }) => {
   const [allDonors, setAllDonors] = useState([]);
 
   useEffect(() => {
-    fetch("/donors")
+    fetch("http://localhost:3000/donors")
       .then((res) => {
         if (res.ok) {
           return res.json();
@@ -19,7 +19,7 @@ export const DonorProvider = ({ children }) => {
         }
       })
       .then((data) => {
-        setAllSDonors(data);
+        setAllDonors(data);
       })
       .catch((error) => {
         console.error('Error fetching donors:', error);
