@@ -24,7 +24,7 @@ export const DonorProvider = ({ children }) => {
       .catch((error) => {
         console.error('Error fetching donors:', error);
       });
-  }, []); // Ensure this only runs once when the component mounts
+  }, []); 
 
   return (
     <DonorContext.Provider value={{ allDonors, setAllDonors }}>
