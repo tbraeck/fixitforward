@@ -1,7 +1,6 @@
 'use client';
 
 import { useRouter } from "next/navigation";
-import { useEffect } from 'react';
 import { useDateAndTime } from "../context/DateAndTimeContext";
 import { useDonate } from "../context/DonateContext";
 import { useSellers } from '../context/SellerContext';
@@ -9,6 +8,8 @@ import { useTransport } from "../context/TransportContext";
 
 const Success = ({selectedLocation}) => {
   const router = useRouter(); 
+  const { company_name, address, zipCode, phone_number } = selectedLocation;
+
   const { date, time } = useDateAndTime(); 
   const { 
     firstName,  
@@ -25,13 +26,9 @@ const Success = ({selectedLocation}) => {
   
   // State to hold the location value
   // const [location, setLocation] = useState(selectedLocation);  
-const location = selectedLocation;
+  console.log("Selected Location:", selectedLocation);
 
-  useEffect(() => {
-    // Access the location from the router query
-    const queryLocation = new URLSearchParams(window.location.search).get('location');
-    // setLocation(queryLocation);
-  }, []);
+
 
   const handleSubmit = (e) => {
     e.preventDefault(); 
@@ -44,34 +41,37 @@ const location = selectedLocation;
   }
 
   const renderTransportDetails = () => {
-    if (transport === 'Drop-Off') {
-      return (
-        <p>
-          <b>Transport Type:</b> Drop-Off<br />
-          <b>Drop-Off Location:</b> {location}
-        </p>
-      );
-    } else if (transport === 'Pick Up') {
-      return (
-        <p>
-          <b>Transport Type:</b> Pick Up<br />
-          <b>Company Name:</b> {location.companyName}<br />
-          <b>Contact Info:</b> 555-1234<br />
-          <b>Pick Up Date and Time:</b> {date} at {time}
-        </p>
-      );
-    } else if (transport === 'Delivery Service') {
-      return (
-        <p>
-          <b>Transport Type:</b> Delivery Service<br />
-          <b>Delivery Company:</b> FastShip Delivery<br />
-          <b>Tracking Number:</b> ABC123456789
-        </p>
-      );
-    } else {
-      return <p>No transport method selected.</p>;
+    switch (transport) {
+      case 'Drop-Off':
+        return (
+          <p>
+            <b>Transport Type:</b> Drop-Off<br />
+            <b>Company:</b>{company_name || "N/A"}
+            <b>Address:</b>{address || "N/A"}
+          </p>
+        );
+      case 'Pick Up':
+        return (
+          <p>
+            <b>Transport Type:</b> Pick Up<br />
+            <b>Company Name:</b> {selectedLocation?.companyName || "N/A"}<br />
+            <b>Contact Info:</b> 555-1234<br />
+            <b>Pick Up Date and Time:</b> {date} at {time}
+          </p>
+        );
+      case 'Delivery Service':
+        return (
+          <p>
+            <b>Transport Type:</b> Delivery Service<br />
+            <b>Delivery Company:</b> FastShip Delivery<br />
+            <b>Tracking Number:</b> ABC123456789
+          </p>
+        );
+      default:
+        return <p>No transport method selected.</p>;
     }
-  }
+  };
+  
 
   return (
     <div className='form-page-success'>

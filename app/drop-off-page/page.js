@@ -37,10 +37,12 @@ const DropOffPage = () => {
   // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Navigate to success page with selectedLocation as a query parameter
     if (selectedLocation) {
-      console.log(selectedLocation)
-      router.push(`/success?selectedLocation=${selectedLocation}`);
+      // Convert selectedLocation properties to query parameters
+      const { company_name, address, zipCode, phone_number, email } = selectedLocation;
+      router.push(
+        `/success?company_name=${encodeURIComponent(company_name)}&address=${encodeURIComponent(address)}&zipCode=${zipCode}&phone_number=${phone_number}&email=${email}`
+      );
     }
   };
 
