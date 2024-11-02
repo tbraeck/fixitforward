@@ -3,6 +3,7 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import { useDonate } from '../context/DonateContext';
 
 
@@ -16,14 +17,32 @@ const DonateFormComponent = () => {
         zipCode, setZipCode,
         product, setProduct,
         brand, setBrand,
-        howBroken, setHowBroken} = useDonate();    
-        
+        howBroken, setHowBroken} = useDonate(); 
+       
+        const [error, setError] = useState(''); 
         const router = useRouter();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        router.push('/transport');
-    };
+        const handleSubmit = (e) => {
+            e.preventDefault();
+    
+            // Check if all fields are filled
+            if (
+                !firstName || !lastName || !email || !phoneNumber || !zipCode ||
+                !product || !brand || !howBroken
+            ) {
+                setError('Please fill out all required fields.');
+                setTimeout(() => {
+                    setError('');
+                }, 1500);
+                return;
+            }
+    
+            // Clear error message if validation passes
+            setError('');
+            
+            // Navigate to the next page
+            router.push('/transport');
+        };
 
     const handleReset = () => {
         setFirstName('');
@@ -46,6 +65,7 @@ const DonateFormComponent = () => {
             <div className="App">
                 <h1 className='form-title text-blue-500'>FIX IT FORWARD</h1>
                 <h2 className='form-subtitle text-blue-500'>☞ Donations Form ☜</h2>
+                {error && <p className="error-message text-red-500">{error}</p>}
                 <fieldset>
                     <form className='fixitform' required>
                         <label htmlFor="firstName" className="form-label">First Name*</label>
@@ -115,11 +135,12 @@ const DonateFormComponent = () => {
                                     id="product" 
                                     name="product" 
                                     value={product}
-                                    required
                                     onChange={(e) => setProduct(e.target.value)}
                                     className="form-select"
+                                    required
+
                                 >
-                                    <option value="unknown">unknown</option>
+                                    <option value=""> Product Type</option>
                                     <option value="Television">Television</option>
                                     <option value="Stereo">Stereo</option>
                                     <option value="Microwave">Microwave</option>
@@ -139,11 +160,12 @@ const DonateFormComponent = () => {
                                     id="brand" 
                                     name="brand" 
                                     value={brand}
-                                    required
                                     onChange={(e) => setBrand(e.target.value)}
                                     className="form-select"
+                                    required
+
                                 >
-                                    <option value="unknown">unknown</option>
+                                    <option value="">Select Brand</option>
                                     <option value="GE">GE</option>
                                     <option value="Whirlpool">Whirlpool</option>
                                     <option value="Samsung">Samsung</option>
@@ -163,11 +185,11 @@ const DonateFormComponent = () => {
                                     id="howBroken" 
                                     name="howBroken" 
                                     value={howBroken}
-                                    required
                                     onChange={(e) => setHowBroken(e.target.value)}
                                     className="form-select"
+                                    required
                                 >
-                                    <option value="unknown">unknown</option>
+                                    <option value="">How Broken?</option>
                                     <option value="A Little">A Little</option>
                                     <option value="Somewhat">Somewhat</option>
                                     <option value="Pretty Bad">It&apos;s Pretty Bad</option>
@@ -187,7 +209,7 @@ const DonateFormComponent = () => {
                                 className='reset-submit-button'
                                 type="submit"
                                 onClick={handleSubmit}
-                                // data-message="Did you remember to fill out the form completely? "
+                                data-message="Did you remember to fill out the form completely? "
                             >
                                 NEXT
                             </button>
