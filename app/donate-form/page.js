@@ -187,6 +187,7 @@ const DonateFormComponent = () => {
                                 className='reset-submit-button'
                                 type="submit"
                                 onClick={handleSubmit}
+                                // data-message="Did you remember to fill out the form completely? "
                             >
                                 NEXT
                             </button>
